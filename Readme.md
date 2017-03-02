@@ -198,7 +198,7 @@ Patches for PlayOnLinux 4.2.10.
 
 - 0001-remove-menuitems.patch = Remove Twitter, Facebook, Google+ menu items. Remove duplicate Run, Remove, Install menu items. Remove Donate menu item.
 
-- 0002-add-shortcutitems.patch = Add an option to remove shortcuts from Desktop & .local/share/applications/ directory. While creating a shortcut, add it to both of these places instead of only Desktop. Create winexec bash script file for Wine, and link it to "Execute" field of each shortcut/.desktop file.
+- 0002-add-shortcutitems.patch = Add an option to remove shortcuts from Desktop & .local/share/applications/ directory. While creating a shortcut, add it to both of these places instead of only Desktop. Create winexec bash script file for Wine, and link it to "Execute" field of each shortcut/.desktop file. Remove French localization & "Comment=PlayOnLinux" fields from desktop files.
 
 For details about Winexec bash script, see this [AskUbuntu](https://askubuntu.com/questions/123092/open-file-using-custom-command-how-to-specify-the-file-in-cmd-line) page. 
 
