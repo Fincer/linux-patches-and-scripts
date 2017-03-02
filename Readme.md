@@ -166,6 +166,20 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**pidgin-smileys-facebook**
+--------------
+
+Facebook smileys for Pidgin.
+
+FORMAT: Arch Linux PKGBUILD script + source archive.
+
+**pidgin-smileys-msn**
+--------------
+
+Windows Live Messenger smileys for Pidgin
+
+FORMAT: Arch Linux PKGBUILD script.
+
 **playonlinux**
 --------------
 
@@ -188,6 +202,13 @@ For details about Winexec bash script, see this [AskUbuntu](https://askubuntu.co
 - 0007-disable-closingandwinemessage.patch = Disable confirmation for closing the program. Remove Wine dependency (so that user don't need to install Wine on their systems in order to use PlayOnLinux)
 
 FORMAT: Arch Linux PKGBUILD script + patch files.
+
+**purple-whatsapp**
+--------------
+
+WhatsApp protocol implementation for libpurple (Pidgin)
+
+FORMAT: Arch Linux PKGBUILD script.
 
 **qgifer**
 --------------

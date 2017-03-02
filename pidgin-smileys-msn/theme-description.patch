@@ -1,0 +1,12 @@
+--- a/theme	2011-05-20 06:00:42.000000000 +0300
++++ b/theme	2015-10-16 20:01:18.871380494 +0300
+@@ -1,7 +1,7 @@
+ Name=Windows Live Messenger
+-Description=adium to pidgin conventer
++Description=MSN smileys for Pidgin
+ Icon=Smile.png
+-Author=adium to pidgin conventer
++Author=Pidgin Themes
+ 
+ [default]
+ 

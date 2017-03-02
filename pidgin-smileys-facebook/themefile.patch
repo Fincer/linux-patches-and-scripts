@@ -1,0 +1,904 @@
+--- a/theme	2014-08-30 05:21:34.000000000 +0300
++++ b/theme	2015-10-17 12:54:26.598600093 +0300
+@@ -1,454 +1,454 @@
+ Name=Facebook
+ Description=Facebook smileys for Pidgin
+-Icon=facebook-smiley-face-for-comments.png
++Icon=face.png
+ Author=mehdevil
+ 
+ [default]
+-facebook-smiley-face-for-comments.png	:) :-) :] =)
+-big-smile-emoticon-for-facebook.png	:D :-D =D
+-facebook-frown-emoticon.png	:( :-( :[ =(
+-facebook-cry-emoticon-crying-symbol.png	:'(
+-facebook-tongue-out-emoticon.png	:p :P :-p :-P =P
+-angel+emoticon.png	O:) O:-)
+-devil+emoticon.png	3:) 3:-)
+-confused-emoticon-wtf-symbol-for-facebook.png	O.o o.O
+-wink+emoticon.png	;) ;-)
+-surprised+emoticon.png	:o :O :-o :-O
+-squinting-emoticon.png	-_-
+-angry+emoticon.png	>:o >:O >:-o >:-O
+-kiss+emoticon.png	:* :-*
+-
+-heart+emoticon.png	<3
+-kiki+emoticon.png	^_^
+-glasses+emoticon.png	8-) B-)
+-sunglasses+emoticon.png	8| B| 8-| B-| 
+-shark+emoticon.png	(^^^)
+-robot+emoticon.png	:|]
+-grumpy+emoticon.png	>:( >:-(
+-pacman+emoticon.png	:v
+-unsure+emoticon.png	:/ :\ :-/ :-\
+-curly+lips+emoticon.png	:3
+-facebook-blush-emoticon.png	☺
+-thumb-up-facebook-emoticon-like-symbol.png	(y) 👍
+-poop-facebook-emoticon.png	:poop: 💩
+-
+-putnam-emoticon.png	:putnam:
+-facebook-penguine-emoticon.png	<(")
+-peace-fingers-facebook-symbol.png	✌
+-sun+emoticon+for+facebook+comments.png	☀
+-cloud-emoticon-for-facebook-comments.png	☁
+-umbrella-symbol-for-facebook-comments.png	☔
+-thunder-symbol-facebook-emoticon.png	⚡
+-stars-emoticon.png	✨
+-white-star.png	⭐
+-snowflake-emoji.png	✳
+-snowman-emoticon.png	⛄
+-coffee-emoticon.png	☕
+-hot-plate-emoticon.png	♨
+-
+-boat-emoticon.png	⛵
+-fuel-pump.png	⛽
+-airplane-emoticon.png	✈
+-fountain-emoticon.png	⛲
+-tent-emoticon.png	⛺
+-church-emoticon.png	⛪
+-telephone-emoticon.png	☎
+-envelope-emoticon.png	✉
+-scissors-emoticon.png	✂
+-toilet-emoticon.png	🚽
+-bath-emoticon.png	🛀
+-bikini-emoticon-for-facebook.png	👙
+-lipstick-emoticon.png	💄
+-
+-t-shirt-emoticon-for-facebook.png	👕
+-kimono-emoticon.png	👘
+-dress-emoticon.png	👗
+-boots-facebook-emoticon.png	👢
+-high-heels-emoticon.png	👠
+-womans-sandal.png	👡
+-briefcase-emoticon.png	💼
++
++face.png			:)	:-)	:]	=)			
++bigsmile.png	:D :-D =D
++frown.png	:( :-( :[ =(
++crycrying.png	:'(
++tongueout.png	:p :P :-p :-P =P
++angel.png	O:) O:-)
++devil.png	3:) 3:-)
++confusedwtf.png	O.o o.O
++wink.png	;) ;-)
++surprised.png	:o :O :-o :-O
++squinting.png	-_-
++angry.png	>:o >:O >:-o >:-O
++kiss2.png	:* :-*
++
++heart.png	<3
++kiki.png	^_^
++glasses.png	8-) B-)
++sunglasses.png	8| B| 8-| B-| 
++shark.png	(^^^)
++robot.png	:|]
++grumpy.png	>:( >:-(
++pacman.png	:v
++unsure.png	:/ :\ :-/ :-\
++curlylips.png	:3
++blush.png	☺
++thumbup.png	(y) 👍
++poop.png	:poop: 💩
++
++putnam.png	:putnam:
++penguine.png	<(")
++peacefingers.png	✌
++sun.png	☀
++cloud.png	☁
++umbrella.png	☔
++thunder.png	⚡
++stars.png	✨
++whitestar.png	⭐
++snowflake.png	✳
++snowman.png	⛄
++coffee.png	☕
++hotplate.png	♨
++
++boat.png	⛵
++fuelpump.png	⛽
++airplane.png	✈
++fountain.png	⛲
++tent.png	⛺
++church.png	⛪
++telephone.png	☎
++envelope.png	✉
++scissors.png	✂
++toilet.png	🚽
++bath.png	🛀
++bikini.png	👙
++lipstick.png	💄
++
++tshirt.png	👕
++kimono.png	👘
++dress.png	👗
++boots.png	👢
++highheels.png	👠
++womanssandal.png	👡
++briefcase.png	💼
+ handbag.png	👜
+-tie-emoticon-facebook.png	👔
+-top-hat-emoticon.png	🎩
+-womans-hat-emoji.png	👒
+-crown-emoticon.png	👑
+-ring-emoticon.png	💍
+-
+-no-smoking-emoticon.png	🚭
+-soccer-ball-emoticon.png	⚽
+-baseball-emoticon.png	⚾
+-golf-emoticon.png	⛳
+-american-football-emoticon.png	🏈
+-basketball-emoticon.png	🏀
+-tennis-ball-emoticon.png	🎾
+-eight-8-ball-emoticon.png	🎱
+-target-emoticon.png	🎯
+-skis-emoticon.png	🎿
+-crossed-flags-emoticon.png	🎌
+-finish-line-flag.png	🏁
+-trophy-symbol.png	🏆
+-
+-warning-sign.png	⚠
+-no-entry-emoticon.png	⛔
+-exclamation-point-emoji.png	❕
+-exclamation-mark-emoticon.png	❓
+-red-exclamation-mark.png	❗
+-question-mark-emoticon.png	❔
+-cross-mark-emoticon.png	❌
+-cross-mark-emoji.png	❎
+-multiplication-x.png	✖
+-heart-suit-emoticon.png	♥
+-spade-emoticon.png	♠
+-diamond-suit-emoticon.png	♦
+-club-suit-emoticon.png	♣
+-
+-its-ok-fingers-sign.png	👌
+-facebook-emoticon-of--dislike-symbol.png	👎
+-clenched-fist-emoticon-for-facebook-status.png	✊
+-index-finger-emoticon.png	☝
+-open-hand-emoticon.png	✋
+-two-hands-reaching-up.png	🙌
+-muscle-arm.png	💪
+-fist-symbol.png	👊
+-clapping-hands-emoticon.png	👏
+-finger-pointing-up-symbol.png	👆
+-finger-pointing-to-right.png	👉
+-finger-pointing-left.png	👈
+-finger-pointing-down.png	👇
+-
+-broken-heart-emoticon-for-facebook-comments.png	💔
+-facebook-blue-heart-icon.png	💙
+-green-heart-emoticon-for-facebook.png	💚
+-yellow-heart-emoticon-for-fb-comments.png	💛
+-purple-heart-icon.png	💜
+-triple-hearts-emoticon.png	💗
+-emoticon-of-heart-stabbed-with-an-arrow.png	💘
+-new-heart-symbol-for-facebook.png	💓
+-facebook-heart-symbol-wrapped-as-a-gift.png	💝
+-sparkling-heart-symbol-for-facebook.png	💖
+-spinning-hearts-emoticon.png	💞
+-white-heart-facebook-emoticon.png	💟
+-love-letter-facebook-emoticon.png	💌
+-
+-couple-in-love.png	💑
+-facebook-lips-emoticon.png	💋
+-lips-symbol.png	👄
+-facebook-comments-emoticon-with-heart-eyes.png	😍
+-heart-smiley-for-facebook-status-and-comments.png	😘
+-kiss-emoticon.png	😚
+-happy-smiley-blushing.png	😊
+-smirking-smiley.png	😏
+-satisfied-smiley-face.png	😌
++tie.png	👔
++top-hat.png	🎩
++womanshat.png	👒
++crown.png	👑
++ring.png	💍
++
++nosmoking.png	🚭
++soccerball.png	⚽
++baseball.png	⚾
++golf.png	⛳
++americanfootball.png	🏈
++basketball.png	🏀
++tennis-ball.png	🎾
++eight8ball.png	🎱
++target.png	🎯
++skis.png	🎿
++crossedflags.png	🎌
++finishlineflag.png	🏁
++trophy.png	🏆
++
++warningsign.png	⚠
++noentry.png	⛔
++exclamationpoint.png	❕
++exclamationmark.png	❓
++redexclamationmark.png	❗
++questionmark.png	❔
++crossmark.png	❌
++crossmark.png	❎
++multiplicationx.png	✖
++heartsuit.png	♥
++spade.png	♠
++diamondsuit.png	♦
++clubsuit.png	♣
++
++itsokfingerssign.png	👌
++ofdislike.png	👎
++clenchedfiststatus.png	✊
++indexfinger.png	☝
++openhand.png	✋
++twohands.png	🙌
++musclearm.png	💪
++fist.png	👊
++clapping-hands.png	👏
++fingerup.png	👆
++fingertoright.png	👉
++fingerleft.png	👈
++fingerdown.png	👇
++
++brokenheart.png	💔
++blueheart.png	💙
++greenheart.png	💚
++yellowheart.png	💛
++purpleheart.png	💜
++triplehearts.png	💗
++heartstabbed.png	💘
++newheart.png	💓
++heartwrappedasagift.png	💝
++sparklingheart.png	💖
++spinninghearts.png	💞
++whiteheart.png	💟
++loveletter.png	💌
++
++coupleinlove.png	💑
++lips.png	💋
++lips.png	👄
++withhearteyes.png	😍
++heartstatusand.png	😘
++kiss.png	😚
++happyblushing.png	😊
++smirking.png	😏
++satisfiedface.png	😌
+ smiling-face.png	😃
+-big-smile-with-closed-eyes.png	😄
+-disappointed-emoticon-for-facebook-chat-status-and-comments.png	😞
+-crying-smiley.png	😢
+-
+-medic-facebook-smiley.png	😷
+-cold-sweat-emoticon.png	😓
+-fear-emoji.png	😰
+-relieved-emoticon.png	😥
+-sleepy-smiley.png	😪
+-scared-emoticon.png	😨
+-facebook-emoticon--terrified-with-fear.png	😱
+-dizzy-emoticon.png	😵
+-facebook-emoticon-crying-big-tears.png	😭
+-mad-angry-emoticon-for-facebook.png	😠
+-emoticon-with-eyes-wide-open.png	😳
+-astonished-smiley-emoticon-for-facebook.png	😲
+-emoticon-with-look-of-triumph.png	😤
+-
+-tongue-out-winking-emoticon-for-facebook.png	😜
+-emoticon-mocking--with-tongue-out.png	😝
+-winking-face-facebook-symbol.png	😉
+-sad-face-symbol-for-facebook.png	😔
+-unamused-emoticon.png	😒
+-emoticon-crying-tears-of-joy.png	😂
+-red-angry-emoticon-for-facebook.png	😡
+-purple-devil-facebook-emoticon.png	👿
+-alien-symbol.png	👽
+-green-extraterrestrial-symbol.png	👾
+-ghost-symbol.png	👻
+-angel-symbol.png	👼
+-playboy-bunny-emoticon-for-facebook.png	👯
+-
+-guardsman-symbol.png	💂
+-man-with-turban.png	👳
+-Santa-claus-symbol-for-facebook.png	🎅
+-facebook-policeman-symbol.png	👮
+-construction-worker-emoticon.png	👷
+-princess-emoticon-for-facebook.png	👸
+-bald-man-emoticon.png	👴
+-old-woman-emoticon.png	👵
+-man-emoticon.png	👨
+-woman-emoticon.png	👩
+-boy-emoticon.png	👦
+-girl-emoticon-for-facebook.png	👧
+-baby-face-emoticon.png	👶
+-
+-blonde-girl-emoticon.png	👱
+-boy-and-girl-holding-hands.png	👫
+-man-and-woman-holding-hands.png	🎎
+-dancer-emoticon-for-facebook.png	💃
+-ear-emoticon.png	👂
+-nose-symbol.png	👃
+-facebook-eyes-symbol.png	👀
+-star-symbol-for-facebook.png	🌟
+-moon-symbol.png	🌙
+-music-note-symbol-facebook-emoticon-for-status.png	🎵
+-facebook-music-notes-symbols.png	🎶
+-zzz-facebook-emoticon.png	💤
+-fire-symbol-emoticon-for-facebook.png	🔥
+-
+-bell-symbol-for-facebook.png	🔔
+-balloon-symbol-for-facebook.png	🎈
+-Party-popper.png	🎉
+-champagne-glass-symbol.png	🍸
+-beer-mug-symbol.png	🍺
+-clinking-beer-mugs.png	🍻
+-bottle-emoticon.png	🍶
+-teacup-emoticon.png	🍵
+-fork-and-knife-facebook-emoticons.png	🍴
+-bread-emoticon.png	🍞
+-frying-pan.png	🍳
+-french-fries-facebook-emoji.png	🍟
+-the-food-pot-emoticon.png	🍲
+-
+-sushi-emoticon.png	🍣
+-spaghetti-emoticon.png	🍝
+-steaming-bowl.png	🍜
+-cake-emoticon.png	🍰
+-shaved-ice-emoticon-for-facebook.png	🍧
+-ice-cream-facebook-emoticon.png	🍦
+-hamburger-symbol.png	🍔
+-red-apple-symbol.png	🍎
+-strawberry-symbol.png	🍓
+-orange-fruit-emoticon.png	🍊
+-watermelon-emoticon.png	🍉
+-tomato-emoticon.png	🍅
+-eggplant-emoticon.png	🍆
+-
+-seedling-emoticon.png	🌱
+-palm-tree-emoticon.png	🌴
+-cactus-symbol.png	🌵
+-maple-leaf-symbol.png	🍁
+-fallen-leaf-emoticon.png	🍂
+-Fluttering-leaf-icon.png	🍃
+-cherry-blossom.png	🌸
+-rose-symbol-for-facebook.png	🌹
+-tulip-symbol.png	🌷
+-sunflower-emoticon.png	🌻
+-hibiscus-flower--symbol.png	🌺
+-flower-bouquet-symbol.png	💐
+-christmas-tree-symbol.png	🎄
+-
+-puppy-facebook-emoticon-for-comments-status-and-chat.png	🐶
+-teddy-bear-fb-emoticon.png	🐻
+-monkey-face-symbol.png	🐵
+-mouse-fb-emoticon.png	🐭
+-hamster-fb-emoticon.png	🐹
+-facebook-wolf-emoticon.png	🐺
+-facebook-tiger-emoticon.png	🐯
+-horse-face-symbol.png	🐴
+-piggy-emoticon.png	🐷
+-facebook-cat-symbol.png	🐱
+-facebook-bunny-symbol.png	🐰
+-poodle-emoticon.png	🐩
+-sheep-emoticon.png	🐑
+-
+-penguin-face-symbol.png	🐧
+-koala-emoticon.png	🐨
+-cow-emoticon.png	🐮
+-wild-boar-emoticon.png	🐗
+-chicken-symbol.png	🐔
+-yellow-chick-emoticon.png	🐥
+-bird-emoticon-for-facebook.png	🐦
+-elephant-emoticon-for-facebook.png	🐘
+-horse-emoticon-for-facebook.png	🐎
+-monkey-symbol-for-facebook.png	🐒
+-camel-emoticon.png	🐫
+-facebook-dolphin-emoticon.png	🐬
+-whale-emoticon-for-facebook.png	🐳
+-
+-tropical-fish-emoticon.png	🐠
+-facebook-fish-symbol.png	🐟
+-blowfish-symbol.png	🐡
+-octopus-emoticon.png	🐙
+-facebook-seashell-symbol.png	🐚
+-frog-emoticon.png	🐸
+-snake-symbol-for-facebook.png	🐍
+-facebook-bug-emoticon.png	🐛
+-wind-emoticon.png	💨
+-wave-symbol.png	🌊
+-droplets-symbol.png	💦
+-snowflake-emoticon.png	✴
+-rainbow-emoticon.png	🌈
+-
+-phone-symbol.png	📞
+-fax-emoticon.png	📠
+-speaker-emoticon.png	🔈
+-radio-emoticon.png	📻
+-camera-emoji.png	📷
+-movie-camera-emoticon.png	🎥
+-vhs-emoticon.png	📼
+-satellite-dish.png	📡
+-tv-symbol.png	📺
+-pc-emoticon.png	💻
+-floppy-disk-emoticon.png	💾
+-cd-emoticon.png	📀
+-tablet-smartphone-emoticon.png	📱
+-
+-gift-emoticon.png	🎁
+-carp-streamers.png	🎏
+-anger-symbol-facebook-emoticon.png	💢
+-nail-polish-emoticon.png	💅
+-footprints-emoticon.png	🐾
+-four-leaf-clover.png	🍀
+-graduation-symbol.png	🎓
+-pumpkin-symbol.png	🎃
+-skull-emoticon-for-facebook-status-comments-chat.png	💀
+-atm-emoticon.png	🏧
+-money-bag-emoticon.png	💰
+-dollar-bill-emoticon.png	💵
+-yen-banknote.png	💴
+-
+-bicycle-emoticon.png	🚲
+-automobile-emoji.png	🚗
+-car-emoticon.png	🚙
+-truck-emoji.png	🚚
+-bus-emoticon.png	🚌
+-fire-engine-emoticon.png	🚒
+-police-car-emoticon.png	🚓
+-ambulance-facebook-emoticon.png	🚑
+-taxi-emoticon.png	🚕
+-train-emoticon.png	🚄
+-tram-car-emoji.png	🚃
+-high-speed-train-emoji.png	🚅
+-station-emoji.png	🚉
+-
+-speedboat-emoji.png	🚤
+-ship-emoticon.png	🚢
+-roller-coaster.png	🎢
+-rocket-emoji.png	🚀
+-ticket-emoticon.png	🎫
+-bus-stop-emoticon.png	🚏
+-traffic-lights-emoticon.png	🚥
+-construction-sign.png	🚧
+-barber-emoticon.png	💈
+-antenna-signal.png	📶
+-no-under-18-sign.png	🔞
+-vibration-mode.png	📳
+-mobile-phone-off-emoticon.png	📴
+-
+-sunrise-emoticon.png	🌅
+-sunrise-over-mountains.png	🌄
+-sunset-emoticon.png	🌇
+-dusk-emoticon.png	🌆
+-starry-night.png	🌃
+-mount-fuji-emoji.png	🗻
+-japanese-castle.png	🏯
+-japanese-building-emoji.png	🏣
+-castle-emoticon.png	🏰
+-bank-emoticon-for-facebook.png	🏦
+-statue-of-liberty-emoticon.png	🗽
+-ferris-wheel-emoticon.png	🎡
+-tokyo-tower.png	🗼
+-
+-hotel-emoticon.png	🏨
+-love-hotel.png	🏩
+-office-building.png	🏢
+-school-emoticon.png	🏫
+-factory-emoticon.png	🏭
+-hospital-emoticon.png	🏥
+-department-store-emoticon.png	🏬
+-convenience-store.png	🏪
+-wedding-emoticon.png	💒
+-house-emoji.png	🏡
+-house-emoticon.png	🏠
+-mailbox-emoticon.png	📪
+-mailbox-with-raised-flag.png	📫
+-
+-postbox-emoticon.png	📮
+-mail-emoticon-for-facebook.png	📩
+-incoming-mail-facebook-emoticon.png	📨
+-memo-sign-for-facebook.png	📝
+-school-bag-emoticon.png	🎒
+-open-book-emoticon.png	📖
+-paint-palette.png	🎨
+-microphone-emoticon.png	🎤
+-megaphone-emoticon.png	📣
+-headphones-emoticon.png	🎧
+-saxophone-emoticon.png	🎷
+-trumpet-emoticon.png	🎺
+-guitar-emoticon.png	🎸
+-
+-public-address-loudspeaker.png	📢
+-lock-emoji.png	🔒
+-closed-lock-with-key.png	🔐
+-key-emoticon.png	🔑
+-open-lock-emoticon.png	🔓
+-magnifying-glass-emoticon.png	🔎
+-light-bulb-emoticon.png	💡
+-dollar-sign.png	💲
+-pistol-emoticon.png	🔫
+-bomb-emoticon.png	💣
+-cigarette-emoticon.png	🚬
+-pill-emoticon.png	💊
+-syringe-emoticon.png	💉
+-
+-mask-emoticon-for-facebook.png	🎭
+-clapper-board.png	🎬
+-cinema-emoticon.png	🎦
+-restroom-emoticon.png	🚻
+-mens-emoticon.png	🚹
+-womens-emoticon.png	🚺
+-child-emoticon.png	🚼
+-vs-emoticon-versus.png	🆚
+-up-sign.png	🆙
+-cool-emoticon-sign.png	🆒
+-wheelchair-emoji.png	♿
+-curly-loops.png	➿
+-wc-emoticon.png	🚾
+-
+-congratulations-emoticon.png	㊗
+-secret-emoticon.png	㊙
+-free-service-emoticon.png	🈂
+-available-emoticon.png	🈳
+-katakana-koko-emoji.png	🈁
+-finger-point-emoticon.png	🈯
+-full-emoticon.png	🈵
+-sale-emoticon.png	🈹
+-have-nothing.png	🈚
+-month-emoticon-for-facebook.png	🈷
+-own-emoticon.png	🈶
+-request-emoticon.png	🈸
+-work-emoticon.png	🈺
+-
+-good-bargain.png	🉐
+-square-emoticon.png	⬜
+-circle-emoji.png	⚪
+-rightwards-arrow.png	➡
+-downwards-arrow.png	⬇
+-leftwards-arrow.png	⬅
+-upwards-arrow.png	⬆
+-north-east-arrow.png	↗
+-north-west-arrow.png	↖
+-south-east-arrow.png	↘
+-south-west-arrow.png	↙
+-up-right-arrow.png	⤴
+-arrow-pointing-down-right.png	⤵
+-
+-ribbon-emoticon.png	🎀
+-closed-umbrella.png	🌂
+-droplet-emoticon.png	💧
+-hammer-emoticon.png	🔨
+-seat-emoticon.png	💺
+-Part-Alternation-Mark.png	〽
+-trident-emoticon.png	🔱
+-noob-emoticon.png	🔰
+-mahong-tile-red-dragon.png	🀄
+-gem-stone-emoticon.png	💎
+-diamond-emoticon.png	💠
+-blue-diamond-emoticon.png	🔷
+-orange-diamond-emoticon.png	🔶
+-
++smileclosedeyes.png	😄
++disappointed.png	😞
++crying.png	😢
++
++medic.png	😷
++coldsweat.png	😓
++fear.png	😰
++relieved.png	😥
++sleepy.png	😪
++scared.png	😨
++terrifiedwithfear.png	😱
++dizzy.png	😵
++cryingbigtears.png	😭
++madangry.png	😠
++witheyeswideopen.png	😳
++astonished.png	😲
++withlookoftriumph.png	😤
++
++tongueoutwinking.png	😜
++mockingwithtongueout.png	😝
++winkingface.png	😉
++sadface.png	😔
++unamused.png	😒
++cryingtearsofjoy.png	😂
++redangry.png	😡
++purpledevil.png	👿
++alien.png	👽
++greenextraterrestrial.png	👾
++ghost.png	👻
++angel.png	👼
++playboybunny.png	👯
++
++guardsman.png	💂
++manwithturban.png	👳
++santaclaus.png	🎅
++policeman.png	👮
++constructionworker.png	👷
++princess.png	👸
++baldman.png	👴
++oldwoman.png	👵
++man.png	👨
++woman.png	👩
++boy.png	👦
++girl.png	👧
++babyface.png	👶
++
++blondegirl.png	👱
++boygirlhands.png	👫
++manwomanhands.png	🎎
++dancer.png	💃
++ear.png	👂
++nose.png	👃
++eyes.png	👀
++star.png	🌟
++moon.png	🌙
++musicnotestatus.png	🎵
++musicnotess.png	🎶
++zzz.png	💤
++fire.png	🔥
++
++bell.png	🔔
++balloon.png	🎈
++partypopper.png	🎉
++champagneglass.png	🍸
++beermug.png	🍺
++clinkingbeermugs.png	🍻
++bottle.png	🍶
++teacup.png	🍵
++forkandknifes.png	🍴
++bread.png	🍞
++fryingpan.png	🍳
++frenchfries.png	🍟
++thefoodpot.png	🍲
++
++sushi.png	🍣
++spaghetti.png	🍝
++steamingbowl.png	🍜
++cake.png	🍰
++shavedice.png	🍧
++icecream.png	🍦
++hamburger.png	🍔
++redapple.png	🍎
++strawberry.png	🍓
++orangefruit.png	🍊
++watermelon.png	🍉
++tomato.png	🍅
++eggplant.png	🍆
++
++seedling.png	🌱
++palmtree.png	🌴
++cactus.png	🌵
++mapleleaf.png	🍁
++fallenleaf.png	🍂
++flutteringleaf.png	🍃
++cherryblossom.png	🌸
++rose.png	🌹
++tulip.png	🌷
++sunflower.png	🌻
++hibiscusflower-.png	🌺
++flowerbouquet.png	💐
++christmastree.png	🎄
++
++puppy.png	🐶
++teddybear.png	🐻
++monkeyface.png	🐵
++mouse.png	🐭
++hamster.png	🐹
++wolf.png	🐺
++tiger.png	🐯
++horseface.png	🐴
++piggy.png	🐷
++cat.png	🐱
++bunny.png	🐰
++poodle.png	🐩
++sheep.png	🐑
++
++penguinface.png	🐧
++koala.png	🐨
++cow.png	🐮
++wildboar.png	🐗
++chicken.png	🐔
++yellowchick.png	🐥
++bird.png	🐦
++elephant.png	🐘
++horse.png	🐎
++monkey.png	🐒
++camel.png	🐫
++dolphin.png	🐬
++whale.png	🐳
++
++tropicalfish.png	🐠
++fish.png	🐟
++blowfish.png	🐡
++octopus.png	🐙
++seashell.png	🐚
++frog.png	🐸
++snake.png	🐍
++bug.png	🐛
++wind.png	💨
++wave.png	🌊
++droplets.png	💦
++snowflake.png	✴
++rainbow.png	🌈
++
++phone.png	📞
++fax.png	📠
++speaker.png	🔈
++radio.png	📻
++camera.png	📷
++moviecamera.png	🎥
++vhs.png	📼
++satellitedish.png	📡
++tv.png	📺
++pc.png	💻
++floppydisk.png	💾
++cd.png	📀
++tabletsmartphone.png	📱
++
++gift.png	🎁
++carpstreamers.png	🎏
++anger.png	💢
++nailpolish.png	💅
++footprints.png	🐾
++fourleafclover.png	🍀
++graduation.png	🎓
++pumpkin.png	🎃
++skull.png	💀
++atm.png	🏧
++moneybag.png	💰
++dollarbill.png	💵
++yenbanknote.png	💴
++
++bicycle.png	🚲
++automobile.png	🚗
++car.png	🚙
++truck.png	🚚
++bus.png	🚌
++fireengine.png	🚒
++policecar.png	🚓
++ambulance.png	🚑
++taxi.png	🚕
++train.png	🚄
++tramcar.png	🚃
++highspeedtrain.png	🚅
++station.png	🚉
++
++speedboat.png	🚤
++ship.png	🚢
++rollercoaster.png	🎢
++rocket.png	🚀
++ticket.png	🎫
++busstop.png	🚏
++trafficlights.png	🚥
++constructionsign.png	🚧
++barber.png	💈
++antennasignal.png	📶
++nounder18sign.png	🔞
++vibrationmode.png	📳
++mobilephoneoff.png	📴
++
++sunrise.png	🌅
++sunriseovermountains.png	🌄
++sunset.png	🌇
++dusk.png	🌆
++starrynight.png	🌃
++mountfuji.png	🗻
++japanesecastle.png	🏯
++japanesebuilding.png	🏣
++castle.png	🏰
++bank.png	🏦
++statueofliberty.png	🗽
++ferriswheel.png	🎡
++tokyotower.png	🗼
++
++hotel.png	🏨
++lovehotel.png	🏩
++officebuilding.png	🏢
++school.png	🏫
++factory.png	🏭
++hospital.png	🏥
++departmentstore.png	🏬
++conveniencestore.png	🏪
++wedding.png	💒
++house.png	🏡
++house.png	🏠
++mailbox.png	📪
++mailboxwithraisedflag.png	📫
++
++postbox.png	📮
++mail.png	📩
++incomingmail.png	📨
++memosign.png	📝
++schoolbag.png	🎒
++openbook.png	📖
++paintpalette.png	🎨
++microphone.png	🎤
++megaphone.png	📣
++headphones.png	🎧
++saxophone.png	🎷
++trumpet.png	🎺
++guitar.png	🎸
++
++publicaddressloudspeaker.png	📢
++lock.png	🔒
++closedlockwithkey.png	🔐
++key.png	🔑
++openlock.png	🔓
++magnifyingglass.png	🔎
++lightbulb.png	💡
++dollarsign.png	💲
++pistol.png	🔫
++bomb.png	💣
++cigarette.png	🚬
++pill.png	💊
++syringe.png	💉
++
++mask.png	🎭
++clapperboard.png	🎬
++cinema.png	🎦
++restroom.png	🚻
++mens.png	🚹
++womens.png	🚺
++child.png	🚼
++versus.png	🆚
++upsign.png	🆙
++coolsign.png	🆒
++wheelchair.png	♿
++curlyloops.png	➿
++wc.png	🚾
++
++congratulations.png	㊗
++secret.png	㊙
++freeservice.png	🈂
++available.png	🈳
++katakanakoko.png	🈁
++fingerpoint.png	🈯
++full.png	🈵
++sale.png	🈹
++havenothing.png	🈚
++month.png	🈷
++own.png	🈶
++request.png	🈸
++work.png	🈺
++
++goodbargain.png	🉐
++square.png	⬜
++circle.png	⚪
++rightwardsarrow.png	➡
++downwardsarrow.png	⬇
++leftwardsarrow.png	⬅
++upwardsarrow.png	⬆
++northeastarrow.png	↗
++northwestarrow.png	↖
++southeastarrow.png	↘
++southwestarrow.png	↙
++uprightarrow.png	⤴
++arrowdownright.png	⤵
++
++ribbon.png	🎀
++closedumbrella.png	🌂
++droplet.png	💧
++hammer.png	🔨
++seat.png	💺
++partalternationmark.png	〽
++trident.png	🔱
++noob.png	🔰
++mahongtilereddragon.png	🀄
++gemstone.png	💎
++diamond.png	💠
++bluediamond.png	🔷
++orangediamond.png	🔶

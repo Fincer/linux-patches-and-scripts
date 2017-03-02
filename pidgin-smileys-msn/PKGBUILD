@@ -1,0 +1,25 @@
+# Maintainer: Fincer fincer89 at hotmail dot com>
+
+pkgname=pidgin-smileys-msn
+pkgver=1.0
+pkgrel=1
+arch=('i686' 'x86_64')
+pkgdesc="Windows Live Messenger smileys for Pidgin"
+url="http://www.pidginthemes.com/"
+license=('GPL')
+depends=('pidgin')
+source=(http://www.pidginthemes.com/content/smilies/windows%20live%20messenger.zip
+theme-description.patch)
+md5sums=('405e2f22729d406270460198281db9f0'
+         'df274aa57db9a63d1be6c1e362da9a83')
+
+prepare() {
+  patch -Np1 -i "$srcdir/theme-description.patch"
+}
+
+package() {
+  mkdir -p $srcdir/$pkgname-$pkgver
+  find $srcdir -maxdepth 1 -type f -exec mv -n {} $srcdir/$pkgname-$pkgver/ \;
+  mkdir -p $pkgdir/usr/share/pixmaps/pidgin/emotes/msn-smileys
+  cp $srcdir/$pkgname-$pkgver/* $pkgdir/usr/share/pixmaps/pidgin/emotes/msn-smileys/
+}
