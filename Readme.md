@@ -265,9 +265,26 @@ A Python-based GUI for creating Wine application launchers/Desktop shortcuts.
 
 FORMAT: Arch Linux PKGBUILD script + source archive.
 
+**xephem**
+--------------
+
+A Serious Interactive Astronomical Software Ephemeris.
+
+Includes a custom desktop shortcut image & desktop shortcut which are not included in the AUR package.
+
+Homepage:
+
+[XEphem](http://www.clearskyinstitute.com/xephem/)
+
+FORMAT: Arch Linux PKGBUILD script + desktop shortcut + custom desktop shortcut image.
+
 **zsnes-netplay**
 --------------
 
 ZSnes Nintendo SNES emulator for Linux. Netplay version.
+
+Homepage:
+
+[ZSnes Emulator](http://www.zsnes.com/)
 
 FORMAT: Arch Linux PKGBUILD script + source archive + patch files.
