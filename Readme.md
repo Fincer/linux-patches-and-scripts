@@ -9,20 +9,21 @@ Includes universal patch files and Arch Linux specific PKGBUILD scripts.
 --------------
 
 **cr2fits**
+--------------
 
 Convert Canon CR2 RAW images to FITS images. FITS format is used in astronomical applications.
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **cr2hdr**
+--------------
 
 Dual ISO image processing tool for Canon DSLR's with Magic Lantern firmware. Convert Dual ISO DNG raw images to editable format for further processing with Photoshop/Lightroom etc.
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **dolphin**
+--------------
 
 A patch for Dolphin 16.12 (Plasma 5). The patch lets you autoplay all supported media formats (audio & video) in Dolphin file browser instead of clicking manually the play button every time you want preview a media file.
 
@@ -32,29 +33,29 @@ Original patch code [here](https://nowardev.wordpress.com/2014/03/18/automatic-v
 
 FORMAT: Patch file.
 
-////////////////////////////////////////
 **kde-servicemenus-cr2fits**
+--------------
 
 Plasma 5 Dolphin service menu script for cr2fits package.
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **kde-servicemenus-dualiso**
+--------------
 
 Plasma 5 Dolphin service menu script for cr2hdr package.
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **kde-servicemenus-hexstrings**
+--------------
 
 Plasma 5 Dolphin service menu script. Extract all readable strings from a file (binary files included). Useful for file analysis.
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **kde-servicemenus-mediainfo**
+--------------
 
 Plasma 5 Dolphin service menu script. Show useful media information. Applies to all audio & video files.
 
@@ -68,8 +69,8 @@ Shows
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **kde-servicemenus-multimediatools**
+--------------
 
 Plasma 5 Dolphin service menu script for converting various video & audio files from format to format.
 
@@ -80,29 +81,29 @@ This script can be used for multiple files at the same time but is developed for
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **kde-servicemenus-unlockpdf**
+--------------
 
 Plasma 5 Dolphin service menu script for hacking and breaking PDF password protection. Allows you to edit read-only PDF files.
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **mlv2dng**
+--------------
 
 Magic Lantern Raw file conversion tool for MLV files. Extract individual DNG frames from MLV files.
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **mlvdump**
+--------------
 
 Magic Lantern Raw file conversion tool for MLV files. Extract individual DNG frames from MLV files.
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **pano2vr**
+--------------
 
 Create virtual panorama tours using panorama images.
 
@@ -114,8 +115,8 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **panotour**
+--------------
 
 Create virtual panorama tours using panorama images.
 
@@ -125,8 +126,8 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **panotourpro**
+--------------
 
 Create virtual panorama tours using panorama images. Professional version with additional features.
 
@@ -136,8 +137,8 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **photoscan**
+--------------
 
 Create textured 3D models from multiple still images.
 
@@ -147,8 +148,8 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **photoscan-pro**
+--------------
 
 Create textured 3D models from multiple still images. Professional version with additional features.
 
@@ -158,8 +159,8 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script.
 
-////////////////////////////////////////
 **playonlinux**
+--------------
 
 Patches for PlayOnLinux 4.2.10.
 
@@ -181,8 +182,8 @@ For details about Winexec bash script, see this [AskUbuntu](https://askubuntu.co
 
 FORMAT: Arch Linux PKGBUILD script + patch files.
 
-////////////////////////////////////////
 **qgifer**
+--------------
 
 Patch qgifer codebase for Qt5 & the newest giflib. NOTE: Qgifer is a deprecated/abandoned program.
 
@@ -192,8 +193,8 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script + patch files.
 
-////////////////////////////////////////
 **wine**
+--------------
 
 Patches for Wine.
 
@@ -211,8 +212,8 @@ Basically, this patch helps you installing many useful programs on Wine which wo
 
 FORMAT: Patch files.
 
-////////////////////////////////////////
 **zsnes-netplay**
+--------------
 
 ZSnes Nintendo SNES emulator for Linux. Netplay version.
 
