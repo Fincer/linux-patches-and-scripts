@@ -13,12 +13,20 @@ Includes universal patch files and Arch Linux specific PKGBUILD scripts.
 
 Convert Canon CR2 RAW images to FITS images. FITS format is used in astronomical applications.
 
+More about cr2fits:
+
+[Github.com - eaydin/cr2fits](https://github.com/eaydin/cr2fits)
+
 FORMAT: Arch Linux PKGBUILD script.
 
 **cr2hdr**
 --------------
 
 Dual ISO image processing tool for Canon DSLR's with Magic Lantern firmware. Convert Dual ISO DNG raw images to editable format for further processing with Photoshop/Lightroom etc.
+
+More about Dual ISO:
+
+[Magic Lantern Forum - Dual ISO - massive dynamic range improvement](http://www.magiclantern.fm/forum/index.php?topic=7139.0)
 
 FORMAT: Arch Linux PKGBUILD script.
 
@@ -190,6 +198,10 @@ FORMAT: Arch Linux PKGBUILD script + source archive.
 Windows Live Messenger smileys for Pidgin
 
 FORMAT: Arch Linux PKGBUILD script.
+
+Homepage:
+
+[Pidgin Themes - Windows Live Messenger smilies](http://www.pidginthemes.com/smilies/windows%20live%20messenger/)
 
 **playonlinux**
 --------------
