@@ -200,6 +200,13 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script + patch files.
 
+**u3d**
+--------------
+
+Set of libraries to manipulate U3D-formatted data. IDTF to U3D converter.
+
+FORMAT: Arch Linux PKGBUILD script + source archive.
+
 **wine**
 --------------
 
@@ -224,4 +231,4 @@ FORMAT: Patch files.
 
 ZSnes Nintendo SNES emulator for Linux. Netplay version.
 
-FORMAT: Arch Linux PKGBUILD script + patch files.
+FORMAT: Arch Linux PKGBUILD script + source archive + patch files.
