@@ -8,7 +8,7 @@ pkgdesc="Facebook smileys for Pidgin"
 url="http://www.pidginthemes.com/"
 license=('GPL')
 depends=('pidgin')
-source=(http://gnome-look.org/CONTENT/content-files/162631-Pidgin-Facebook-Smileys-1.0.tar.gz
+source=("./162631-Pidgin-Facebook-Smileys-1.0.tar.gz"
 themefile.patch)
 md5sums=('2bc0f072bb33ccf8c8d8e80a696426a0'
          '432b4358b2658b38922a400f2b3cb5bd')
