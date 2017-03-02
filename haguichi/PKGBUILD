@@ -1,0 +1,31 @@
+# Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net> pointfree on irc.freenode.net
+# Contributor: scrawl <scrawl@baseoftrash.de>
+
+pkgname=haguichi
+pkgver=1.0.26
+_series=1.0
+pkgrel=1
+pkgdesc="Hamachi GUI"
+arch=('any')
+url="http://www.haguichi.net"
+license=('GPL2')
+depends=('logmein-hamachi' 'mono' 'gconf-sharp' 'notify-sharp' 'ndesk-dbus-glib')
+#source=("http://launchpad.net/$pkgname/$_series/$pkgver/+download/$pkgname-$pkgver-clr4.0.tar.gz")
+source=("haguichi-1.0.26-clr4.0.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+	cd $srcdir/$pkgname-$pkgver
+	./configure --prefix=/usr
+}
+
+check() {
+	cd $srcdir/$pkgname-$pkgver
+	make -k check
+}
+
+package() {
+	cd $srcdir/$pkgname-$pkgver
+	make DESTDIR=$pkgdir install
+}
+

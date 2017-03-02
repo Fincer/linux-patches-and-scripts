@@ -33,6 +33,17 @@ Original patch code [here](https://nowardev.wordpress.com/2014/03/18/automatic-v
 
 FORMAT: Patch file.
 
+**haguichi**
+--------------
+
+Graphical front-end for LogMeIn Hamachi by Stephen Brandt. Version 1.0.26 (GTK2).
+
+Homepage:
+
+[Haguichi](https://www.haguichi.net/)
+
+FORMAT: Arch Linux PKGBUILD script + source archive.
+
 **kde-servicemenus-cr2fits**
 --------------
 
