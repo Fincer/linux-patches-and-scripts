@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=image/x-canon-cr2;image/x-adobe-dng;
+Icon=application-x-theme
+Actions=dualiso;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+TryExec=cr2hdr
+
+[Desktop Action dualiso]
+Name=Convert Dual ISO RAW image
+Icon=application-x-theme
+Exec=mkdir -p converted-dual-iso && cr2hdr %U && mv *.DNG ./converted-dual-iso

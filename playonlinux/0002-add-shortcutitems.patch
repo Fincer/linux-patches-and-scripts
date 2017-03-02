@@ -1,0 +1,185 @@
+--- /dev/null
++++ b/bash/winexec
+@@ -0,0 +1,27 @@
++#!/bin/bash
++
++allargs=("$@")
++
++fixpath=0
++for idx in "${!allargs[@]}"; do
++    arg="${allargs[$idx]}"
++
++    if [[ $fixpath -eq 0 ]]; then
++        # fix file paths only after the first executable is found in arg
++        if [[ "$arg" == *.exe ]]; then
++            fixpath=1
++        fi
++        if [[ "$arg" == *.EXE ]]; then
++            fixpath=1
++        fi
++        continue
++    elif [[ $fixpath -eq 1 ]]; then
++        # if arg starts with '/' and it's a path that exists on host
++        # precede the path with drive 'Z:'
++        if [[ "${arg:0:1}" == '/' && -e "$arg" ]]; then
++            allargs[$idx]="z:${arg//\//\\}"
++        fi
++    fi
++done
++
++exec env "${allargs[@]}"
+
+--- /dev/null
++++ b/bash/remove_shortcut
+@@ -0,0 +1,41 @@
++#!/usr/bin/env bash
++
++# Copyright (C) 2011 Pâris Quentin
++
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++# GNU General Public License for more details.
++
++# You should have received a copy of the GNU General Public License along
++# with this program; if not, write to the Free Software Foundation, Inc.,
++# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. 
++
++# This script makes shortcut of programs
++
++[ "$PLAYONLINUX" = "" ] && exit 0
++source "$PLAYONLINUX/lib/sources" 
++
++
++TITLE="$(eval_gettext '$APPLICATION_TITLE shortcut remover')"
++
++if [ "$1" ]; then
++	PACKAGE="$1"
++else
++	POL_SetupWindow_games "$(eval_gettext "Please choose a software to package")" "$TITLE"
++	PACKAGE="$APP_ANSWER"
++fi
++
++POL_SetupWindow_Init
++POL_SetupWindow_wait_next_signal "$(eval_gettext "Removing shortcut...")" "$TITLE"
++POL_Shortcut_RemoveDesktopShortcut "$PACKAGE"
++POL_SetupWindow_message "$(eval_gettext "The shortcut has been removed from $HOME.local/share/applications/ and your desktop")" "$TITLE"
++POL_SetupWindow_Close
++
++exit 0
+
+--- a/python/mainwindow.py
++++ b/python/mainwindow.py
+@@ -784,7 +784,9 @@
+             i+=1
+             self.menuGaucheAddLink("pol_prgm_configure", _("Configure"), i,Variables.playonlinux_env+"/resources/images/menu/run.png",self.Configure)
+             i+=1
+-            self.menuGaucheAddLink("pol_prgm_shortcut", _("Create a shortcut"), i,Variables.playonlinux_env+"/resources/images/menu/shortcut.png",self.Package)
++            self.menuGaucheAddLink("pol_prgm_shortcut", _("Create desktop shortcut"), i,Variables.playonlinux_env+"/resources/images/menu/shortcut.png",self.Package)
++            i+=1
++            self.menuGaucheAddLink("pol_prgm_shortcut_rem", _("Remove desktop shortcut"), i,Variables.playonlinux_env+"/resources/images/menu/shortcut.png",self.RemShortcut)
+             i+=1
+             self.menuGaucheAddLink("pol_prgm_adddir", _("Open the directory"), i,Variables.playonlinux_env+"/resources/images/menu/folder-wine.png",self.GoToAppDir)
+ 
+@@ -980,6 +982,10 @@
+     def Package(self, event):
+         game_exec = self.GetSelectedProgram()
+         subprocess.Popen(["bash", Variables.playonlinux_env+"/bash/make_shortcut", game_exec])
++        
++    def RemShortcut(self, event):
++        game_exec = self.GetSelectedProgram()
++        subprocess.Popen(["bash", Variables.playonlinux_env+"/bash/remove_shortcut", game_exec])
+ 
+     def UninstallGame(self, event):
+         game_exec = self.GetSelectedProgram()
+
+--- a/lib/scripts.lib
++++ b/lib/scripts.lib
+@@ -384,7 +384,7 @@
+ 			# Do nothing on Mac OS
+ 			if [ -n "$Categories" -a "$POL_OS" = "Linux" ] || [ -n "$Categories" -a "$POL_OS" = "BSD" ]; then
+ 				LOCALAPPS="$HOME/.local/share/applications"
+-				make_desktop_shortcut "$iconPath" "$ICON_FILENAME" "$LOCALAPPS" "$PLAYONLINUX/playonlinux --run \"$ICON_FILENAME\"" "$binary_name" "$Categories" "playonlinux-"
++				make_desktop_shortcut "$iconPath" "$ICON_FILENAME" "$LOCALAPPS" "$PLAYONLINUX/bash/winexec $PLAYONLINUX/playonlinux --run \"$ICON_FILENAME\"" "$binary_name" "$Categories" "playonlinux-"
+ 			fi
+ 		fi
+ 
+@@ -394,7 +394,7 @@
+ 			if [ "$POL_OS" = "Mac" ]; then
+ 				POL_SetupWindow_AutoApp "$ICON_FILENAME"
+ 			else
+-				make_desktop_shortcut "$iconPath" "$ICON_FILENAME" "$DESKTOP" "$PLAYONLINUX/playonlinux --run \"$ICON_FILENAME\"" "$binary_name" "$Categories"
++				make_desktop_shortcut "$iconPath" "$ICON_FILENAME" "$DESKTOP" "$PLAYONLINUX/bash/winexec $PLAYONLINUX/playonlinux --run \"$ICON_FILENAME\"" "$binary_name" "$Categories"
+ 			fi
+ 		fi
+ 	fi
+@@ -1039,13 +1039,33 @@
+ 		# http://stackoverflow.com/questions/8939580/bash-split-a-string-exactly-like-readline-would-split-it
+ 		eval set -- $(grep '^POL_Wine ' "$POL_USER_ROOT/shortcuts/$PACKAGE"|tail -n 1)
+ 		local binary="$2"
+-		make_desktop_shortcut "$iconPath" "$PACKAGE" "$DESKTOP" "$PLAYONLINUX/playonlinux --run \"$PACKAGE\"" "$binary" ""
++		LOCALAPPS="$HOME/.local/share/applications"
++		make_desktop_shortcut "$iconPath" "$PACKAGE" "$LOCALAPPS" "$DESKTOP" "$PLAYONLINUX/bash/winexec $PLAYONLINUX/playonlinux --run \"$PACKAGE\"" "$binary" ""
++		ln -s "$PLACE/$PACKAGE.desktop" "$DESKTOP"
+ 		;;
+ 
+ 	    *)
+ 		POL_Debug_Warning "POL_Shortcut_MakeDesktopShortcut: not supported OS: $POL_OS"
+ 	esac
+ }
++
++POL_Shortcut_RemoveDesktopShortcut()
++{
++        PACKAGE="$1"
++	if [ "$POL_OS" = "Mac" ]; then
++		if [ -f "$HOME/Desktop/$PACKAGE.app" ]; then
++			rm "$HOME/Desktop/$PACKAGE.app"
++		fi
++	fi
++	if [ "$POL_OS" = "Linux" ] || [ "$POL_OS" == "FreeBSD" ]; then
++		LOCALAPPS="$HOME/.local/share/applications"
++		if [ -f "$LOCALAPPS/$PACKAGE.desktop" ];then
++			rm "$DESKTOP/$PACKAGE.desktop"
++			rm "$LOCALAPPS/$PACKAGE.desktop"
++		fi
++	fi
++}
++
+ POL_System_is32bit()
+ {
+ 	# Check if the file (1) is a 32bit executable
+
+--- a/lib/playonlinux.lib
++++ b/lib/playonlinux.lib
+@@ -670,12 +670,12 @@
+ 	(echo "[Desktop Entry]"
+ 	echo "Encoding=UTF-8"
+ 	echo "Name=$ICON_NAME"
+-	echo "Comment=PlayOnLinux"
+ 	echo "Type=Application"
+-	echo "Exec=$EXECUTABLE %F"
++	echo "Exec=$EXECUTABLE"
+ 	echo "Icon=$ICON"
+-	echo "Name[fr_FR]=$ICON_NAME"
+ 	echo "StartupWMClass=$WMCLASS"
++	echo "StartupNotify=true"
++	echo "Comment="
+ 	echo "Categories=$CATEGORIES") > "${SHORT_NAME}.desktop"
+ 	chmod +x "${SHORT_NAME}.desktop"
+ }
+
+--- a/bash/make_shortcut
++++ b/bash/make_shortcut
+@@ -34,7 +34,7 @@
+ POL_SetupWindow_Init
+ POL_SetupWindow_wait_next_signal "$(eval_gettext "Creating shortcut...")" "$TITLE"
+ POL_Shortcut_MakeDesktopShortcut "$PACKAGE"
+-POL_SetupWindow_message "$(eval_gettext "The shortcut has been placed on your desktop")" "$TITLE"
++POL_SetupWindow_message "$(eval_gettext "The shortcut has been placed on $HOME.local/share/applications/ and linked to your desktop")" "$TITLE"
+ POL_SetupWindow_Close

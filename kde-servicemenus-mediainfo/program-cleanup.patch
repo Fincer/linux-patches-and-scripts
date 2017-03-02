@@ -1,0 +1,32 @@
+--- a/107335-AudioVideoinfo-qt.desktop
++++ b/107335-AudioVideoinfo-qt.desktop
+@@ -1,26 +1,12 @@
+-#installation
+-#copy this on $HOME/.kde/share/kde4/services
+-#
+-#license gpl 
+-#author nowardevteam 2010
+-#version 0.3
+ [Desktop Entry]
+-Actions=mencoderMediainfo;mediainfo
++Actions=mediainfo;
+ Icon=dialog-information
+ ServiceTypes=KonqPopupMenu/Plugin,video/.*,audio/.*
++MimeType=audio/*;video/*;
+ Type=Service
+ X-KDE-Priority=TopLevel
+ 
+ [Desktop Action mediainfo]
+ Exec=kdialog --msgbox "$(ffmpeg -i %u 2>&1 |grep -E '(Duration)|(Stream)' )"
+ Icon=dialog-information
+-Name=info about the media
+-Name[it]=informazioni sul file multimediale
+-Name[ru]=Информация о медиафайле ffmpeg
+- 
+-[Desktop Action mencoderMediainfo]
+-Exec=kdialog --msgbox "$(mplayer -identify %u  -ao null -vo null -frames 0 2>/dev/null | grep ^ID_ )"
+-Icon=dialog-information
+-Name=info about the media Mencoder
+-Name[it]=informazioni sul file Mencoder
+-Name[ru]=Информация о медиафайле mencoder
++Name=Media information

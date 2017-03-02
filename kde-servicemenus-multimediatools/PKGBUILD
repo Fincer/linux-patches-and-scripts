@@ -1,0 +1,20 @@
+pkgname=kde-servicemenus-multimediatools
+pkgver=1
+pkgrel=1
+pkgdesc="A KDE service menus for media conversions (KDE5 Dolphin action)"
+arch=('any')
+url="https://store.kde.org/p/998464"
+license=('GPL')
+depends=('ffmpeg' 'dolphin' 'kdialog')
+source=('ffmpeg-fileconversion-audio.sh'
+'ffmpeg-fileconversion-video.sh'
+'ffmpeg-fileconversion.desktop')
+md5sums=('badf342f35cf21f15131859b49dd9308'
+         'ab997eca4ca58a8b398b352019a45d18'
+         '045a6657a8e83e1e1a909f6d0f2f8cb0')
+
+package() {
+    mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
+    cp $srcdir/{ffmpeg-fileconversion.desktop,ffmpeg-fileconversion-audio.sh,ffmpeg-fileconversion-video.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
+    chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{ffmpeg-fileconversion.desktop,ffmpeg-fileconversion-audio.sh,ffmpeg-fileconversion-video.sh}
+}

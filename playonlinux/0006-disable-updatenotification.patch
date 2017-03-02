@@ -1,0 +1,27 @@
+--- a/python/mainwindow.py
++++ a/python/mainwindow.py
+@@ -88,15 +88,15 @@
+                     pass
+   
+             self.updating = False
+-            if(playonlinux.VersionLower(os.environ["VERSION"],self.WebVersion)):
+-                self.sendToStatusBar(_('An updated version of {0} is available').format(os.environ["APPLICATION_TITLE"])+" ("+self.WebVersion+")",False)
+-                if(os.environ["DEBIAN_PACKAGE"] == "FALSE"):
+-                    self.sendAlert(_('An updated version of {0} is available').format(os.environ["APPLICATION_TITLE"])+" ("+self.WebVersion+")")
+-                os.environ["POL_UPTODATE"] = "FALSE"
+-            else:
+-                self.Show = False
+-                self.perc = -1
+-                os.environ["POL_UPTODATE"] = "TRUE"
++#            if(playonlinux.VersionLower(os.environ["VERSION"],self.WebVersion)):
++#                self.sendToStatusBar(_('An updated version of {0} is available').format(os.environ["APPLICATION_TITLE"])+" ("+self.WebVersion+")",False)
++#                if(os.environ["DEBIAN_PACKAGE"] == "FALSE"):
++#                    self.sendAlert(_('An updated version of {0} is available').format(os.environ["APPLICATION_TITLE"])+" ("+self.WebVersion+")")
++#                os.environ["POL_UPTODATE"] = "FALSE"
++#            else:
++#                self.Show = False
++#                self.perc = -1
++#                os.environ["POL_UPTODATE"] = "TRUE"
+ 
+         self.wantcheck = False
+ 

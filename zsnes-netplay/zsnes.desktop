@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Application;Game
+Comment=Super Nintendo emulator
+Exec=env SDL_AUDIODRIVER="alsa" /usr/bin/zsnesd
+Hidden=false
+Icon=/usr/share/pixmaps/zsnes.png
+Name=Zsnes
+StartupNotify=false
+Terminal=false
+Type=Application

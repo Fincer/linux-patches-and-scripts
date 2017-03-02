@@ -1,0 +1,94 @@
+--- a/lib/wine.lib
++++ b/lib/wine.lib
+@@ -1101,6 +1101,7 @@
+ 	cname="$(POL_Wine_exename "$@")"
+ 	[ "$cname" = "winecfg" ] && cname="Configure wine"
+ 	[ "$cname" = "regedit" ] && cname="Registry Editor"
++	[ "$cname" = "uninstaller" ] && cname="Add/Remove Programs Menu"
+ 	[ "$cname" = "wineboot" ] && cname="Virtual drive creation"
+ 	echo "$cname"
+ }
+
+--- a/python/mainwindow.py
++++ b/python/mainwindow.py
+@@ -471,6 +471,7 @@
+         wx.EVT_TREE_ITEM_MENU(self, 105, self.RMBInGameList)
+         wx.EVT_MENU(self, 230, self.RWineConfigurator)
+         wx.EVT_MENU(self, 231, self.RRegistryEditor)
++        wx.EVT_MENU(self, 237, self.RWineUninstaller)
+         wx.EVT_MENU(self, 232, self.GoToAppDir)
+         wx.EVT_MENU(self, 233, self.ChangeIcon)
+         wx.EVT_MENU(self, 234, self.UninstallGame)
+@@ -588,6 +589,10 @@
+         self.RegistryEditor = wx.MenuItem(self.GameListPopUpMenu, 231, _("Registry Editor"))
+         self.RegistryEditor.SetBitmap(wx.Bitmap(Variables.playonlinux_env+"/resources/images/menu/regedit.png"))
+         self.GameListPopUpMenu.AppendItem(self.RegistryEditor)
++        
++        self.WineUninstaller = wx.MenuItem(self.GameListPopUpMenu, 237, _("Add/Remove Programs Menu"))
++        self.WineUninstaller.SetBitmap(wx.Bitmap(Variables.playonlinux_env+"/resources/images/menu/wine-uninstaller.png"))
++        self.GameListPopUpMenu.AppendItem(self.WineUninstaller)
+ 
+         self.GotoAppDir = wx.MenuItem(self.GameListPopUpMenu, 232, _("Open the application's directory"))
+         self.GotoAppDir.SetBitmap(wx.Bitmap(Variables.playonlinux_env+"/resources/images/menu/folder-wine.png"))
+@@ -628,6 +633,9 @@
+     def RRegistryEditor(self, event):
+         self.RConfigure("regedit")
+ 
++    def RWineUninstaller(self, event):
++        self.RConfigure("uninstaller")
++
+     def run_plugin(self, event):
+         game_exec = self.GetSelectedProgram()
+         plugin=self.plugin_list[event.GetId()-300]
+@@ -796,7 +804,7 @@
+                 self.menuGaucheAddLink("pol_prgm_readme", _("Read the manual"), i,Variables.playonlinux_env+"/resources/images/menu/manual.png",self.ReadMe)
+ 
+             i+=1
+-            self.menuGaucheAddLink("pol_prgm_uninstall", _("Uninstall"), i,Variables.playonlinux_env+"/resources/images/menu/window-close.png",self.UninstallGame)
++            self.menuGaucheAddLink("pol_prgm_uninstall", _("Remove"), i,Variables.playonlinux_env+"/resources/images/menu/window-close.png",self.UninstallGame)
+ 
+ 
+             self.linksfile = os.environ["POL_USER_ROOT"]+"/configurations/links/"+shortcut
+
+--- a/bash/polconfigurator
++++ b/bash/polconfigurator
+@@ -51,6 +51,14 @@
+ 	wineserver -k
+ 	POL_Wine regedit
+ }
++polconfigurator_uninstaller()
++{
++        POL_Wine_AutoSetVersionEnv
++	wineserver -k
++	export POL_IgnoreWineErrors=True
++	POL_Wine uninstaller
++	export POL_IgnoreWineErrors=False
++}
+ polconfigurator_wineboot()
+ {
+         POL_Wine_AutoSetVersionEnv
+@@ -104,6 +112,7 @@
+ {
+     local LNG_CONFIGURE=$(eval_gettext "Configure Wine")
+     local LNG_REGISTRY=$(eval_gettext "Registry Editor")
++    local LNG_UNINSTALLER=$(eval_gettext "Add/Remove Programs Menu")
+     local LNG_KPROCESS=$(eval_gettext "Kill all prefix processes")
+     local LNG_UPDATEPREFIX=$(eval_gettext "Update wineprefix")
+     local LNG_WINDOWS_REBOOT=$(eval_gettext "Simulate Windows reboot")
+@@ -114,7 +123,7 @@
+     local LNG_WINETRICKS=$(eval_gettext "Use WineTricks")
+     
+     # ~$LNG_UPDATEPREFIX
+-	local ITEMS="$LNG_CONFIGURE~$LNG_REGISTRY~$LNG_KPROCESS~$LNG_WINDOWS_REBOOT~$LNG_CHANGEICON"
++	local ITEMS="$LNG_CONFIGURE~$LNG_REGISTRY~$LNG_UNINSTALLER~$LNG_KPROCESS~$LNG_WINDOWS_REBOOT~$LNG_CHANGEICON"
+ 	if [ -e "$POL_USER_ROOT/plugins/Advanced Wine Configuration" ]
+ 	then
+ 		ITEMS+="~$LNG_APLUGIN"
+@@ -134,6 +143,7 @@
+ 	    POL_SetupWindow_menu "$(eval_gettext "Please choose an action to perform")" "$TITLE" "$ITEMS" "~"
+             [ "$APP_ANSWER" = "$LNG_CONFIGURE" ] && funct=winecfg
+             [ "$APP_ANSWER" = "$LNG_REGISTRY" ] && funct=regedit
++            [ "$APP_ANSWER" = "$LNG_UNINSTALLER" ] && funct=uninstaller
+             [ "$APP_ANSWER" = "$LNG_KPROCESS" ] && funct=kprocess
+             # [ "$APP_ANSWER" = "$LNG_UPDATEPREFIX" ] && funct="??"
+             [ "$APP_ANSWER" = "$LNG_WINDOWS_REBOOT" ] && funct=wineboot

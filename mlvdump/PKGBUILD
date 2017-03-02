@@ -1,0 +1,19 @@
+pkgname=mlvdump
+pkgver=2016.03.24
+pkgrel=1
+pkgdesc="Magic Lantern Raw file conversion tool."
+arch=('any')
+url='http://www.magiclantern.fm/modules/modules/mlv_dump.zip/'
+license="GPL"
+depends=()
+makedepends=('wget')
+source=(http://www.magiclantern.fm/modules/modules/mlv_dump.zip/mlv_dump.zip)
+md5sums=('197ec9d2d66df8e5820fe4afc9f93301')
+
+package()
+{
+mkdir -p "$pkgdir/usr/bin"
+#cp $srcdir/mlv_dump.linux "$pkgdir/usr/bin/mlvdump"
+#chmod 755 "$pkgdir/usr/bin/mlvdump"
+install -m755 $srcdir/mlv_dump.linux "$pkgdir/usr/bin/mlvdump" #Filesize differs!!!
+}

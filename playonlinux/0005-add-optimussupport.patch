@@ -1,0 +1,68 @@
+--- a/python/configure.py
++++ b/python/configure.py
+@@ -361,6 +361,12 @@
+         else:
+             subprocess.Popen(["bash", Variables.playonlinux_env+"/bash/POL_Command", "--prefix", self.s_prefix.encode('utf-8','replace'), "POL_Wine_DirectInput", param, self.display_elements[param].GetValue().encode('utf-8','replace')])
+ 
++    def change_Optimus_settings(self, param):
++        if(self.s_isPrefix == False):
++            subprocess.Popen(["bash", Variables.playonlinux_env+"/bash/POL_Command", self.s_title.encode('utf-8','replace'), "POL_Optimus_Support", param, self.display_elements[param].GetValue().encode('utf-8','replace')])
++        else:
++            subprocess.Popen(["bash", Variables.playonlinux_env+"/bash/POL_Command", "--prefix", self.s_prefix.encode('utf-8','replace'), "POL_Optimus_Support", param, self.display_elements[param].GetValue().encode('utf-8','replace')])
++
+     def get_current_settings(self, param):
+         self.display_elements[param].SetValue(self.settings[param])
+ 
+@@ -425,7 +431,7 @@
+             self.display_elements["pre_run_text"].Hide()
+ 
+         self.Refresh()
+-        self.elements = ["UseGLSL","DirectDrawRenderer","VideoMemorySize","OffscreenRenderingMode","RenderTargetModeLock","Multisampling","StrictDrawOrdering","MouseWarpOverride"]
++        self.elements = ["UseGLSL","DirectDrawRenderer","VideoMemorySize","OffscreenRenderingMode","RenderTargetModeLock","Multisampling","StrictDrawOrdering","OptimusSupport","MouseWarpOverride"]
+         self.settings = wine.LoadRegValues(self.s_prefix,self.elements)
+         #print self.settings
+         self.get_current_settings("UseGLSL")
+@@ -435,6 +441,7 @@
+         self.get_current_settings("RenderTargetModeLock")
+         self.get_current_settings("Multisampling")
+         self.get_current_settings("StrictDrawOrdering")
++        self.get_current_settings("OptimusSupport")
+         self.get_current_settings("MouseWarpOverride")
+ 
+         self.arch = playonlinux.GetSettings('ARCH',self.s_prefix)
+@@ -465,6 +472,8 @@
+             self.change_Direct3D_settings("Multisampling")
+         if(param == 307):
+             self.change_Direct3D_settings("StrictDrawOrdering")
++        if(param == 308):
++            self.change_Direct3D_settings("OptimusSupport")
+         if(param == 401):
+             self.change_DirectInput_settings("MouseWarpOverride")
+ 
+@@ -569,7 +578,7 @@
+         self.AddDisplayElement(_("Render target mode lock"),"RenderTargetModeLock",["disabeld","readdraw","readtex"],["disabled","readdraw","readtex"],5)
+         self.AddDisplayElement(_("Multisampling"),"Multisampling",["Enabled","Disabled"],["enabled","disabled"],6)
+         self.AddDisplayElement(_("Strict Draw Ordering"),"StrictDrawOrdering",["enabled","disabled"],["enabled","disabled"],7)
+-
++        self.AddDisplayElement(_("Optimus Support"),"OptimusSupport",["enabled","disabled"],["enabled","disabled"],8)
+ 
+     def Miscellaneous(self, nom):
+         self.misc_elements = {}
+
+--- a/lib/wine.lib
++++ b/lib/wine.lib
+@@ -543,6 +543,14 @@
+ 	return $errors
+ }
+ 
++POL_Optimus_Support ()
++{
++#	POL_Wine_AutoSetVersionEnv
++#	wineserver -k
++	"$(POL_Config_Write PRE_WINE 'optirun')"
++#	wineserver -k
++}
++
+ POL_Wine_SelectPrefix()
+ {
+ 	# Select a wineprefix and remove unexpected chars

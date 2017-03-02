@@ -1,0 +1,38 @@
+--- a/src/frameplayer.cpp
++++ b/src/frameplayer.cpp
+@@ -55,7 +55,7 @@
+      qDebug() << "FramePlayer::openSource new video loaded: " << src;
+ #if defined(Q_WS_X11)
+      QString codec = codecName();
+-     raw = (codec == "MJPG" || codec == "I420" || codec == "YUV4");
++     raw = (codec == "MJPG" || codec == "I420" || codec == "YUV4" || codec == "YUV4" || codec == "LIBX264" || codec == "MPEG4" || codec == "MSMPEG4" || codec == "LIBVPX" || codec == "MPEG2VIDEO" || codec == "FFV1");
+      qDebug() << "codec name: " << codecName();
+ #endif
+ 
+@@ -63,14 +63,6 @@
+      frames = vcap.get(CV_CAP_PROP_FRAME_COUNT);
+      qDebug() << "total frames: " << frames;
+ 
+-#if defined(Q_WS_X11)
+-     if(frames > FRAME_LIMIT && !raw)
+-     {
+-	  QMessageBox::critical(this, tr("Error"),tr("This file is coded with \"")+codec+tr("\" codec and contains more than ")+QString::number(FRAME_LIMIT)+tr(" frames. This codec is not supported for full-length videos yet, please cut your video or use other codec like motion JPEG or YUV4."));
+-	  close();
+-	  return false;
+-     }
+-#endif
+      interval = estimateInterval();
+      if(!interval) 
+ 	  interval = 40;
+
+--- a/src/frameplayer.h
++++ b/src/frameplayer.h
+@@ -32,8 +32,6 @@
+ #include "workspace.h"
+ #include "ui_frameplayer.h"
+ 
+-#define FRAME_LIMIT 1800
+-
+ using namespace cv;
+ 
+ class FramePlayer : public QWidget, public Ui::FramePlayerForm

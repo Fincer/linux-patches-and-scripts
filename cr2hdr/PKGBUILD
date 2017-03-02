@@ -1,0 +1,19 @@
+pkgname=cr2hdr
+pkgver=2014.05.07
+pkgrel=1
+pkgdesc="Dual ISO image processing tool for Canon DSLR's with Magic Lantern firmware."
+arch=('any')
+url='https://bitbucket.org/hudson/magic-lantern'
+license="GPL"
+depends=('perl-image-exiftool' 'dcraw')
+optdepends=('octave')
+makedepends=('wget' 'p7zip')
+source=(https://bitbucket.org/rufustfirefly/magic-lantern/downloads/cr2hdr-static.linux.x86.2014-06-19-f9a29c7c0685.7z)
+md5sums=('a526d2f700603003ade464e0521f8e23')
+
+package()
+{
+mv $srcdir/cr2hdr-static.linux.x86.2014-06-19-f9a29c7c0685 $srcdir/cr2hdr
+mkdir -p "$pkgdir/usr/bin"
+cp -ar $srcdir/cr2hdr "$pkgdir/usr/bin"
+}

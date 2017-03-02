@@ -1,0 +1,43 @@
+--- a/python/mainwindow.py
++++ b/python/mainwindow.py
+@@ -239,11 +239,11 @@
+             self.Bind(wx.EVT_MENU, self.Options, prefItem)
+ 
+         ### File menu
+-        self.filemenu.Append(wx.ID_OPEN, _("Run"))
+-        self.filemenu.Append(wx.ID_ADD, _("Install"))
+-        self.filemenu.Append(wx.ID_DELETE, _("Remove"))
+-        self.filemenu.AppendSeparator()
+-        self.filemenu.Append(216, _("Donate"))
++        #self.filemenu.Append(wx.ID_OPEN, _("Run"))
++        #self.filemenu.Append(wx.ID_ADD, _("Install"))
++        #self.filemenu.Append(wx.ID_DELETE, _("Remove"))
++        #self.filemenu.AppendSeparator()
++        #self.filemenu.Append(216, _("Donate"))
+         self.filemenu.Append(wx.ID_EXIT, _("Exit"))
+ 
+         ### Display menu
+@@ -286,7 +286,7 @@
+ 
+         self.optionmenu.Append(221, _("Internet"))
+         self.optionmenu.Append(212, _("File associations"))
+-        self.optionmenu.Append(214, _("Plugin manager"))
++        #self.optionmenu.Append(214, _("Plugin manager"))
+ 
+ 
+         self.supportmenu = wx.Menu()
+@@ -295,10 +295,10 @@
+         self.supportmenu.Append(402, _("Documentation"))
+         self.supportmenu.Append(403, _("Forums"))
+         self.supportmenu.Append(404, _("Bugs"))
+-        self.supportmenu.AppendSeparator()
+-        self.supportmenu.Append(405, _("Twitter"))
+-        self.supportmenu.Append(406, _("Google+"))
+-        self.supportmenu.Append(407, _("Facebook"))
++        #self.supportmenu.AppendSeparator()
++        #self.supportmenu.Append(405, _("Twitter"))
++        #self.supportmenu.Append(406, _("Google+"))
++        #self.supportmenu.Append(407, _("Facebook"))
+ 
+ 
+         self.help_menu = wx.Menu()

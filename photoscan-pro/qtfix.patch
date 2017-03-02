@@ -1,0 +1,11 @@
+--- a/photoscan.sh
++++ b/photoscan.sh
+@@ -7,7 +7,7 @@
+ if [ "${dirname%$tmp}" != "/" ]; then
+ dirname=$PWD/$dirname
+ fi
+-
++unset QT_PLUGIN_PATH
+ TCL_LIBRARY=$dirname/python/lib/tcl8.5
+ TK_LIBRARY=$dirname/python/lib/tk8.5
+ export TCL_LIBRARY

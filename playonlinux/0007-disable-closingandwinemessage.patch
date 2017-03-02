@@ -1,0 +1,42 @@
+--- a/python/mainwindow.py
++++ a/python/mainwindow.py
+@@ -1098,19 +1098,21 @@
+                 pid_exists = False
+             print "Registered PID: %d (%s)" % (pid, 'Present' if pid_exists else 'Missing')
+         self.registeredPid = pids
++        self._mgr.Destroy()
++        self.POLDie()
+ 
+-        if(playonlinux.GetSettings("DONT_ASK_BEFORE_CLOSING") == "TRUE" or self.registeredPid == [] or wx.YES == wx.MessageBox(_('Are you sure you want to close all {0} windows?').format(os.environ["APPLICATION_TITLE"]).decode("utf-8","replace"),os.environ["APPLICATION_TITLE"], style=wx.YES_NO | wx.ICON_QUESTION)):
+-            self.SizeToSave = self.GetSize();
+-            self.PositionToSave = self.GetPosition();
++#        if(playonlinux.GetSettings("DONT_ASK_BEFORE_CLOSING") == "TRUE" or self.registeredPid == [] or wx.YES == wx.MessageBox(_('Are you sure you want to close all {0} windows?').format(os.environ["APPLICATION_TITLE"]).decode("utf-8","replace"),os.environ["APPLICATION_TITLE"], style=wx.YES_NO | wx.ICON_QUESTION)):
++#            self.SizeToSave = self.GetSize();
++#            self.PositionToSave = self.GetPosition();
+             # Save size and position
+-            playonlinux.SetSettings("MAINWINDOW_WIDTH",str(self.SizeToSave[0]))
+-            playonlinux.SetSettings("MAINWINDOW_HEIGHT",str(self.SizeToSave[1]-Variables.windows_add_playonmac*56))
+-            playonlinux.SetSettings("MAINWINDOW_X",str(self.PositionToSave[0]))
+-            playonlinux.SetSettings("MAINWINDOW_Y",str(self.PositionToSave[1]))
++#            playonlinux.SetSettings("MAINWINDOW_WIDTH",str(self.SizeToSave[0]))
++#            playonlinux.SetSettings("MAINWINDOW_HEIGHT",str(self.SizeToSave[1]-Variables.windows_add_playonmac*56))
++#            playonlinux.SetSettings("MAINWINDOW_X",str(self.PositionToSave[0]))
++#            playonlinux.SetSettings("MAINWINDOW_Y",str(self.PositionToSave[1]))
+            
+-            self._mgr.Destroy()
++#            self._mgr.Destroy()
+ 
+-            self.POLDie()
++#            self.POLDie()
+         return None
+ 
+     def About(self, event):
+@@ -1271,7 +1273,7 @@
+         self.singleCheck("gettext.sh", package="gettext")  # gettext-base on Debian
+         self.singleCheck("icotool", package="icoutils")
+         self.singleCheck("wrestool", package="icoutils")
+-        self.singleCheck("wine", package="Wine")
++#        self.singleCheck("wine", package="Wine")
+         self.singleCheck("unzip", package="InfoZIP")
+         self.singleCheck("7z", package="P7ZIP full")  # p7zip-full on Debian
+         if(os.environ["POL_OS"] == "FreeBSD"):

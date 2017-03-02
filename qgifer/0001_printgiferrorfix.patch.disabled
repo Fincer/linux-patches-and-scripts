@@ -1,0 +1,72 @@
+--- a/src/gifcreator.cpp
++++ b/src/gifcreator.cpp
+@@ -55,7 +55,7 @@
+      GifFileType *GifFile = EGifOpenFileName(filename, FALSE);
+   
+      if (!GifFile){
+-	  PrintGifError();
++	  GifError();
+ 	  return false;
+      }
+ 
+@@ -63,7 +63,7 @@
+ 	      GifFile,
+ 	      w, h, colorRes, 0, cmaps.size() > 1 ? NULL : cmaps.at(0)
+ 	      ) == GIF_ERROR){
+-	  PrintGifError();
++	  GifError();
+ 	  return false;
+      }
+ 
+@@ -75,7 +75,7 @@
+ 	  char nsle[12] = "NETSCAPE2.0";
+ 	  char subblock[3];
+ 	  if (EGifPutExtensionFirst(GifFile, APPLICATION_EXT_FUNC_CODE, 11, nsle) == GIF_ERROR) {
+-	       PrintGifError();
++	       GifError();
+ 	       return false;
+ 	  }
+ 	  subblock[0] = 1;
+@@ -83,7 +83,7 @@
+ 	  subblock[1] = loop_count / 256;
+ 
+ 	  if (EGifPutExtensionLast(GifFile, APPLICATION_EXT_FUNC_CODE, 3, subblock) == GIF_ERROR) {
+-	       PrintGifError();
++	       GifError();
+ 	       return false;
+ 	  }
+  
+@@ -113,7 +113,7 @@
+ 		   GifFile,
+ 		   0, 0, w, h, FALSE, cmaps.size() > ni ? cmaps.at(ni) : cmaps.at(cmaps.size()-1)
+ 		   ) == GIF_ERROR) {
+-	       PrintGifError();
++	       GifError();
+ 	       endProgress();
+ 	       return false;
+ 	  }
+@@ -121,7 +121,7 @@
+        
+ 	  for (int y = 0, j=(h-1)*w; y < h; y++, j-=w) {
+ 	       if (EGifPutLine(GifFile, &(frames[ni][j]), w) == GIF_ERROR){
+-		    PrintGifError();
++		    GifError();
+ 		    endProgress();
+ 		    return false;
+ 	       }
+@@ -130,13 +130,13 @@
+ 
+      //comment
+      if(EGifPutComment(GifFile,"This GIF file was created using QGifer") == GIF_ERROR){
+-	  PrintGifError();
++	  GifError();
+ 	  endProgress();
+ 	  return false;
+      }
+    
+      if (EGifCloseFile(GifFile) == GIF_ERROR) {
+-	  PrintGifError();
++	  GifError();
+ 	  endProgress();
+ 	  return false;
+      }

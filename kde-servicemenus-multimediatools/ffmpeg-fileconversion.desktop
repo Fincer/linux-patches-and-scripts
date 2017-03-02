@@ -1,0 +1,22 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin,video/.*,audio/.*
+Icon=application-x-theme
+MimeType=audio/*;video/*;
+Actions=ffmpeg_fileconversion_audio;ffmpeg_fileconversion_video;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+TryExec=ffmpeg
+
+[Desktop Action ffmpeg_fileconversion_audio]
+Name=Convert to [audio format]
+Icon=application-x-theme
+Exec=/usr/share/kservices5/ServiceMenus/ffmpeg-fileconversion-audio.sh 
+
+[Desktop Action ffmpeg_fileconversion_video]
+Name=Convert to [video format]
+Icon=application-x-theme
+Exec=/usr/share/kservices5/ServiceMenus/ffmpeg-fileconversion-video.sh
+
+#TODO: Lisää <leikkaa valittu mediatiedosto> <<alkaen>> <<päättyen>>

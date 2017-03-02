@@ -1,0 +1,30 @@
+--- a/dlls/user32/win.c
++++ b/dlls/user32/win.c
+@@ -25,6 +25,7 @@
+ #include <stdarg.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <stdio.h>
+ 
+ #include "windef.h"
+ #include "winbase.h"
+@@ -37,6 +38,7 @@
+ #include "winerror.h"
+ #include "wine/gdi_driver.h"
+ #include "wine/debug.h"
++#include "commctrl.h"
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(win);
+ 
+@@ -1337,6 +1339,11 @@
+     MDICREATESTRUCTW mdi_cs;
+     CBT_CREATEWNDW cbtc;
+     CREATESTRUCTW cbcs;
++    
++    if (strcmp ( debugstr_w(className) , debugstr_w(TOOLTIPS_CLASSW) ) == 0 )
++    {
++         cs->style |= WS_POPUP;
++    }
+ 
+     TRACE("%s %s ex=%08x style=%08x %d,%d %dx%d parent=%p menu=%p inst=%p params=%p\n",
+           unicode ? debugstr_w(cs->lpszName) : debugstr_a((LPCSTR)cs->lpszName),

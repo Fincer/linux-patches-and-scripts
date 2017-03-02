@@ -1,0 +1,66 @@
+--- a/dlls/user32/message.c
++++ b/dlls/user32/message.c
+@@ -22,6 +22,7 @@
+ #include "config.h"
+ #include "wine/port.h"
+ 
++#include <stdio.h>
+ #include <assert.h>
+ #include <stdarg.h>
+ 
+@@ -46,6 +47,7 @@
+ #include "controls.h"
+ #include "wine/debug.h"
+ #include "wine/exception.h"
++#include <commctrl.h>
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(msg);
+ WINE_DECLARE_DEBUG_CHANNEL(relay);
+@@ -3463,7 +3465,23 @@
+     info.flags   = SMTO_NORMAL;
+     info.timeout = 0;
+ 
+-    send_message( &info, &res, TRUE );
++    send_message( &info, &res, TRUE ); 
++
++    if ( msg == TTM_TRACKACTIVATE )
++    {
++
++        if ( wparam == TRUE )
++        {
++            ShowWindow( hwnd, 1 );
++        }
++        else 
++        if ( wparam == FALSE )
++        {
++            ShowWindow( hwnd, 0 );
++        }
++ 
++    }
++
+     return res;
+ }
+ 
+@@ -3486,6 +3504,22 @@
+     info.wm_char  = WMCHAR_MAP_SENDMESSAGE;
+ 
+     send_message( &info, &res, FALSE );
++    
++    if ( msg == TTM_TRACKACTIVATE )
++    {
++
++        if ( wparam == TRUE )
++        {
++            ShowWindow( hwnd, 1 );
++        }
++        else 
++        if ( wparam == FALSE )
++        {
++            ShowWindow( hwnd, 0 );
++        }
++ 
++    }
++    
+     return res;
+ }
+ 

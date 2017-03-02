@@ -1,0 +1,27 @@
+pkgname=kde-servicemenus-mediainfo
+pkgver=1
+pkgrel=1
+pkgdesc="A KDE service menus for media information (KDE5 Dolphin action)"
+arch=('any')
+url="https://store.kde.org/p/998430"
+license=('GPL')
+depends=('ffmpeg' 'dolphin' 'kdialog')
+source=(https://dl.opendesktop.org/api/files/download/id/1460731765/107335-AudioVideoinfo-qt.desktop
+program-cleanup.patch)
+md5sums=('bf395c70ce7a6f69352ce21ab6cd168e'
+         '10c6e8c32362917b96e57247219af126')
+
+prepare()
+{
+  mkdir -p $srcdir/$pkgname
+  cp $srcdir/107335-AudioVideoinfo-qt.desktop $srcdir/$pkgname
+  cd $srcdir/$pkgname
+  patch -Np1 -i "$srcdir/program-cleanup.patch"
+}
+
+package()
+{
+  mv $srcdir/$pkgname/107335-AudioVideoinfo-qt.desktop $srcdir/$pkgname/mediainfo-qt.desktop
+  mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
+  install -m 644 $srcdir/$pkgname/*.desktop $pkgdir/usr/share/kservices5/ServiceMenus/
+}

@@ -1,0 +1,31 @@
+--- a/pdfunlock.sh
++++ b/pdfunlock.sh
+@@ -0,0 +1,9 @@
++#!/bin/bash
++
++while [ $# -gt 0 ]; do
++    ENCRYP=$1
++    DECRYP=$(echo "$ENCRYP" | sed 's/\.\w*$/_unlocked.pdf/')
++    #qpdf --decrypt "$ENCRYP" "$DECRYP"
++    gs -sPDFPassword=$PASS -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=%stdout% -c .setpdfwrite -f "$ENCRYP" > "$DECRYP"
++    shift
++done
+\ No newline at end of file
+--- a/pdfunlock.desktop
++++ b/pdfunlock.desktop
+@@ -0,0 +1,15 @@
++[Desktop Entry]
++Type=Service
++ServiceTypes=KonqPopupMenu/Plugin
++MimeType=application/pdf
++Icon=application-pdf
++Actions=pdfunlock;
++X-KDE-StartupNotify=false
++X-KDE-Priority=TopLevel
++TryExec=gs
++
++[Desktop Action pdfunlock]
++Name=Unlock this PDF file
++Name[fi]=Poista PDF-tiedoston suojaukset
++Icon=application-pdf
++Exec=/usr/share/kservices5/ServiceMenus/pdfunlock.sh

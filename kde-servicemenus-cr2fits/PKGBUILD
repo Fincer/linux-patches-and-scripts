@@ -1,0 +1,25 @@
+# Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot].com
+ 
+pkgname=kde-servicemenus-cr2fits
+pkgver=1
+pkgrel=1
+pkgdesc="Convert RAW images to FITS format (KDE5 Dolphin action)"
+url=()
+arch=('any')
+license=('GPL')
+install=''
+source=(cr2fits.desktop
+cr2fits.sh)
+depends=('cr2fits' 'dolphin')
+optdepends=()
+conflicts=()
+provides=''
+makedepends=()
+
+package() {
+    mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
+    cp $srcdir/{ale_stack.desktop,ale_stack.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
+    chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/*
+}
+md5sums=('bfbce728d7abea9b6446c932bf7f31e7'
+         'e4448d942b57641df540737ab2c1fec9')
