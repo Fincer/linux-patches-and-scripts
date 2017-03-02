@@ -88,6 +88,13 @@ Plasma 5 Dolphin service menu script for hacking and breaking PDF password prote
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**kdegraphics-dreamdesktop**
+--------------
+
+Video background for Plasma 4/KDE4 desktop environment.
+
+FORMAT: Arch Linux PKGBUILD script + patch file.
+
 **mlv2dng**
 --------------
 
