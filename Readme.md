@@ -247,6 +247,13 @@ Basically, this patch helps you installing many useful programs on Wine which wo
 
 FORMAT: Patch files.
 
+**wine-launcher-creator**
+--------------
+
+A Python-based GUI for creating Wine application launchers/Desktop shortcuts.
+
+FORMAT: Arch Linux PKGBUILD script + source archive.
+
 **zsnes-netplay**
 --------------
 
