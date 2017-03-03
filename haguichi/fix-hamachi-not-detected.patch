@@ -1,0 +1,23 @@
+--- a/src/Hamachi.cs
++++ b/src/Hamachi.cs
+@@ -54,7 +54,7 @@
+         
+         if ( Config.Settings.DemoMode )
+         {
+-            Version = "2.1.0.136";
++            Version = "2.1.0.174";
+             VpnAliasCapable = true;
+             IpModeCapable = true;
+             return 2;
+
+--- a/src/Controller.cs
++++ b/src/Controller.cs
+@@ -33,7 +33,7 @@
+     public  static bool manualUpdate;
+     public  static bool restoreConnection;
+     public  static int restoreCountdown;
+-    public  static int lastStatus = -3;
++    public  static int lastStatus;
+     public  static int numUpdateCycles;
+     private static int numWaitForInternetCycles;
+     private static string startOutput;
