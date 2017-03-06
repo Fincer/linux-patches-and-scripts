@@ -1,0 +1,25 @@
+--- a/lib/playonlinux.lib
++++ b/lib/playonlinux.lib
+@@ -42,7 +42,7 @@
+ 	mkdir -p "$POL_USER_ROOT/configurations/reports/"
+ 	mkdir -p "$POL_USER_ROOT/tmp"
+ 	mkdir -p "$POL_USER_ROOT/logs"
+-	mkdir -p "$POL_USER_ROOT/ressources"
++	mkdir -p "$POL_USER_ROOT/resources"
+ 	mkdir -p "$POL_USER_ROOT/icones/full_size"
+ 	mkdir -p "$POL_USER_ROOT/icones/32"
+ 	if [ "$POL_OS" == "Linux" ]; then
+
+--- a/lib/scripts.lib
++++ b/lib/scripts.lib
+@@ -568,8 +568,8 @@
+ 	local ATTEMPT
+ 	[ "$4" ] && ATTEMPT="$4" || ATTEMPT=1
+ 	local FILE="${URL##*/}"
+-	mkdir -p "$POL_USER_ROOT/ressources/$SUBFOLDER"
+-	cd "$POL_USER_ROOT/ressources/$SUBFOLDER" || POL_Debug_Fatal "Resource subfolder $SUBFOLDER does not exist"
++	mkdir -p "$POL_USER_ROOT/resources/$SUBFOLDER"
++	cd "$POL_USER_ROOT/resources/$SUBFOLDER" || POL_Debug_Fatal "Resource subfolder $SUBFOLDER does not exist"
+ 	if [ -e "$FILE" ] && [ "$(POL_MD5_file "$FILE")" = "$SERVER_MD5" ]
+ 	then
+ 		POL_Debug_Message "Resource already present"
