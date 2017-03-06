@@ -203,6 +203,18 @@ Homepage:
 
 [Pidgin Themes - Windows Live Messenger smilies](http://www.pidginthemes.com/smilies/windows%20live%20messenger/)
 
+**plasma-workspace-wallpaper-video**
+
+Video and video playlist background for Plasma 5/KDE5 desktop. 
+
+For details, please see the following KDE forum topic:
+
+[Video and HTML wallpaper types - KDE Community Forums](https://forum.kde.org/viewtopic.php?f=289&t=131783)
+
+NOTE: The video background may still be buggy. For example, I lose the background video immediately after closing the desktop settings window. I may miss some dependencies but couldn't been able to narrow down the issue yet.
+
+FORMAT: Arch Linux PKGBUILD script + source files.
+
 **playonlinux**
 --------------
 

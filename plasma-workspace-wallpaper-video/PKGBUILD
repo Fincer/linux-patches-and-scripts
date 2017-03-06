@@ -1,0 +1,19 @@
+pkgname=plasma-workspace-wallpaper-video
+pkgver=1
+pkgrel=1
+pkgdesc="Video wallpaper for Plasma 5 workspace"
+arch=('any')
+license=('GPL3')
+depends=('plasma-workspace') #gstreamer0.10-ffmpeg
+source=('org.kde.video.tar.gz' 'org.kde.videoplaylist.tar.gz' 'm3uwrapper.desktop')
+
+md5sums=('05f58cc99405f9c87aab10106b5525f7'
+         'f3f21f3e67c3aaf22614c023566eadcb'
+         '79ce66e4eb2a316640d3b38f6f3cf6fc')
+
+package() {
+mkdir -p $pkgdir/usr/share/{plasma/wallpapers/,/kservices5/ServiceMenus}
+cp -R $srcdir/{org.kde.video,org.kde.videoplaylist} $pkgdir/usr/share/plasma/wallpapers/
+
+install -D -m644 $srcdir/m3uwrapper.desktop $pkgdir/usr/share/kservices5/ServiceMenus/m3uwrapper.desktop
+}

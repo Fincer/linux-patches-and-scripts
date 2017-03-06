@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+Icon=m3u-file-icon
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=video/*;application/x-flash-video;application/vnd.ms-asf;application/vnd.rn-realmedia;
+Actions=videoPlaylist;
+Encoding=UTF-8
+
+[Desktop Action videoPlaylist]
+Name=Make video playlist
+Icon=m3u-file-icon
+Exec=echo "%U" | sed 's# /#\\n/#g' > Video-Playlist.m3u 
