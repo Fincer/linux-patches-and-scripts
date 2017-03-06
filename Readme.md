@@ -204,6 +204,7 @@ Homepage:
 [Pidgin Themes - Windows Live Messenger smilies](http://www.pidginthemes.com/smilies/windows%20live%20messenger/)
 
 **plasma-workspace-wallpaper-video**
+--------------
 
 Video and video playlist background for Plasma 5/KDE5 desktop. 
 
