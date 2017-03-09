@@ -269,6 +269,10 @@ FORMAT: Arch Linux PKGBUILD script + source archive.
 
 Patches for Wine.
 
+- custompatch_default-documents-dir.patch = Use XDG_WINEDOCUMENTS_DIR as a default Documents directory for Wine prefixes by default. You need to specify XDG_WINEDOCUMENTS_DIR in your $HOME/.config/user-dirs.dirs file.
+
+For more information, check [this](https://forum.winehq.org/viewtopic.php?f=8&t=28582) WineHQ forum topic.
+
 - custompatch_glsl_shader.patch = GLSL shaders patch for Wine.
 
 - custompatch_msi-add-dummyactionthreads.patch = Add MSI dummy actions since Wine lacks a proper implementation of MSI custom action server. See details [here](https://bugs.winehq.org/show_bug.cgi?id=18070)
