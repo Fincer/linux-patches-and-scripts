@@ -303,6 +303,21 @@ A Python-based GUI for creating Wine application launchers/Desktop shortcuts.
 
 FORMAT: Arch Linux PKGBUILD script + source archive.
 
+**xclipshow**
+--------------
+
+QT5 based program which shows information about the current clipboard content.
+
+Original program code & instructions here:
+
+[Application that allows to show clipboard contents and its MIME type?](https://unix.stackexchange.com/questions/163081/application-that-allows-to-show-clipboard-contents-and-its-mime-type)
+
+FORMAT: Arch Linux PKGBUILD script + source files.
+
+NOTE: This program is useful if used with a combination of commands. I tend to use the program to automate 'take a screenshot and paste it to Kolourpaint' process. To achieve my goal, I need Plasma 5 desktop environment + two additional command-line programs: loliclip & imagemagick.
+
+For additional info and exact commands (and where to put them), please take a look into /xclipshow/printscreen file.
+
 **xephem**
 --------------
 

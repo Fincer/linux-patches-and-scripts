@@ -1,0 +1,25 @@
+#######################################################################
+## SHORTCUT COMMAND 1 - TAKE A SCREENSHOT
+## USE AS A GLOBAL SHORTCUT COMMAND FOR 'PRINT SCREEN' KEY IN PLASMA 5 
+
+##Take a screenshot: Save an image to clipboard, DO NOT save in a file (can't be used with Kolourpaint, clipboard use only)
+
+import -window root -screen png:- | loliclip -bi image/png
+
+##Take a screenshot: Save an image to clipboard and as a temporary file (can be used with Kolourpaint)
+
+import -window root -screen /tmp/screen.png | loliclip -bi image/png < /tmp/screen.png && notify-send Screenshot -i image-x-krita 'Screenshot saved to clipboard'
+
+#######################################################################
+## SHORTCUT COMMAND 2 - PASTE THE SCREENSHOT
+## USE AS A GLOBAL SHORTCUT COMMAND FOR ALT+V KEY COMBINATION IN PLASMA 5
+
+##Paste the screenshot into a new Kolourpaint session. Put this as a custom global shortcut Alt+V
+
+bash -c "if [[ $(xclipshow |grep -c image/png) -eq 1 ]]; then kolourpaint /tmp/screen.png; fi"
+
+
+#######################################################################
+
+## You can find Plasma 5 shortcut settings in System Settings -> Shortcuts -> Custom Shortcuts
+## Add the above commands as New Global Shortcuts, Command/URL
