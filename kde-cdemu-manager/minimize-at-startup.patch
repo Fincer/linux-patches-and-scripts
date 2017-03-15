@@ -1,0 +1,23 @@
+--- a/kde_cdemu/src/main.cpp
++++ b/kde_cdemu/src/main.cpp
+@@ -67,6 +67,9 @@
+ 
+     QCommandLineOption statusOption("status", i18n("Show information about devices."));
+     parser.addOption(statusOption);
++    
++    QCommandLineOption systrayOption("systray", i18n("Start program in systray."));
++    parser.addOption(systrayOption);
+ 
+     parser.process(app);
+     aboutData.processCommandLine(&parser);
+@@ -133,6 +136,10 @@
+         // automatically destroyed when closed
+         MainWindow *window = new MainWindow();
+         window->show();
++        {
++        if (parser.isSet(systrayOption))
++                window->hide();
++        }
+ 
+         return app.exec();
+     }

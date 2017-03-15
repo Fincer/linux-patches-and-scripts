@@ -52,6 +52,15 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script + source archive.
 
+**kde-cdemu-manager**
+--------------
+
+CDEmu Daemon manager for Plasma 5 desktop with an additional "start in systray" patch.
+
+- minimize-at-startup.patch = Adds '--systray' option as a start parameter. When enabled, the program main window remains closed and the program is started only in the systray.
+
+FORMAT: Arch Linux PKGBUILD script + patch file.
+
 **kde-servicemenus-cr2fits**
 --------------
 
