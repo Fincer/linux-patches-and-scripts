@@ -276,11 +276,17 @@ FORMAT: Arch Linux PKGBUILD script + source archive.
 **wine**
 --------------
 
-Patches for Wine.
+Patches & customized PKGBUILD script for Wine (Staging). Automatic PlayOnLinux installation script included.
+
+Usage: To compile Wine-Staging with all included custom patches, please run 1-install-wine-to-pol.sh.
+
+NOTE: Compiled package is not very well compatible with standard Wine installation methods on Arch Linux, thus the script removes compiled tar.xz file.
 
 - custompatch_default-documents-dir.patch = Use XDG_WINEDOCUMENTS_DIR as a default Documents directory for Wine prefixes by default. You need to specify XDG_WINEDOCUMENTS_DIR in your $HOME/.config/user-dirs.dirs file.
 
 For more information, check [this](https://forum.winehq.org/viewtopic.php?f=8&t=28582) WineHQ forum topic.
+
+- custompatch_disable_automatic_menubuilding.patch = Disable winemenubuilder.exe, just to prevent automatic file associations.
 
 - custompatch_glsl_shader.patch = GLSL shaders patch for Wine.
 
@@ -294,7 +300,7 @@ Basically, this patch helps you installing many useful programs on Wine which wo
 
 - custompatch_photoshop_tooltip_win.c.patch = Patch for hovering Photoshop tooltip pop-ups.
 
-FORMAT: Patch files.
+FORMAT: Arch Linux PKGBUILD script + patch files + PlayOnLinux script & files.
 
 **wine-launcher-creator**
 --------------
