@@ -37,5 +37,11 @@ cp -R ./pol_libs/lib ./playonlinux/linux-x86/$PKG/
 cp -R ./playonlinux/linux-amd64/$PKG $HOME/.PlayOnLinux//wine/linux-amd64/
 cp -R ./playonlinux/linux-x86/$PKG $HOME/.PlayOnLinux//wine/linux-x86/
 
+#Upgrade all PlayOnLinux Wine prefixes to use the compiled Wine version
+for i in $HOME/.PlayOnLinux/wineprefix/*/playonlinux.cfg
+    do 
+        sed -i "s/VERSION=.*/VERSION=$PKG/g" $i
+done
+
 #Remove these folders from the script folder
 rm -R ./playonlinux
