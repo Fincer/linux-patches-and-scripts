@@ -9,7 +9,7 @@ pkgdesc="GUI for managing Windows programs under linux"
 url="http://www.playonlinux.com/"
 license=('GPL')
 depends=('lib32-libpcap' 'imagemagick' 'xterm' 'wxpython2.8' 'cabextract' 'unzip' 'mesa-demos' 'gnupg'
-         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' )
+         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'lsb-release')
 arch=('any')
 source=(http://www.playonlinux.com/script_files/PlayOnLinux/${pkgver/.0/}/PlayOnLinux_${pkgver/.0/}.tar.gz
 0001-remove-menuitems.patch
