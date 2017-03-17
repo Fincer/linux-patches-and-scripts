@@ -1,0 +1,40 @@
+_pkgname=kde-thumbnailer-ooxml
+pkgname=${_pkgname}-kf5
+pkgver=1.1
+pkgrel=1
+pkgdesc="Microsoft Office Open XML document thumbnailer for KDE"
+url="http://kde-apps.org/content/show.php?content=149048"
+arch=('i686' 'x86_64')
+license=('GPL' 'LGPL' 'FDL')
+groups=('kde' 'kdegraphics')
+depends=('kdelibs4support' 'zlib')
+makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'qt5-tools' 'kdesignerplugin')
+source=("https://dl.opendesktop.org/api/files/download/id/1460971619/149048-kde-thumbnailer-ooxml-1.1.tar.bz2"
+port-to-qt5.patch)
+sha1sums=('445acee9c3f78077a70944cba2253432849d6d8e'
+          '3ac44a6954ca77aa238af845e846566c9ba761b3')
+
+prepare() {
+    cd "${srcdir}"/${_pkgname}
+    rm -rf build
+    mkdir -p build
+    patch -Np1 -i $srcdir/port-to-qt5.patch
+}
+
+build() {
+  mkdir build
+  cd build
+  cd "${srcdir}"/${_pkgname}
+  cmake -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DSYSCONF_INSTALL_DIR=/etc \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd "${srcdir}"/${_pkgname}
+  make DESTDIR="${pkgdir}" install
+}

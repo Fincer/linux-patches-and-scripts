@@ -1,0 +1,42 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,11 +1,21 @@
+ project(kde-thumbnailer-ooxml)
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 2.8.12)
+ 
+-find_package(KDE4 REQUIRED)
+-include(KDE4Defaults)
++set(SHARED_MIME_INFO_MINIMUM_VERSION "0.30")
+ 
+-add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
+-include_directories(${QT_INCLUDES} ${KDE4_INCLUDES})
++find_package(ECM REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
++
++include(KDEInstallDirs)
++include(KDECompilerSettings)
++include(KDECMakeSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support KIO Archive)
++
++add_definitions(${QT_DEFINITIONS})
++include_directories(${QT_INCLUDES})
+ 
+ set(libkowmf_SRCS
+     libkowmf/WmfAbstractBackend.cpp
+@@ -17,9 +27,9 @@
+ 
+ set(ooxmlthumbnail_SRCS ooxmlcreator.cpp ${libkowmf_SRCS})
+ 
+-kde4_add_plugin(ooxmlthumbnail ${ooxmlthumbnail_SRCS})
+-target_link_libraries(ooxmlthumbnail
+-    ${KDE4_KIO_LIBS}
++add_library(ooxmlthumbnail MODULE ${libkowmf_SRCS})
++target_link_libraries(ooxmlthumbnail PRIVATE
++    KF5::KDELibs4Support KF5::KIOCore KF5::Archive
+     ${QT_QTXML_LIBRARY}
+ )
+ 

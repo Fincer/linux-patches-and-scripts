@@ -123,6 +123,23 @@ Plasma 5 Dolphin service menu script for hacking and breaking PDF password prote
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**kde-thumbnailer-ooxml-kf5**
+--------------
+
+Plasma 5 thumbnailer for Microsoft Office Open XML Documents.
+
+According to the developer:
+
+*This plugin should support all ooxml documents with thumbnails saved, including docx pptx ppsx xlsx files. However, most docx and xlsx documents do not have thumbnail image saved along with document body, you may not see the previews.*
+
+*It only depends on qt and kde library. It is shipped with internal libkowmf copy for rendering wmf graphics from calligra suite. You do not need any office suite installed to make this plugin work.*
+
+Homepage:
+
+[KDE Office Open XML Document Thumbnailer](https://www.linux-apps.com/content/show.php?content=149048)
+
+FORMAT: Arch Linux PKGBUILD script + a patch file.
+
 **kdegraphics-dreamdesktop**
 --------------
 
