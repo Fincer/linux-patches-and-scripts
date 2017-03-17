@@ -4,11 +4,13 @@
 updpkgsums
 makepkg
 
+if [[ $(find ./ -type f -iname "*.tar.xz" | wc -l) -eq 1 ]]; then
 #Install compiled Wine files to their corresponding places in PlayOnLinux installation.
-bash -c ./playonlinux-script/install-to-pol.sh
-
+    bash -c ./playonlinux-script/install-to-pol.sh
+fi
+    
 #Remove deprecated src & pkg folders
-rm -R ./{src,pkg}
+rm -fR ./{src,pkg}
 
 #Compiled tar.xz package is not "compatible" or as good as the Wine package compiled with the original PKGBUILD rules. Thus, we remove the created tar.xz file.
 rm ./*.tar.xz
