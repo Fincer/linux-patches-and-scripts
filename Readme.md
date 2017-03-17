@@ -300,6 +300,9 @@ Basically, this patch helps you installing many useful programs on Wine which wo
 
 - custompatch_photoshop_tooltip_win.c.patch = Patch for hovering Photoshop tooltip pop-ups.
 
+Includes *install-wine-theme-to-polprefixes* subfolder which includes a script that changes theme for all existing PlayOnLinux wine prefixes automatically.
+You can customize the script to suit your needs. The purpose of this script is to improve & automate management of multiple prefix themes.
+
 FORMAT: Arch Linux PKGBUILD script + patch files + PlayOnLinux script & files.
 
 **wine-launcher-creator**
