@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=inode/directory
+Icon=system-search
+Actions=searchinside;searchinside-casesensitive;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+TryExec=grep
+
+[Desktop Action searchinside-casesensitive]
+Name=Search inside files (case sensitive)
+Icon=system-search
+Exec=konsole --workdir $(pwd) -p "tabtitle=Search [case sensitive]" -e /usr/share/kservices5/ServiceMenus/searchinside-casesensitive.sh
+
+[Desktop Action searchinside]
+Name=Search inside files (ignore case)
+Icon=system-search
+Exec=konsole --workdir $(pwd) -p "tabtitle=Search [ignore case]" -e /usr/share/kservices5/ServiceMenus/searchinside.sh

@@ -109,6 +109,13 @@ This script can be used for multiple files at the same time but is developed for
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**kde-servicemenus-searchactions**
+--------------
+
+Plasma 5 Dolphin service menu script for searching strings inside files.
+
+FORMAT: Arch Linux PKGBUILD script + source files.
+
 **kde-servicemenus-unlockpdf**
 --------------
 
