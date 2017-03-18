@@ -290,6 +290,19 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script + patch files.
 
+**qnapi**
+--------------
+
+Qt5 client for downloading movie subtitles from NapiProjekt, OpenSubtitles, Napisy24
+
+Includes patch files for translation of polish strings to english.
+
+Homepage:
+
+[Github - QNapi](https://github.com/QNapi/qnapi/)
+
+FORMAT: Arch Linux PKGBUILD script + patch files.
+
 **u3d**
 --------------
 

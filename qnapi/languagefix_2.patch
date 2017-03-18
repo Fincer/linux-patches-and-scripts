@@ -1,0 +1,927 @@
+--- a/ui/frmabout.ui
++++ b/ui/frmabout.ui
+@@ -17,7 +17,7 @@
+    </size>
+   </property>
+   <property name="windowTitle">
+-   <string>QNapi - informacje o programie</string>
++   <string>QNapi - Information about the program</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="3" column="2">
+@@ -67,7 +67,7 @@
+        <item row="0" column="0" colspan="2">
+         <widget class="QLabel" name="lbAbout">
+          <property name="text">
+-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;QNapi jest programem do automatycznego pobierania i dopasowywania napisów do filmów. &lt;/p&gt;&lt;p&gt;Program rozprowadzany jest na licencji GNU General Public License w wersji drugiej lub późniejszej.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://qnapi.github.io&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://qnapi.github.io&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Dziękuję wszystkim osobom, które w jakikolwiek sposób wsparły rozwój projektu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
++          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;QNapi is a program for automatic downloading and matching subtitles for movies. &lt;/p&gt;&lt;p&gt;The program is distributed under the GNU General Public License version second or later.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://qnapi.github.io&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://qnapi.github.io&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;I thank all those who in any way supported the development of the project.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+@@ -98,7 +98,7 @@
+           </size>
+          </property>
+          <property name="text">
+-          <string>Wersja Qt: x.y.z</string>
++          <string>Qt version: x.y.z</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+@@ -121,7 +121,7 @@
+        <item row="2" column="1">
+         <widget class="QLabel" name="lbUseNP">
+          <property name="text">
+-          <string>Program korzysta z bazy www.napiprojekt.pl</string>
++          <string>The program uses the database of www.napiprojekt.pl</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+@@ -150,7 +150,7 @@
+        <item row="3" column="1">
+         <widget class="QLabel" name="lbUseOS">
+          <property name="text">
+-          <string>Program korzysta z bazy www.opensubtitles.org</string>
++          <string>The program uses the database of www.opensubtitles.org</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+@@ -176,7 +176,7 @@
+        <item row="4" column="1">
+         <widget class="QLabel" name="lbUseNP24">
+          <property name="text">
+-          <string>Program korzysta z bazy www.napisy24.pl</string>
++          <string>The program uses the database of www.napisy24.pl</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+@@ -193,7 +193,7 @@
+    <item row="3" column="1">
+     <widget class="QPushButton" name="pbClose">
+      <property name="text">
+-      <string>Zamknij</string>
++      <string>Close</string>
+      </property>
+     </widget>
+    </item>
+
+--- a/ui/frmconvert.ui
++++ b/ui/frmconvert.ui
+@@ -11,13 +11,13 @@
+    </rect>
+   </property>
+   <property name="windowTitle">
+-   <string>Konwertuj napisy</string>
++   <string>Convert subtitles</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lbSrcSubFile">
+      <property name="text">
+-      <string>Źródłowy plik z napisami:</string>
++      <string>Source file with subtitles:</string>
+      </property>
+     </widget>
+    </item>
+@@ -59,7 +59,7 @@
+         <bool>false</bool>
+        </property>
+        <property name="text">
+-        <string>Wykryto format:</string>
++        <string>Detected format:</string>
+        </property>
+       </widget>
+      </item>
+@@ -102,7 +102,7 @@
+         <bool>false</bool>
+        </property>
+        <property name="text">
+-        <string>Docelowy format napisów:</string>
++        <string>Target subtitle format:</string>
+        </property>
+       </widget>
+      </item>
+@@ -168,7 +168,7 @@
+         <bool>false</bool>
+        </property>
+        <property name="text">
+-        <string>Liczba klatek na sekundę filmu (FPS):</string>
++        <string>Video framerate (FPS):</string>
+        </property>
+       </widget>
+      </item>
+@@ -255,7 +255,7 @@
+       <bool>false</bool>
+      </property>
+      <property name="toolTip">
+-      <string>Wykryj docelowy FPS z pliku</string>
++      <string>Detected video framerate (FPS)</string>
+      </property>
+      <property name="text">
+       <string/>
+@@ -274,7 +274,7 @@
+         <bool>false</bool>
+        </property>
+        <property name="text">
+-        <string>Docelowe rozszerzenie napisów:</string>
++        <string>Extension of target subtitle file:</string>
+        </property>
+       </widget>
+      </item>
+@@ -310,7 +310,7 @@
+        </property>
+        <item>
+         <property name="text">
+-         <string>Domyślne</string>
++         <string>Default</string>
+         </property>
+        </item>
+        <item>
+@@ -340,7 +340,7 @@
+         <bool>false</bool>
+        </property>
+        <property name="text">
+-        <string>Zmień FPS (klatki/sekundę) napisów</string>
++        <string>Change FPS (frames/second) of subtitle</string>
+        </property>
+       </widget>
+      </item>
+@@ -500,7 +500,7 @@
+       <bool>false</bool>
+      </property>
+      <property name="toolTip">
+-      <string>Wykryj docelowy FPS z pliku</string>
++      <string>Detect framerate for file</string>
+      </property>
+      <property name="text">
+       <string/>
+@@ -519,7 +519,7 @@
+         <bool>false</bool>
+        </property>
+        <property name="text">
+-        <string>Przesuń napisy</string>
++        <string>Move subtitles</string>
+        </property>
+       </widget>
+      </item>
+@@ -581,7 +581,7 @@
+       <bool>false</bool>
+      </property>
+      <property name="text">
+-      <string>Docelowa nazwa pliku:</string>
++      <string>Target file name:</string>
+      </property>
+     </widget>
+    </item>
+@@ -641,7 +641,7 @@
+         </size>
+        </property>
+        <property name="text">
+-        <string>Konwertuj</string>
++        <string>Convert</string>
+        </property>
+       </widget>
+      </item>
+
+--- a/ui/frmlistsubtitles.ui
++++ b/ui/frmlistsubtitles.ui
+@@ -17,7 +17,7 @@
+    </size>
+   </property>
+   <property name="windowTitle">
+-   <string>QNapi - wybierz napisy z listy</string>
++   <string>QNapi - select subtitles from the list</string>
+   </property>
+   <property name="windowIcon">
+    <iconset resource="../res/resources.qrc">
+@@ -40,7 +40,7 @@
+    <item row="0" column="0" colspan="3">
+     <widget class="QLabel" name="lbSelectSubtitles">
+      <property name="text">
+-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Z poniższej listy wybierz napisy, które chcesz dopasować do pliku&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;film.avi&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
++      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the subtitle which you want to adjust to the video file&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;film.avi&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+@@ -50,21 +50,21 @@
+    <item row="4" column="2">
+     <widget class="QPushButton" name="pbDownload">
+      <property name="text">
+-      <string>Pobierz napisy</string>
++      <string>Download subtitles</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QPushButton" name="pbDontDownload">
+      <property name="text">
+-      <string>Nie pobieraj napisów dla tego filmu</string>
++      <string>Do not download the subtitles for this video</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="3">
+     <widget class="QLabel" name="lbGreenHint">
+      <property name="text">
+-      <string>Na zielono podświetlono napisy &lt;b&gt;prawdopodobnie&lt;/b&gt; pasujące do Twojego filmu.</string>
++      <string>Highlight subtitles &lt;b&gt;likely matching&lt;/b&gt; with your video with green.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+@@ -74,7 +74,7 @@
+    <item row="3" column="0" colspan="3">
+     <widget class="QLabel" name="lbRedHint">
+      <property name="text">
+-      <string>Na czerwono podświetlono napisy &lt;b&gt;prawdopodobnie&lt;/b&gt; niepasujące do Twojego filmu.</string>
++      <string>Highlight subtitles &lt;b&gt;likely not matching&lt;/b&gt; with your video with red.</string>
+      </property>
+     </widget>
+    </item>
+
+--- a/ui/frmoptions.ui
++++ b/ui/frmoptions.ui
+@@ -11,7 +11,7 @@
+    </rect>
+   </property>
+   <property name="windowTitle">
+-   <string>QNapi - opcje programu</string>
++   <string>QNapi - settings</string>
+   </property>
+   <property name="windowIcon">
+    <iconset resource="../res/resources.qrc">
+@@ -25,7 +25,7 @@
+      </property>
+      <widget class="QWidget" name="tabGeneral">
+       <attribute name="title">
+-       <string>Główne</string>
++       <string>Main</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="3">
+@@ -42,7 +42,7 @@
+        <item row="4" column="0" colspan="3">
+         <widget class="QCheckBox" name="cbNoBackup">
+          <property name="text">
+-          <string>Nie twórz kopii istniejących napisów. Nadpisuj je bez pytania.</string>
++          <string>Do not create a copy of existing subtitles. Overwrite them without question.</string>
+          </property>
+         </widget>
+        </item>
+@@ -62,14 +62,14 @@
+        <item row="2" column="0">
+         <widget class="QLabel" name="lbLang">
+          <property name="text">
+-          <string>Preferowany język napisów:</string>
++          <string>Preferred subtitle language:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0" colspan="3">
+         <widget class="QCheckBox" name="cbShowDockIcon">
+          <property name="text">
+-          <string>Pokazuj ikonę w doku systemowym (wymaga ponownego uruchomienia aplikacji)</string>
++          <string>Show icon in the system tray (requires application restart)</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+@@ -152,7 +152,7 @@
+        <item row="6" column="0" colspan="2">
+         <widget class="QCheckBox" name="cbChangePermissions">
+          <property name="text">
+-          <string>Zmień uprawnienia do pliku z napisami na: </string>
++          <string>Subtitle file permissions: </string>
+          </property>
+         </widget>
+        </item>
+@@ -172,34 +172,34 @@
+        <item row="3" column="0">
+         <widget class="QLabel" name="lbLangBackup">
+          <property name="text">
+-          <string>Zapasowy język napisów:</string>
++          <string>Alternative subtitle language:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="lbTmpPath">
+          <property name="text">
+-          <string>Ścieżka do katalogu tymczasowego:</string>
++          <string>Path to temporary directory:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="lb7zPath">
+          <property name="text">
+-          <string>Ścieżka do programu 7z:</string>
++          <string>Path to 7z executable:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0" colspan="3">
+         <widget class="QCheckBox" name="cbQuietBatch">
+          <property name="toolTip">
+-          <string>Nie pokazuje żadnych okien przy pobieraniu napisów z menu kontekstowego w menedżerze plików lub przy podaniu plików jako argumenty wiersza poleceń</string>
++          <string>Do not show any windows while retrieving subtitles in command-line</string>
+          </property>
+          <property name="toolTipDuration">
+           <number>5000</number>
+          </property>
+          <property name="text">
+-          <string>Cichy tryb wsadowy</string>
++          <string>Silent batch mode</string>
+          </property>
+         </widget>
+        </item>
+@@ -220,13 +220,13 @@
+      </widget>
+      <widget class="QWidget" name="tabDownloadEngines">
+       <attribute name="title">
+-       <string>Moduły pobierania napisów</string>
++       <string>Download engines</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="lbAvailableEngines">
+          <property name="text">
+-          <string>Dostępne moduły pobierania napisów:</string>
++          <string>Available engines to download subtitles from:</string>
+          </property>
+         </widget>
+        </item>
+@@ -239,7 +239,7 @@
+           </sizepolicy>
+          </property>
+          <property name="text">
+-          <string>Polityka pobierania napisów:</string>
++          <string>Subtitle download policy:</string>
+          </property>
+         </widget>
+        </item>
+@@ -253,17 +253,17 @@
+          </property>
+          <item>
+           <property name="text">
+-           <string>Zawsze pokazuj listę dostępnych napisów</string>
++           <string>Always show a list of available subtitles</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+-           <string>Pokazuj listę dostępnych napisów tylko wtedy, gdy potrzeba</string>
++           <string>Show a list of available subtitles only if needed</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+-           <string>Zawsze pobieraj pierwsze pasujące napisy i nigdy nie pokazuj listy</string>
++           <string>Always obtain first matching subtitles and never show a list</string>
+           </property>
+          </item>
+         </widget>
+@@ -296,7 +296,7 @@
+           <bool>false</bool>
+          </property>
+          <property name="text">
+-          <string>Przesuń w górę</string>
++          <string>Move up</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../res/resources.qrc">
+@@ -313,7 +313,7 @@
+           </sizepolicy>
+          </property>
+          <property name="text">
+-          <string>Wyszukiwanie napisów:</string>
++          <string>Search subtitles:</string>
+          </property>
+         </widget>
+        </item>
+@@ -323,7 +323,7 @@
+           <bool>false</bool>
+          </property>
+          <property name="text">
+-          <string>Przesuń w dół  </string>
++          <string>Move down  </string>
+          </property>
+          <property name="icon">
+           <iconset resource="../res/resources.qrc">
+@@ -337,7 +337,7 @@
+           <bool>false</bool>
+          </property>
+          <property name="text">
+-          <string>Informacje</string>
++          <string>Information</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../res/resources.qrc">
+@@ -351,7 +351,7 @@
+           <bool>false</bool>
+          </property>
+          <property name="text">
+-          <string>Konfiguruj</string>
++          <string>Configure</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../res/resources.qrc">
+@@ -366,17 +366,17 @@
+          </property>
+          <item>
+           <property name="text">
+-           <string>Przerwij wyszukiwanie po znalezieniu pasujących napisów (szybciej)</string>
++           <string>Stop the search after finding a matching subtitle (faster)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+-           <string>Wyszukaj wszystkie dostępne napisy (wolniej)</string>
++           <string>Search all available subtitles (slower)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+-           <string>Wyszukaj wszystkie napisy, także w zapasowym języku (najwolniej)</string>
++           <string>Find all subtitles, also in alternative language (slowest)</string>
+           </property>
+          </item>
+         </widget>
+@@ -385,13 +385,13 @@
+      </widget>
+      <widget class="QWidget" name="tabPostProcessing">
+       <attribute name="title">
+-       <string>Przetwarzanie napisów</string>
++       <string>Subtitle processing</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="gbPpEnable">
+          <property name="title">
+-          <string>Włącz przetwarzanie pobranych napisów</string>
++          <string>Turn on processing for downloaded subtitles</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+@@ -405,7 +405,7 @@
+             <item>
+              <widget class="QLabel" name="lbEncoding">
+               <property name="text">
+-               <string>Kodowanie znaków:</string>
++               <string>Character encoding:</string>
+               </property>
+              </widget>
+             </item>
+@@ -419,17 +419,17 @@
+               </property>
+               <item>
+                <property name="text">
+-                <string>Pozostaw oryginalne</string>
++                <string>Keep the original</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+-                <string>Konwertuj (ustawienia poniżej)</string>
++                <string>Convert (settings below)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+-                <string>Zamień znaki diakrytyczne na ich odpowiedniki ASCII</string>
++                <string>Replace accented characters with their ASCII equivalents</string>
+                </property>
+               </item>
+              </widget>
+@@ -466,7 +466,7 @@
+                </sizepolicy>
+               </property>
+               <property name="text">
+-               <string>Z:</string>
++               <string>From:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+@@ -519,7 +519,7 @@
+                </sizepolicy>
+               </property>
+               <property name="text">
+-               <string>Na:</string>
++               <string>to:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+@@ -589,7 +589,7 @@
+                <bool>false</bool>
+               </property>
+               <property name="text">
+-               <string>Pokaż wszystkie dostępne kodowania znaków</string>
++               <string>Show all available character encodings</string>
+               </property>
+              </widget>
+             </item>
+@@ -616,7 +616,7 @@
+           <item row="6" column="0">
+            <widget class="QLabel" name="lbSubFormat">
+             <property name="text">
+-             <string>Format napisów:</string>
++             <string>Subtitle format:</string>
+             </property>
+            </widget>
+           </item>
+@@ -630,7 +630,7 @@
+             </property>
+             <item>
+              <property name="text">
+-              <string>Pozostaw oryginalny</string>
++              <string>Keep the original</string>
+              </property>
+             </item>
+            </widget>
+@@ -638,7 +638,7 @@
+           <item row="6" column="2">
+            <widget class="QLabel" name="lbSubExtension">
+             <property name="text">
+-             <string>Rozszerzenie napisów:</string>
++             <string>Subtitle extension:</string>
+             </property>
+            </widget>
+           </item>
+@@ -652,7 +652,7 @@
+             </property>
+             <item>
+              <property name="text">
+-              <string>Domyślne</string>
++              <string>Default</string>
+              </property>
+             </item>
+             <item>
+@@ -678,7 +678,7 @@
+              <bool>true</bool>
+             </property>
+             <property name="text">
+-             <string>Nie dodawaj informacji o QNapi przy konwersji pomiędzy formatami</string>
++             <string>Do not add information about QNapi while converting between formats</string>
+             </property>
+            </widget>
+           </item>
+@@ -688,7 +688,7 @@
+              <bool>false</bool>
+             </property>
+             <property name="text">
+-             <string>Próbuj automatycznie wykrywać kodowanie źródłowe</string>
++             <string>Attempt to automatically detect encoding</string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+@@ -698,7 +698,7 @@
+           <item row="4" column="0" colspan="4">
+            <widget class="QCheckBox" name="cbRemoveLines">
+             <property name="text">
+-             <string>Usuń z pliku z napisami linie, które zawierają następujące słowa:</string>
++             <string>Remove subtitle lines that contain the following words:</string>
+             </property>
+            </widget>
+           </item>
+@@ -722,7 +722,7 @@
+      <item>
+       <widget class="QPushButton" name="pbRestoreDefaults">
+        <property name="text">
+-        <string>Przywróć domyślne</string>
++        <string>Restore defaults</string>
+        </property>
+       </widget>
+      </item>
+@@ -742,14 +742,14 @@
+      <item>
+       <widget class="QPushButton" name="pbCancel">
+        <property name="text">
+-        <string>Anuluj</string>
++        <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pbSave">
+        <property name="text">
+-        <string>Zapisz</string>
++        <string>Save</string>
+        </property>
+       </widget>
+      </item>
+
+--- a/ui/frmprogress.ui
++++ b/ui/frmprogress.ui
+@@ -25,7 +25,7 @@
+    <bool>true</bool>
+   </property>
+   <property name="windowTitle" >
+-   <string>QNapi - pobieranie napisów...</string>
++   <string>QNapi - downloading subtitle...</string>
+   </property>
+   <property name="windowIcon" >
+    <iconset resource="../res/resources.qrc" >:/icon/qnapi.png</iconset>
+@@ -71,7 +71,7 @@
+       </font>
+      </property>
+      <property name="text" >
+-      <string>Pobieranie napisów do filmu...</string>
++      <string>Downloading the subtitle...</string>
+      </property>
+      <property name="textFormat" >
+       <enum>Qt::AutoText</enum>
+@@ -96,7 +96,7 @@
+      <item>
+       <widget class="QPushButton" name="pbCancel" >
+        <property name="text" >
+-        <string>Anuluj</string>
++        <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+
+--- a/ui/frmscan.ui
++++ b/ui/frmscan.ui
+@@ -16,7 +16,7 @@
+    </size>
+   </property>
+   <property name="windowTitle" >
+-   <string>QNapi - skanowanie katalogów i dopasowywanie napisów</string>
++   <string>QNapi - directory scanning and string matching</string>
+   </property>
+   <property name="windowIcon" >
+    <iconset resource="../res/resources.qrc" >:/icon/qnapi.png</iconset>
+@@ -25,7 +25,7 @@
+    <item row="0" column="0" >
+     <widget class="QLabel" name="lbDirectory" >
+      <property name="text" >
+-      <string>Wskaż katalog do przeszukania:</string>
++      <string>Select the directory to search in:</string>
+      </property>
+     </widget>
+    </item>
+@@ -57,7 +57,7 @@
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+-        <string>Skanuj</string>
++        <string>Scan</string>
+        </property>
+       </widget>
+      </item>
+@@ -77,7 +77,7 @@
+         </sizepolicy>
+        </property>
+        <property name="text" >
+-        <string>Filtr rozszerzeń plików:</string>
++        <string>Filter file extensions:</string>
+        </property>
+       </widget>
+      </item>
+@@ -108,7 +108,7 @@
+      <item>
+       <widget class="QLabel" name="lbSkip" >
+        <property name="text" >
+-        <string>Pomiń pliki zawierające w nazwie:</string>
++        <string>Skip files whose names contain:</string>
+        </property>
+       </widget>
+      </item>
+@@ -124,7 +124,7 @@
+    <item row="4" column="0" >
+     <widget class="QCheckBox" name="cbSkipIfSubtitlesExists" >
+      <property name="text" >
+-      <string>Podczas wyszukiwania pomijaj pliki, do których istnieją już napisy</string>
++      <string>Skip video files which already have subtitles</string>
+      </property>
+     </widget>
+    </item>
+@@ -136,7 +136,7 @@
+      <item>
+       <widget class="QLabel" name="lbMovies" >
+        <property name="text" >
+-        <string>Znalezione pliki z filmami:</string>
++        <string>Found video files:</string>
+        </property>
+       </widget>
+      </item>
+@@ -174,21 +174,21 @@
+        <item>
+         <widget class="QPushButton" name="pbSelectAll" >
+          <property name="text" >
+-          <string>Zaznacz wszystko</string>
++          <string>Select all</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pbUnselectAll" >
+          <property name="text" >
+-          <string>Odznacz wszystko</string>
++          <string>Uncheck all</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pbInvertSelection" >
+          <property name="text" >
+-          <string>Odwróć zaznaczenie</string>
++          <string>Invert selection</string>
+          </property>
+         </widget>
+        </item>
+@@ -208,7 +208,7 @@
+        <item>
+         <widget class="QPushButton" name="pbCancel" >
+          <property name="text" >
+-          <string>Anuluj</string>
++          <string>Cancel</string>
+          </property>
+         </widget>
+        </item>
+@@ -218,7 +218,7 @@
+           <bool>false</bool>
+          </property>
+          <property name="text" >
+-          <string>Pobierz napisy</string>
++          <string>Download subtitles</string>
+          </property>
+         </widget>
+        </item>
+@@ -229,7 +229,7 @@
+    <item row="5" column="0" >
+     <widget class="QCheckBox" name="cbFollowSymLinks" >
+      <property name="text" >
+-      <string>Podążaj za dowiązaniami symbolicznymi</string>
++      <string>Follow symbolic links</string>
+      </property>
+      <property name="checked" >
+       <bool>true</bool>
+
+--- a/ui/frmsummary.ui
++++ b/ui/frmsummary.ui
+@@ -26,7 +26,7 @@
+    </size>
+   </property>
+   <property name="windowTitle">
+-   <string>QNapi - rezultat dopasowania napisów</string>
++   <string>QNapi - the result of matching strings</string>
+   </property>
+   <property name="windowIcon">
+    <iconset resource="../res/resources.qrc">
+@@ -42,7 +42,7 @@
+       </size>
+      </property>
+      <property name="text">
+-      <string>Pobrano napisy dla 5 plików</string>
++      <string>Downloading subtitles for 5 video files</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+@@ -58,7 +58,7 @@
+       </size>
+      </property>
+      <property name="text">
+-      <string>Nie udało się znaleźć napisów dla 3 plików</string>
++      <string>Could not find the subtitles for 3 video files</string>
+      </property>
+     </widget>
+    </item>
+
+--- a/ui/napiprojekt/frmnapiprojektconfig.ui
++++ b/ui/napiprojekt/frmnapiprojektconfig.ui
+@@ -22,7 +22,7 @@
+    </size>
+   </property>
+   <property name="windowTitle" >
+-   <string>NapiProjekt - konfiguracja</string>
++   <string>NapiProjekt - configuration</string>
+   </property>
+   <layout class="QGridLayout" >
+    <item row="0" column="0" >
+@@ -42,7 +42,7 @@
+    <item row="1" column="0" >
+     <widget class="QLabel" name="lbPass" >
+      <property name="text" >
+-      <string>Hasło:</string>
++      <string>Password:</string>
+      </property>
+     </widget>
+    </item>
+@@ -72,7 +72,7 @@
+    <item row="3" column="0" >
+     <widget class="QPushButton" name="pbRegister" >
+      <property name="text" >
+-      <string>Załóż konto</string>
++      <string>Create an account</string>
+      </property>
+     </widget>
+    </item>
+@@ -92,14 +92,14 @@
+    <item row="3" column="2" >
+     <widget class="QPushButton" name="pbCancel" >
+      <property name="text" >
+-      <string>Anuluj</string>
++      <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3" >
+     <widget class="QPushButton" name="pbSave" >
+      <property name="text" >
+-      <string>Zapisz</string>
++      <string>Save</string>
+      </property>
+     </widget>
+    </item>
+
+--- a/ui/napisy24/frmnapisy24config.ui
++++ b/ui/napisy24/frmnapisy24config.ui
+@@ -22,7 +22,7 @@
+    </size>
+   </property>
+   <property name="windowTitle" >
+-   <string>Napisy24 - konfiguracja</string>
++   <string>Napisy24 - configuration</string>
+   </property>
+   <layout class="QGridLayout" >
+    <item row="0" column="0" >
+@@ -42,7 +42,7 @@
+    <item row="1" column="0" >
+     <widget class="QLabel" name="lbPass" >
+      <property name="text" >
+-      <string>Hasło:</string>
++      <string>Password:</string>
+      </property>
+     </widget>
+    </item>
+@@ -72,7 +72,7 @@
+    <item row="3" column="0" >
+     <widget class="QPushButton" name="pbRegister" >
+      <property name="text" >
+-      <string>Załóż konto</string>
++      <string>Create an account</string>
+      </property>
+     </widget>
+    </item>
+@@ -92,14 +92,14 @@
+    <item row="3" column="2" >
+     <widget class="QPushButton" name="pbCancel" >
+      <property name="text" >
+-      <string>Anuluj</string>
++      <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3" >
+     <widget class="QPushButton" name="pbSave" >
+      <property name="text" >
+-      <string>Zapisz</string>
++      <string>Save</string>
+      </property>
+     </widget>
+    </item>
+
+--- a/ui/opensubtitles/frmopensubtitlesconfig.ui
++++ b/ui/opensubtitles/frmopensubtitlesconfig.ui
+@@ -22,7 +22,7 @@
+    </size>
+   </property>
+   <property name="windowTitle" >
+-   <string>OpenSubtitles - konfiguracja</string>
++   <string>OpenSubtitles - configuration</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" >
+    <item row="0" column="0" >
+@@ -42,7 +42,7 @@
+    <item row="1" column="0" >
+     <widget class="QLabel" name="lbPass" >
+      <property name="text" >
+-      <string>Hasło:</string>
++      <string>Password:</string>
+      </property>
+     </widget>
+    </item>
+@@ -72,7 +72,7 @@
+    <item row="3" column="0" >
+     <widget class="QPushButton" name="pbRegister" >
+      <property name="text" >
+-      <string>Załóż konto</string>
++      <string>Create an account</string>
+      </property>
+     </widget>
+    </item>
+@@ -92,14 +92,14 @@
+    <item row="3" column="2" >
+     <widget class="QPushButton" name="pbCancel" >
+      <property name="text" >
+-      <string>Anuluj</string>
++      <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3" >
+     <widget class="QPushButton" name="pbSave" >
+      <property name="text" >
+-      <string>Zapisz</string>
++      <string>Save</string>
+      </property>
+     </widget>
+    </item>

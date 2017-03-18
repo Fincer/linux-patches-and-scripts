@@ -1,0 +1,1048 @@
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -73,9 +73,9 @@
+         
+         if(GlobalConfig().firstRun())
+         {
+-            if(QMessageBox::question(0, QObject::tr("Pierwsze uruchomienie"),
+-                    QObject::tr("To jest pierwsze uruchomienie programu QNapi. Czy chcesz go "
+-                    "teraz skonfigurować?"), QMessageBox::Yes | QMessageBox::No )
++            if(QMessageBox::question(0, QObject::tr("First Run"),
++                    QObject::tr("This is the first launch of the program QNapi. Do you want to "
++                    "configure settings?"), QMessageBox::Yes | QMessageBox::No )
+                 == QMessageBox::Yes )
+             {
+                 app.showSettings();
+@@ -119,8 +119,8 @@
+ 
+             if(invalidLang)
+             {
+-                if(QMessageBox::question(0, "QNapi", "Niepoprawny kod językowy!\n"
+-                        "Czy chcesz pobrać napisy w domyślnym języku?",
++                if(QMessageBox::question(0, "QNapi", "Invalid language code!\n"
++                        "Do you want to download the subtitles in the default language?",
+                         QMessageBox::Yes | QMessageBox::No)
+                     != QMessageBox::Yes)
+                 {
+@@ -216,7 +216,7 @@
+ {
+     Q_UNUSED(sig);
+ 
+-    qDebug() << "\nQNapi: usuwanie plików tymczasowych...";
++    qDebug() << "\nQNapi: deleting temporary files...";
+ 
+     QString tmpPath = GlobalConfig().tmpPath();
+ 
+--- a/src/qnapi.cpp
++++ b/src/qnapi.cpp
+@@ -76,7 +76,7 @@
+     }
+     else
+     {
+-        errorMsg = QString("Nieobsługiwany silnik pobierania: %1.").arg(engine);
++        errorMsg = QString("Unsupported download engine: %1.").arg(engine);
+         return false;
+     }
+ }
+@@ -149,7 +149,7 @@
+ 
+     if(!result)
+     {
+-        errorMsg = "Nie znaleziono napisów!";
++        errorMsg = "No subtitles found!";
+     }
+ 
+     return result;
+
+--- a/src/qnapiapp.cpp
++++ b/src/qnapiapp.cpp
+@@ -86,43 +86,43 @@
+ 
+ void QNapiApp::createTrayIcon()
+ {
+-    getAction = new QAction(tr("Pobierz napisy"), 0);
++    getAction = new QAction(tr("Download subtitles"), 0);
+     connect(getAction, SIGNAL(triggered()), this, SLOT(showOpenDialog()));
+ 
+-    scanAction = new QAction(tr("Skanuj katalogi"), 0);
++    scanAction = new QAction(tr("Scan catalogs"), 0);
+     connect(scanAction, SIGNAL(triggered()), this, SLOT(showScanDialog()));
+ 
+-    convertAction = new QAction(tr("Konwertuj napisy"), 0);
++    convertAction = new QAction(tr("Convert subtitles"), 0);
+     connect(convertAction, SIGNAL(triggered()), this, SLOT(showConvertDialog()));
+ 
+-    napiGetAction = new QAction(tr("Pobierz napisy"), 0);
++    napiGetAction = new QAction(tr("Download subtitles"), 0);
+     connect(napiGetAction, &QAction::triggered, [this] { showOpenDialog("NapiProjekt"); });
+ 
+-    napiCreateUserAction = new QAction(tr("Załóż konto"), 0);
++    napiCreateUserAction = new QAction(tr("Create an account"), 0);
+     connect(napiCreateUserAction, &QAction::triggered, [this] { showCreateAccount("NapiProjekt"); });
+ 
+-    osGetAction = new QAction(tr("Pobierz napisy"), 0);
++    osGetAction = new QAction(tr("Download subtitles"), 0);
+     connect(osGetAction, &QAction::triggered, [this] { showOpenDialog("OpenSubtitles"); });
+ 
+-    osAddAction = new QAction(tr("Dodaj napisy"), 0);
++    osAddAction = new QAction(tr("Upload subtitles"), 0);
+     connect(osAddAction, SIGNAL(triggered()), this, SLOT(showOSUploadDialog()));
+ 
+-    osCreateUserAction = new QAction(tr("Załóż konto"), 0);
++    osCreateUserAction = new QAction(tr("Create an account"), 0);
+     connect(osCreateUserAction, &QAction::triggered, [this] { showCreateAccount("OpenSubtitles"); });
+ 
+-    napisy24GetAction = new QAction(tr("Pobierz napisy"), 0);
++    napisy24GetAction = new QAction(tr("Download subtitles"), 0);
+     connect(napisy24GetAction, &QAction::triggered, [this] { showOpenDialog("Napisy24"); });
+ 
+-    napisy24CreateUserAction = new QAction(tr("Załóż konto"), 0);
++    napisy24CreateUserAction = new QAction(tr("Create an account"), 0);
+     connect(napisy24CreateUserAction, &QAction::triggered, [this] { showCreateAccount("OpenSNapisy24ubtitles"); });
+ 
+-    settingsAction = new QAction(tr("Opcje"), 0);
++    settingsAction = new QAction(tr("Settings"), 0);
+     connect(settingsAction, SIGNAL(triggered()), this, SLOT(showSettings()));
+ 
+-    aboutAction = new QAction(tr("O programie"), 0);
++    aboutAction = new QAction(tr("About"), 0);
+     connect(aboutAction, SIGNAL(triggered()), this, SLOT(showAbout()));
+ 
+-    quitAction = new QAction(tr("Zakończ"), 0);
++    quitAction = new QAction(tr("Quit"), 0);
+     connect(quitAction, SIGNAL(triggered()), this, SLOT(tryQuit()));
+ 
+     napiSubMenu = new QMenu(0);
+@@ -178,7 +178,7 @@
+     if(!openDialog)
+     {
+         openDialog = new QNapiOpenDialog(0,
+-                            tr("Wybierz jeden lub więcej plików z filmami"),
++                            tr("Select one or more video files"),
+                             GlobalConfig().previousDialogPath(),
+                             QNapiOpenDialog::Movies);
+     }
+
+--- a/src/qnapicli.cpp
++++ b/src/qnapicli.cpp
+@@ -108,7 +108,7 @@
+             lang = QNapiLanguage(p).toTwoLetter();
+             if(lang.isEmpty())
+             {
+-                printCli(QString("Niepoprawny kod jezykowy: %1").arg(p));
++                printCli(QString("Invalid language code: %1").arg(p));
+                 return false;
+             }
+         }
+@@ -171,7 +171,7 @@
+     }
+ 
+     if((mode == CM_CONSOLE || mode == CM_QUIET) && (movieList.isEmpty())) {
+-        printCli("Nie znaleziono pliku!");
++        printCli("File not found!");
+         return EC_MOVIE_FILE_NOT_FOUND;
+     }
+ 
+@@ -183,20 +183,20 @@
+ 
+     if(!QNapi::checkP7ZipPath())
+     {
+-        printCli("Sciezka do programu p7zip jest nieprawidlowa! Sprawdz swoje ustawienia.");
++        printCli("Path to the program p7zip is incorrect! Check your settings.");
+         return EC_P7ZIP_UNAVAILABLE;
+     }
+ 
+     if(!QNapi::checkTmpPath())
+     {
+-        printCli("Nie można pisac do katalogu tymczasowego! Sprawdz swoje ustawienia.");
++        printCli("Can not write to the temporary directory! Check your settings.");
+         return EC_CANNOT_WRITE_TMP_DIR;
+     }
+ 
+     
+     if(!napi.addEngines(GlobalConfig().enginesList()))
+     {
+-        printCli(QString("Blad: ") + napi.error());
++        printCli(QString("Error: ") + napi.error());
+         return EC_UNSUPPORTED_ENGINE;
+     }
+ 
+@@ -208,19 +208,19 @@
+ 
+     foreach(QString movie, movieList)
+     {
+-        printCli(QString(QString(" * Pobieranie napisow dla '%1'")).arg(QFileInfo(movie).fileName()));
++        printCli(QString(QString(" * Download subtitle for '%1'")).arg(QFileInfo(movie).fileName()));
+ 
+         napi.setMoviePath(movie);
+ 
+         if(!napi.checkWritePermissions())
+         {
+-            printCli(QString("   Brak uprawnien zapisu do katalogu '%1'!").arg(QFileInfo(movie).path()));
++            printCli(QString("   No permission to write to the directory '%1'!").arg(QFileInfo(movie).path()));
+             return EC_NO_WRITE_PERMISSIONS;
+         }
+ 
+         napi.clearSubtitlesList();
+ 
+-        printCli(QString(QString("   Obliczanie sum kontrolnych...")));
++        printCli(QString(QString("   Calculation of checksums...")));
+         napi.checksum();
+ 
+         bool found = false;
+@@ -230,9 +230,9 @@
+         {
+             foreach(QString e, napi.listLoadedEngines())
+             {
+-                printCli(QString(QString("   Szukanie napisow [%1] (%2)...").arg(lang, e)));
++                printCli(QString(QString("   Search subtitle [%1] (%2)...").arg(lang, e)));
+                 found = napi.lookForSubtitles(lang, e) || found;
+-                printCli(QString(QString("   Szukanie napisow w jezyku zapasowym [%1] (%2)...").arg(langBackup, e)));
++                printCli(QString(QString("   Search subtitle for another language [%1] (%2)...").arg(langBackup, e)));
+                 found = napi.lookForSubtitles(langBackup, e) || found;
+             }
+         }
+@@ -240,7 +240,7 @@
+         {
+             foreach(QString e, napi.listLoadedEngines())
+             {
+-                printCli(QString(QString("   Szukanie napisow [%1] (%2)...").arg(lang, e)));
++                printCli(QString(QString("   Search subtitle [%1] (%2)...").arg(lang, e)));
+                 found = napi.lookForSubtitles(lang, e) || found;
+ 
+                 if(sp == SP_BREAK_IF_FOUND && found)
+@@ -250,7 +250,7 @@
+             if(!found && !langBackup.isEmpty()) {
+                 foreach(QString e, napi.listLoadedEngines())
+                 {
+-                    printCli(QString(QString("   Szukanie napisow w jezyku zapasowym [%1] (%2)...").arg(langBackup, e)));
++                    printCli(QString(QString("   Search subtitle for another language [%1] (%2)...").arg(langBackup, e)));
+                     found = napi.lookForSubtitles(langBackup, e) || found;
+ 
+                     if(sp == SP_BREAK_IF_FOUND && found)
+@@ -262,7 +262,7 @@
+ 
+         if(!found)
+         {
+-            printCli(QString(QString("   Nie znaleziono napisow!")));
++            printCli(QString(QString("   Subtitles not found!")));
+             return EC_SUBTITLES_NOT_FOUND;
+         }
+ 
+@@ -281,8 +281,8 @@
+         {
+             bool ok = false;
+ 
+-            printCli(QString("   0)\tNie pobieraj napisow dla tego filmu"));
+-            printCli("   Znalezione napisy:");
++            printCli(QString("   0)\tDo not download subtitle for this video"));
++            printCli("   Found subtitles:");
+ 
+             int i = 1;
+ 
+@@ -309,7 +309,7 @@
+ 
+             while(!ok)
+             {
+-                std::cout << "   Wybierz napisy do pobrania: ";
++                std::cout << "   Select subtitles to download: ";
+                 char line[8];
+                 std::cin.getline(line, 8);
+ 
+@@ -317,13 +317,13 @@
+ 
+                 if(!ok)
+                 {
+-                    printCli("   Wpisz liczbe!");
++                    printCli("   Enter a number!");
+                     std::cin.clear();
+                 }
+                 else if((selIdx > list.size()) || (selIdx < 0))
+                 {
+                     ok = false;
+-                    printCli("   Wpisz liczbe z listy!");
++                    printCli("   Enter a number from the list!");
+                 }
+             }
+ 
+@@ -336,30 +336,30 @@
+ 
+         if(selIdx == -1) continue;
+ 
+-        printCli(QString(QString("   Pobieranie napisow z serwera...")));
++        printCli(QString(QString("   Server to download subtitle from...")));
+         if(!napi.download(selIdx))
+         {
+-            printCli(QString(QString("   Nie udalo sie pobrac napisow!")));
++            printCli(QString(QString("   Unable to download subtitles!")));
+             return EC_COULD_NOT_DOWNLOAD;
+         }
+ 
+-        printCli(QString(QString("   Rozpakowywanie napisow...")));
++        printCli(QString(QString("   Unpacking subtitle file...")));
+         if(!napi.unpack(selIdx))
+         {
+-            printCli(QString(QString("   Nie udało sie poprawnie rozpakowac napisow!")));
++            printCli(QString(QString("   Failed to unpack the subtitle file!")));
+             return EC_COULD_NOT_UNARCHIVE;
+         }
+ 
+         if(napi.ppEnabled())
+         {
+-            printCli(QString(QString("   Przetwarzanie pobranych napisow...")));
++            printCli(QString(QString("   Processing downloaded subtitle file...")));
+             napi.pp();
+         }
+ 
+-        printCli(QString(QString("   Dopasowywanie napisow...")));
++        printCli(QString(QString("   Adjusting the subtitle...")));
+         if(!napi.match())
+         {
+-            printCli(QString(QString("   Nie udalo sie dopasowac napisow!")));
++            printCli(QString(QString("   Could not adjust the subtitle!")));
+             return EC_COULD_NOT_MATCH;
+         }
+ 
+@@ -371,7 +371,7 @@
+ 
+ void QNapiCli::printHeader()
+ {
+-    printCli(QString("QNapi %1, %2\nwersja Qt: %3\n")
++    printCli(QString("QNapi %1, %2\nQt version: %3\n")
+                 .arg(QNAPI_DISPLAYABLE_VERSION)
+                 .arg(QNAPI_URL)
+                 .arg(qVersion()));
+@@ -379,25 +379,25 @@
+ 
+ void QNapiCli::printHelp()
+ {
+-    printCli(QString("QNapi rozprowadzany jest na warunkach licencji GNU General Public License v2.\n"));
+-    printCli(QString("Skladnia: %1 [opcje] [lista plikow]").arg(QFileInfo(arguments().at(0)).fileName()));
+-    printCli(QString("Dostepne opcje:"));
+-    printCli(QString("   -c, --console              pobieranie napisow z konsoli"));
+-    printCli(QString("   -q, --quiet                pobiera napisy nie wypisujac zadnych komunikatow"));
+-    printCli(QString("                              ani nie pokazujac zadnych okien (implikuje -d)\n"));
+-    printCli(QString("   -s, --show-list            pokazuj liste napisow (dziala tylko z -c)"));
+-    printCli(QString("   -d, --dont-show-list       nie pokazuj listy napisow (dziala tylko z -c)\n"));
+-    printCli(QString("   -l, --lang [jezyk]         preferowany jezyk napisow"));
+-    printCli(QString("   -lb,--lang-backup [jezyk]  zapasowy jezyk napisow\n"));
+-    printCli(QString("   -o, --options              wywoluje okno konfiguracji programu (tylko GUI)\n"));
+-    printCli(QString("   -h, --help                 pokazuje tekst pomocy"));
+-    printCli(QString("   -hl,--help-languages       listuje jezyki, w jakich mozna pobierac napisy\n"));
++    printCli(QString("QNapi is distributed under the GNU General Public License v2.\n"));
++    printCli(QString("Syntax: %1 [options] [list of files]").arg(QFileInfo(arguments().at(0)).fileName()));
++    printCli(QString("Available options:"));
++    printCli(QString("   -c, --console              Download subtitles using console"));
++    printCli(QString("   -q, --quiet                Download subtitles quietly without showing"));
++    printCli(QString("                              any messages or windows (implies -d)\n"));
++    printCli(QString("   -s, --show-list            show a list of subtitles (works only with -c)"));
++    printCli(QString("   -d, --dont-show-list       do not show a list of subtitles (works only with -c)\n"));
++    printCli(QString("   -l, --lang                 Preferred subtitle language"));
++    printCli(QString("   -lb,--lang-backup          Alternative subtitle language\n"));
++    printCli(QString("   -o, --options              Show program options (only GUI)\n"));
++    printCli(QString("   -h, --help                 Show help text"));
++    printCli(QString("   -hl,--help-languages       Lists the languages in which able to download subtitles\n"));
+ }
+ 
+ void QNapiCli::printHelpLanguages()
+ {
+-    printCli(QString("Oto lista rozpoznawanych przez QNapi jezykow i odpowiadajacym"));
+-    printCli(QString("im dwuliterowych kodow:\n"));
++    printCli(QString("List of languages recognized by QNapi, including corresponding"));
++    printCli(QString("two-letter language codes:\n"));
+ 
+     QNapiLanguage L, LB;
+     QStringList langs = L.listLanguages();
+@@ -411,13 +411,13 @@
+     L.setLanguage(GlobalConfig().language());
+     LB.setLanguage(GlobalConfig().languageBackup());
+ 
+-    printCli(QString("\nAktualnie ustawiony domyslny jezyk napisow: %1 (%2)")
++    printCli(QString("\nCurrent default subtitle language: %1 (%2)")
+                 .arg(L.toFullName()).arg(L.toTwoLetter()));
+ 
+     if(LB.toFullName().isEmpty()) {
+-        printCli(QString("Brak ustawionego zapasowego jezyka napisow"));
++        printCli(QString("No alternative subtitle language has been set"));
+     } else {
+-        printCli(QString("Aktualnie ustawiony zapasowy jezyk napisow: %1 (%2)")
++        printCli(QString("Current alternative subtitle language: %1 (%2)")
+                     .arg(LB.toFullName()).arg(LB.toTwoLetter()));
+     }
+ }
+
+--- a/src/qnapilanguage.cpp
++++ b/src/qnapilanguage.cpp
+@@ -75,149 +75,149 @@
+ {
+     codes2l << "sq";
+     codes3l << "alb";
+-    names << tr("Albański");
++    names << tr("Albanian");
+ 
+     codes2l << "en";
+     codes3l << "eng";
+-    names << tr("Angielski");
++    names << tr("English");
+ 
+     codes2l << "ar";
+     codes3l << "ara";
+-    names << tr("Arabski");
++    names << tr("Arabic");
+ 
+     codes2l << "bg";
+     codes3l << "bul";
+-    names << tr("Bułgarski");
++    names << tr("Bulgarian");
+ 
+     codes2l << "zh";
+     codes3l << "chi";
+-    names << tr("Chiński");
++    names << tr("Chinese");
+ 
+     codes2l << "hr";
+     codes3l << "hrv";
+-    names << tr("Chorwacki");
++    names << tr("Croatian");
+ 
+     codes2l << "cs";
+     codes3l << "cze";
+-    names << tr("Czeski");
++    names << tr("Czech");
+ 
+     codes2l << "da";
+     codes3l << "dan";
+-    names << tr("Duński");
++    names << tr("Danish");
+ 
+     codes2l << "et";
+     codes3l << "est";
+-    names << tr("Estoński");
++    names << tr("Estonian");
+ 
+     codes2l << "fi";
+     codes3l << "fin";
+-    names << tr("Fiński");
++    names << tr("Finnish");
+ 
+     codes2l << "fr";
+     codes3l << "fre";
+-    names << tr("Francuski");
++    names << tr("French");
+ 
+     codes2l << "gl";
+     codes3l << "glg";
+-    names << tr("Galicyjski");
++    names << tr("Galician");
+ 
+     codes2l << "el";
+     codes3l << "ell";
+-    names << tr("Grecki");
++    names << tr("Greek");
+ 
+     codes2l << "he";
+     codes3l << "heb";
+-    names << tr("Hebrajski");
++    names << tr("Hebrew");
+ 
+     codes2l << "es";
+     codes3l << "spa";
+-    names << tr("Hiszpanski");
++    names << tr("Spanish");
+ 
+     codes2l << "nl";
+     codes3l << "dut";
+-    names << tr("Holenderski");
++    names << tr("Dutch");
+ 
+     codes2l << "id";
+     codes3l << "ind";
+-    names << tr("Indonezyjski");
++    names << tr("Indonesian");
+ 
+     codes2l << "ja";
+     codes3l << "jpn";
+-    names << tr("Japoński");
++    names << tr("Japanese");
+ 
+     codes2l << "ko";
+     codes3l << "kor";
+-    names << tr("Koreański");
++    names << tr("Korean");
+ 
+     codes2l << "mk";
+     codes3l << "mac";
+-    names << tr("Macedoński");
++    names << tr("Macedonian");
+ 
+     codes2l << "de";
+     codes3l << "ger";
+-    names << tr("Niemiecki");
++    names << tr("German");
+ 
+     codes2l << "no";
+     codes3l << "nor";
+-    names << tr("Norweski");
++    names << tr("Norwegian");
+ 
+     codes2l << "oc";
+     codes3l << "oci";
+-    names << tr("Oksytański");
++    names << tr("Occitan");
+ 
+     codes2l << "fa";
+     codes3l << "per";
+-    names << tr("Perski (farsi)");
++    names << tr("Persian (farsi)");
+ 
+     codes2l << "pl";
+     codes3l << "pol";
+-    names << tr("Polski");
++    names << tr("Polish");
+ 
+     codes2l << "pt";
+     codes3l << "por";
+-    names << tr("Portugalski");
++    names << tr("Portuguese");
+ 
+     codes2l << "pb";
+     codes3l << "pob";
+-    names << tr("Portugalski-BR");
++    names << tr("Portuguese-BR");
+ 
+     codes2l << "ru";
+     codes3l << "rus";
+-    names << tr("Rosyjski");
++    names << tr("Russian");
+ 
+     codes2l << "ro";
+     codes3l << "rum";
+-    names << tr("Rumuński");
++    names << tr("Romanian");
+ 
+     codes2l << "sr";
+     codes3l << "scc";
+-    names << tr("Serbski");
++    names << tr("Serbian");
+ 
+     codes2l << "sl";
+     codes3l << "slv";
+-    names << tr("Słoweński");
++    names << tr("Slovenian");
+ 
+     codes2l << "sv";
+     codes3l << "swe";
+-    names << tr("Szwedzki");
++    names << tr("Swedish");
+ 
+     codes2l << "sk";
+     codes3l << "slo";
+-    names << tr("Słowacki");
++    names << tr("Slovak");
+ 
+     codes2l << "tr";
+     codes3l << "tur";
+-    names << tr("Turecki");
++    names << tr("Turkish");
+ 
+     codes2l << "vi";
+     codes3l << "vie";
+-    names << tr("Wietnamski");
++    names << tr("Vietnamese");
+ 
+     codes2l << "hu";
+     codes3l << "hun";
+-    names << tr("Węgierski");
++    names << tr("Hungarian");
+ 
+     codes2l << "it";
+     codes3l << "ita";
+-    names << tr("Włoski");
++    names << tr("Italian");
+ }
+
+--- a/src/qnapiopendialog.cpp
++++ b/src/qnapiopendialog.cpp
+@@ -25,11 +25,11 @@
+ 
+     if(filterMode == Movies)
+     {
+-        setNameFilter(tr("Filmy (%1);;Wszystkie pliki (*.*)").arg(GlobalConfig().movieExtensionsFilter()));
++        setNameFilter(tr("Videos (%1);;All files (*.*)").arg(GlobalConfig().movieExtensionsFilter()));
+     }
+     else if(filterMode == Subtitles)
+     {
+-        setNameFilter(tr("Napisy (%1);;Wszystkie pliki (*.*)").arg(GlobalConfig().subtitleExtensionsFilter()));
++        setNameFilter(tr("Subtitles (%1);;All files (*.*)").arg(GlobalConfig().subtitleExtensionsFilter()));
+     }
+ 
+     if(QFileInfo(init_path).isDir())
+@@ -45,7 +45,7 @@
+ 
+     sideUrls << QString(QDir::homePath() + "/Movies") << QString(QDir::homePath() + "/movies")
+                 << QString(QDir::homePath() + "/Video") << QString(QDir::homePath() + "/video")
+-                << QString(QDir::homePath() + "/Filmy") << QString(QDir::homePath() + "/filmy")
++                << QString(QDir::homePath() + "/Videos") << QString(QDir::homePath() + "/videos")
+                 << QString(QDir::homePath() + "/Wideo") << QString(QDir::homePath() + "/wideo");
+ 
+     QList<QUrl> urls = sidebarUrls();
+
+--- a/src/forms/frmlistsubtitles.cpp
++++ b/src/forms/frmlistsubtitles.cpp
+@@ -33,8 +33,8 @@
+ 
+ void frmListSubtitles::setFileName(const QString & name)
+ {
+-    ui.lbSelectSubtitles->setText(QString(  "Z poniższej listy wybierz napisy, które"
+-                                            " chcesz dopasować do pliku<br><br><b>%1</b>")
++    ui.lbSelectSubtitles->setText(QString(  "Select the subtitle which you want to"
++                                            " adjust to the video file<br><br><b>%1</b>")
+                                         .arg(name));
+ }
+ 
+@@ -94,8 +94,8 @@
+     if(ui.twSubtitles->selectedItems().size() == 0)
+     {
+         QMessageBox::warning(   this,
+-                                "Nie wybrano napisów z listy",
+-                                "Musisz wybrać napisy z listy!");
++                                "No subtitle selected",
++                                "You need to select a subtitle from the list!");
+     }
+     else
+     {
+
+--- a/src/forms/frmconvert.cpp
++++ b/src/forms/frmconvert.cpp
+@@ -91,7 +91,7 @@
+         QString detectedFormat = subConverter.detectFormat(srcSubFileName);
+         if(detectedFormat.isEmpty())
+         {
+-            ui.lbDetectedFormatValue->setText(tr("niepoprawny"));
++            ui.lbDetectedFormatValue->setText(tr("incorrect"));
+             ui.lbDetectedFormatValue->setStyleSheet("QLabel { color: red }");
+         } else {
+             ui.lbDetectedFormatValue->setText(detectedFormat);
+@@ -136,7 +136,7 @@
+         fpsNeeded = (srcSF->isTimeBased() != targetSF->isTimeBased()) || (ui.cbDelaySubtitles->isChecked() && !targetSF->isTimeBased());
+ 
+         QString targetDefaultExt = targetSF->defaultExtension();
+-        ui.cbTargetExtension->setItemText(0, tr("Domyślne (%1)").arg(targetDefaultExt));
++        ui.cbTargetExtension->setItemText(0, tr("Default (%1)").arg(targetDefaultExt));
+         generateTargetFileName();
+     }
+ 
+@@ -165,7 +165,7 @@
+ 
+ void frmConvert::movieFPSSelectClicked()
+ {
+-    QNapiOpenDialog openMovie(this, tr("Wybierz plik z filmem"),
++    QNapiOpenDialog openMovie(this, tr("Select a video file"),
+                               QFileInfo(ui.leSrcSubFile->text()).path(),
+                               QNapiOpenDialog::Movies);
+     if(openMovie.selectFile())
+@@ -185,7 +185,7 @@
+ 
+ void frmConvert::targetMovieFPSSelectClicked()
+ {
+-    QNapiOpenDialog openMovie(this, tr("Wybierz plik z filmem"),
++    QNapiOpenDialog openMovie(this, tr("Select a video file"),
+                               QFileInfo(ui.leSrcSubFile->text()).path(),
+                               QNapiOpenDialog::Movies);
+     if(openMovie.selectFile())
+@@ -249,11 +249,11 @@
+                                      fpsRatio,
+                                      delayOffset))
+     {
+-        QMessageBox::information(this, tr("Przekonwertowano napisy"),
+-                                 tr("Poprawnie zmieniono format napisów z '%1' na '%2'").arg(srcFormat, targetFormat));
++        QMessageBox::information(this, tr("Converted subtitles"),
++                                 tr("Changed subtitles format from '%1' to '%2'").arg(srcFormat, targetFormat));
+ 
+     } else {
+-        QMessageBox::warning(this, tr("Problem podczas konwertowania napisów"),
+-                                 tr("Wystąpił problem podczas zamiany formatu napisów!"));
++        QMessageBox::warning(this, tr("An error occured while converting strings"),
++                                 tr("Could not change subtitle format!"));
+     }
+ }
+
+--- a/src/forms/frmabout.cpp
++++ b/src/forms/frmabout.cpp
+@@ -21,7 +21,7 @@
+ 
+     setAttribute(Qt::WA_QuitOnClose, false);
+     ui.lbTitle->setText(QString("QNapi ") + QNAPI_DISPLAYABLE_VERSION);
+-    ui.lbQtVersion->setText(QString("Wersja Qt: ") + qVersion());
++    ui.lbQtVersion->setText(QString("Qt version: ") + qVersion());
+ 
+     QRect position = frameGeometry();
+     position.moveCenter(QDesktopWidget().availableGeometry().center());
+
+--- a/src/forms/frmoptions.cpp
++++ b/src/forms/frmoptions.cpp
+@@ -39,7 +39,7 @@
+ #endif
+ 
+     QString tlcode;
+-    ui.cbLangBackup->addItem("Brak", QVariant(""));
++    ui.cbLangBackup->addItem("Error", QVariant(""));
+     foreach(QString lang, QNapiLanguage("").listLanguages())
+     {
+         tlcode = QNapiLanguage(lang).toTwoLetter();
+@@ -97,14 +97,14 @@
+ 
+ void frmOptions::select7zPath()
+ {
+-    QString path7z = QFileDialog::getOpenFileName(this, tr("Wskaż ścieżkę do programu 7z"),
++    QString path7z = QFileDialog::getOpenFileName(this, tr("Specify the path for 7z executable"),
+                                                     QFileInfo(ui.le7zPath->text()).path());
+     if(!path7z.isEmpty())
+     {
+         if(!QFileInfo(path7z).isExecutable())
+-            QMessageBox::warning(this, tr("Niepoprawna ścieżka"),
+-                tr("Wskazana przez Ciebie ścieżka do programu 7z jest niepoprawna. Jeśli nie możesz "
+-                    "odnaleźć programu 7z, spróbuj zainstalować pakiet p7zip-full."));
++            QMessageBox::warning(this, tr("Invalid path"),
++                tr("Defined path to 7z executable is invalid. If you can not "
++                    "locate 7z executable, try installing p7zip-full package."));
+         else
+             ui.le7zPath->setText(path7z);
+     }
+@@ -123,7 +123,7 @@
+ void frmOptions::selectTmpPath()
+ {
+     QString tmpDir = QFileDialog::getExistingDirectory(this,
+-                                    tr("Wskaż katalog tymczasowy"),
++                                    tr("Specify temporary directory"),
+                                     QFileInfo(ui.leTmpPath->text()).path(),
+                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+     if(!tmpDir.isEmpty())
+@@ -171,8 +171,8 @@
+     {
+         item->setCheckState(Qt::Checked);
+         QMessageBox::warning(this,
+-                            "Ostrzeżenie",
+-                            "Przynajmniej jeden moduł pobierania musi pozostać aktywny!");
++                            "Warning",
++                            "At least one module collection must remain active!");
+     }
+     
+ }
+@@ -222,7 +222,7 @@
+     QString engineInfo = n.engineByName(engineName)->engineInfo();
+     
+     QMessageBox::information(this,
+-                             QString("Informacje o silniku %1").arg(engineName),
++                             QString("Engine information %1").arg(engineName),
+                              engineInfo);
+ }
+ 
+@@ -230,14 +230,14 @@
+ {
+     if(format == 0)
+     {
+-        ui.cbSubExtension->setItemText(0, tr("Domyślne"));
++        ui.cbSubExtension->setItemText(0, tr("Default"));
+     }
+     else
+     {
+         QString targetFormatName = ui.cbSubFormat->currentText();
+         SubtitleFormat * targetSF = GlobalFormatsRegistry().select(targetFormatName);
+         QString targetDefaultExt = targetSF->defaultExtension();
+-        ui.cbSubExtension->setItemText(0, tr("Domyślne (%1)").arg(targetDefaultExt));
++        ui.cbSubExtension->setItemText(0, tr("Default (%1)").arg(targetDefaultExt));
+     }
+ }
+ 
+--- a/src/forms/frmprogress.cpp
++++ b/src/forms/frmprogress.cpp
+@@ -91,22 +91,22 @@
+ 
+     if(!QNapi::checkP7ZipPath())
+     {
+-        QMessageBox::warning(0, tr("Brak programu p7zip!"),
+-                                tr("Ścieżka do programu p7zip jest nieprawidłowa!"));
++        QMessageBox::warning(0, tr("Can not find p7zip!"),
++                                tr("The path to the program p7zip is incorrect!"));
+         return false;
+     }
+ 
+     if(!QNapi::checkTmpPath())
+     {
+-        QMessageBox::warning(0, tr("Nieprawidłowy katalog tymczasowy!"),
+-                                tr("Nie można pisać do katalogu tymczasowego! Sprawdź swoje ustawienia."));
++        QMessageBox::warning(0, tr("Invalid temporary directory!"),
++                                tr("Unable to write to the temporary directory! Check your settings."));
+         return false;
+     }
+ 
+     if(getThread.queue.isEmpty())
+     {
+-        QMessageBox::warning(0, tr("Brak plików!"),
+-                                tr("Nie wskazano filmów do pobrania napisów!"));
++        QMessageBox::warning(0, tr("No files!"),
++                                tr("Indicated movies to download the subtitles for!"));
+         return false;
+     }
+ 
+@@ -139,8 +139,8 @@
+     if(stageProgress >= 0) lastStageProgress = stageProgress;
+ 
+     QString windowTitle = (lastAll > 1)
+-                            ? QString(tr("QNapi - pobieranie napisów (%1/%2)")).arg(lastCurrent + 1).arg(lastAll)
+-                            : QString(tr("QNapi - pobieranie napisów..."));
++                            ? QString(tr("QNapi - downloading subtitle (%1/%2)")).arg(lastCurrent + 1).arg(lastAll)
++                            : QString(tr("QNapi - downloading subtitle..."));
+     setWindowTitle(windowTitle);
+ 
+     ui.pbProgress->setMaximum(lastAll * 100);
+@@ -180,7 +180,7 @@
+     {
+         if(!getThread.criticalMessage.isEmpty())
+         {
+-            QMessageBox::critical(0, tr("Błąd krytyczny!"), getThread.criticalMessage);
++            QMessageBox::critical(0, tr("Critical error!"), getThread.criticalMessage);
+         }
+         else if(queue.size() > 0 && !getThread.subStatusList.isEmpty())
+         {
+@@ -202,13 +202,13 @@
+     if(getThread.isRunning())
+     {
+         if( QMessageBox::question(this, tr("QNapi"),
+-                tr("Czy chcesz przerwać pobieranie napisów?"),
++                tr("Do you want to cancel downloading the subtitle?"),
+                 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes )
+         {
+             mutex.lock();
+             showSummary = false;
+             getThread.requestAbort();
+-            ui.lbAction->setText(tr("Kończenie zadań..."));
++            ui.lbAction->setText(tr("Finishing the task..."));
+             ui.lbFileName->setText("");
+             ui.pbCancel->setEnabled(false);
+             qApp->processEvents();
+@@ -275,7 +275,7 @@
+     }
+     else if(!napi->addEngines(GlobalConfig().enginesList()))
+     {
+-        emit criticalError(tr("Błąd: ") + napi->error());
++        emit criticalError(tr("Error: ") + napi->error());
+         delete napi;
+         return;
+     }
+@@ -295,11 +295,11 @@
+         napi->setMoviePath(queue[i]);
+ 
+         emit progressChange(i, queue.size(), 0.1f);
+-        emit actionChange(tr("Sprawdzanie uprawnień do katalogu z filmem..."));
++        emit actionChange(tr("Checking permissions of the video directory..."));
+ 
+         if(!napi->checkWritePermissions())
+         {
+-            emit criticalError(tr("Brak uprawnień zapisu do katalogu '%1'!").arg(QFileInfo(queue[i]).path()));
++            emit criticalError(tr("No permission to write to the directory '%1'!").arg(QFileInfo(queue[i]).path()));
+             delete napi;
+             return;
+         }
+@@ -307,7 +307,7 @@
+         napi->clearSubtitlesList();
+ 
+         emit progressChange(i, queue.size(), 0.3f);
+-        emit actionChange(tr("Obliczanie sumy kontrolnej pliku..."));
++        emit actionChange(tr("Calculating checksum of the file..."));
+ 
+         napi->checksum();
+ 
+@@ -322,12 +322,12 @@
+             foreach(QString e, napi->listLoadedEngines())
+             {
+                 emit progressChange(i, queue.size(), 0.4f);
+-                emit actionChange(tr("Szukanie napisów [%1] (%2)...").arg(language, e));
++                emit actionChange(tr("Searching subtitle [%1] (%2)...").arg(language, e));
+                 found = napi->lookForSubtitles(language, e) || found;
+ 
+                 ABORT_POINT
+ 
+-                emit actionChange(tr("Szukanie napisów w języku zapasowym [%1] (%2)...").arg(languageBackup, e));
++                emit actionChange(tr("Searching alternative subtitle [%1] (%2)...").arg(languageBackup, e));
+                 found = napi->lookForSubtitles(languageBackup, e) || found;
+ 
+                 ABORT_POINT
+@@ -338,7 +338,7 @@
+             foreach(QString e, napi->listLoadedEngines())
+             {
+                 emit progressChange(i, queue.size(), 0.4f);
+-                emit actionChange(tr("Szukanie napisów [%1] (%2)...").arg(language, e));
++                emit actionChange(tr("Searching subtitle [%1] (%2)...").arg(language, e));
+                 found = napi->lookForSubtitles(language, e) || found;
+ 
+                 if(sp == SP_BREAK_IF_FOUND && found){
+@@ -352,7 +352,7 @@
+                 foreach(QString e, napi->listLoadedEngines())
+                 {
+                     emit progressChange(i, queue.size(), 0.45f);
+-                    emit actionChange(tr("Szukanie napisów w języku zapasowym [%1] (%2)...").arg(languageBackup, e));
++                    emit actionChange(tr("Searching alternative subtitle [%1] (%2)...").arg(languageBackup, e));
+                     found = napi->lookForSubtitles(languageBackup, e) || found;
+ 
+                     if(sp == SP_BREAK_IF_FOUND && found)
+@@ -395,7 +395,7 @@
+         }
+ 
+         emit progressChange(i, queue.size(), 0.5);
+-        emit actionChange(tr("Pobieranie napisów dla pliku..."));
++        emit actionChange(tr("Downloading the subtitle file..."));
+ 
+         if(!napi->download(selIdx))
+         {
+@@ -409,7 +409,7 @@
+         ABORT_POINT
+ 
+         emit progressChange(i, queue.size(), 0.65);
+-        emit actionChange(tr("Rozpakowywanie napisów..."));
++        emit actionChange(tr("Unpacking the subtitle file..."));
+ 
+         if(!napi->unpack(selIdx))
+         {
+@@ -421,12 +421,12 @@
+         if(napi->ppEnabled())
+         {
+             emit progressChange(i, queue.size(), 0.8f);
+-            emit actionChange(tr("Przetwarzanie napisów..."));
++            emit actionChange(tr("Processing the subtitle..."));
+             napi->pp();
+         }
+ 
+         emit progressChange(i, queue.size(), 0.9);
+-        emit actionChange(tr("Dopasowywanie napisów..."));
++        emit actionChange(tr("Adjusting the subtitle..."));
+ 
+         if(!napi->match())
+         {
+@@ -435,7 +435,7 @@
+             ++napiFail;
+             subStatusList << QNapiSubtitleInfo::fromFailed(queue[i]);
+ 
+-            emit criticalError(tr("Nie udało się dopasować napisów!!"));
++            emit criticalError(tr("Could not adjust the subtitle!!"));
+             return;
+         }
+ 
+--- a/src/forms/frmscan.cpp
++++ b/src/forms/frmscan.cpp
+@@ -97,7 +97,7 @@
+     QString dir = QFileInfo(ui.leDirectory->text()).path();
+     dir = QDir().exists(dir) ? dir : GlobalConfig().lastScanDir();
+ 
+-    QNapiOpenDialog openDialog(this, tr("Wskaż katalog do skanowania"),
++    QNapiOpenDialog openDialog(this, tr("Select the folder to scan"),
+                                 dir, QNapiOpenDialog::None);
+ 
+     if(openDialog.selectDirectory())
+@@ -122,8 +122,8 @@
+     {
+         ui.leDirectory->setEnabled(false);
+         ui.pbDirectorySelect->setEnabled(false);
+-        ui.pbScan->setText(tr("Przerwij"));
+-        ui.lbAction->setText(tr("Skanowanie katalogów..."));
++        ui.pbScan->setText(tr("Cancel"));
++        ui.lbAction->setText(tr("Scanning directories..."));
+         ui.pbGet->setEnabled(false);
+         enableControlWidgets(false);
+         enableFilesWidgets(false);
+@@ -141,7 +141,7 @@
+     else
+     {
+         scanThread.requestAbort();
+-        ui.lbAction->setText(tr("Przerywanie skanowania katalogów..."));
++        ui.lbAction->setText(tr("Scanning of directories interrupted..."));
+         ui.pbScan->setEnabled(false);
+         qApp->processEvents();
+         scanThread.wait();
+@@ -164,17 +164,17 @@
+ 
+ void frmScan::folderChange(const QString & dirName)
+ {
+-    ui.lbAction->setText(QString("Skanowanie katalogu <b>%1</b>..").arg(dirName));
++    ui.lbAction->setText(QString("Scanning directory <b>%1</b>..").arg(dirName));
+ }
+ 
+ void frmScan::scanFinished()
+ {
+     enableControlWidgets(true);
+     enableFilesWidgets(ui.lwMovies->count() > 0);
+-    ui.pbScan->setText("Skanuj");
++    ui.pbScan->setText("Scan");
+     ui.lbAction->setText(tr((ui.lwMovies->count() > 0)
+-                            ? "Zaznacz filmy, do których chcesz pobrać napisy."
+-                            : "Nie znaleziono plików z filmami."));
++                            ? "Select the videos you wish to download subtitles for."
++                            : "Not video files found."));
+ }
+ 
+ void frmScan::enableControlWidgets(bool enable)
+
+--- a/src/forms/frmsummary.cpp
++++ b/src/forms/frmsummary.cpp
+@@ -73,8 +73,8 @@
+     ui.lbSuccess->setVisible(goodCount != 0);
+     ui.lbFail->setVisible(badCount != 0);
+ 
+-    ui.lbSuccess->setText(tr("Pobrano napisy dla %1 %2")
+-        .arg(goodCount).arg(tr(goodCount > 1 ? "plików" : "pliku")));
+-    ui.lbFail->setText(tr("Nie pobrano napisów dla %1 %2")
+-        .arg(badCount).arg(tr(badCount > 1 ? "plików" : "pliku")));
++    ui.lbSuccess->setText(tr("Downloading subtitle for %1 %2")
++        .arg(goodCount).arg(tr(goodCount > 1 ? "files" : "file")));
++    ui.lbFail->setText(tr("Could not download subtitle for %1 %2")
++        .arg(badCount).arg(tr(badCount > 1 ? "files" : "file")));
+ }
+
+--- a/src/engines/qnapiprojektengine.cpp
++++ b/src/engines/qnapiprojektengine.cpp
+@@ -63,7 +63,7 @@
+ // zwraca informacje nt. modulu
+ QString QNapiProjektEngine::engineInfo()
+ {
+-    return "Moduł pobierania napisów z bazy <b>www.napiprojekt.pl</b>";
++    return "Fetching from <b>www.napiprojekt.pl</b>";
+ }
+ 
+ // zwraca ikone w formacie XMP
+
+--- a/src/engines/qnapisy24engine.cpp
++++ b/src/engines/qnapisy24engine.cpp
+@@ -37,7 +37,7 @@
+ 
+ QString QNapisy24Engine::engineInfo()
+ {
+-    return "Moduł pobierania napisów z bazy <b>www.napisy24.pl</b><br />";
++    return "Fetching from <b>www.napisy24.pl</b><br />";
+ }
+ 
+ QIcon QNapisy24Engine::engineIcon()
+
+--- a/src/engines/qopensubtitlesengine.cpp
++++ b/src/engines/qopensubtitlesengine.cpp
+@@ -48,7 +48,7 @@
+ // zwraca informacje nt. modulu
+ QString QOpenSubtitlesEngine::engineInfo()
+ {
+-    return "Moduł pobierania napisów z bazy <b>www.opensubtitles.org</b>";
++    return "Fetching from <b>www.opensubtitles.org</b>";
+ }
+ 
+ // zwraca ikone w formacie XMP
+
+--- a/src/subconvert/subtitleconverter.cpp
++++ b/src/subconvert/subtitleconverter.cpp
+@@ -168,7 +168,7 @@
+                 adEntry.frameStart = sf.entries.back().frameStop + 50L;
+                 adEntry.frameStop = adEntry.frameStart + 200L;
+             }
+-            QString ad = QString("Napisy pobrane i przetworzone programem QNapi|");
++            QString ad = QString("QNapi has downloaded and processed the subtitles|");
+             adEntry.tokens = targetFormat->decodeTokenStream(ad);
+             SubToken urlToken;
+             urlToken.type = STT_WORD;
