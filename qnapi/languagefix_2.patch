@@ -5,7 +5,7 @@
    </property>
    <property name="windowTitle">
 -   <string>QNapi - informacje o programie</string>
-+   <string>QNapi - Information about the program</string>
++   <string>QNapi - About</string>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="3" column="2">
@@ -32,7 +32,7 @@
          <widget class="QLabel" name="lbUseNP">
           <property name="text">
 -          <string>Program korzysta z bazy www.napiprojekt.pl</string>
-+          <string>The program uses the database of www.napiprojekt.pl</string>
++          <string>The program uses www.napiprojekt.pl subtitle database</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -41,7 +41,7 @@
          <widget class="QLabel" name="lbUseOS">
           <property name="text">
 -          <string>Program korzysta z bazy www.opensubtitles.org</string>
-+          <string>The program uses the database of www.opensubtitles.org</string>
++          <string>The program uses www.opensubtitles.org subtitle database</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -50,7 +50,7 @@
          <widget class="QLabel" name="lbUseNP24">
           <property name="text">
 -          <string>Program korzysta z bazy www.napisy24.pl</string>
-+          <string>The program uses the database of www.napisy24.pl</string>
++          <string>The program uses www.napisy24.pl subtitle database</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -199,7 +199,7 @@
       </property>
       <property name="text">
 -      <string>Docelowa nazwa pliku:</string>
-+      <string>Target file name:</string>
++      <string>Target subtitle file name:</string>
       </property>
      </widget>
     </item>
@@ -220,7 +220,7 @@
    </property>
    <property name="windowTitle">
 -   <string>QNapi - wybierz napisy z listy</string>
-+   <string>QNapi - select subtitles from the list</string>
++   <string>QNapi - Select subtitles from the list</string>
    </property>
    <property name="windowIcon">
     <iconset resource="../res/resources.qrc">
@@ -275,7 +275,7 @@
    </property>
    <property name="windowTitle">
 -   <string>QNapi - opcje programu</string>
-+   <string>QNapi - settings</string>
++   <string>QNapi - Settings</string>
    </property>
    <property name="windowIcon">
     <iconset resource="../res/resources.qrc">
@@ -675,7 +675,7 @@
    </property>
    <property name="windowTitle" >
 -   <string>QNapi - skanowanie katalogów i dopasowywanie napisów</string>
-+   <string>QNapi - directory scanning and string matching</string>
++   <string>QNapi - Directory scanning and subtitle matching</string>
    </property>
    <property name="windowIcon" >
     <iconset resource="../res/resources.qrc" >:/icon/qnapi.png</iconset>
