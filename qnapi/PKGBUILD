@@ -14,17 +14,22 @@ changelog=ChangeLog
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QNapi/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 languagefix.patch
 languagefix_2.patch
-defaultsublanguage.patch)
+defaultsublanguage.patch
+en.png)
 sha256sums=('d189150944b2524e06bec3215caf4aa8503ee4f2597954cba5c2568e4a3b8a92'
-            '3c285a477e3dcced2457486886401bb506001089c258c5315a835edbef4bab91'
-            '03df5456a7fa3ea97941f4fd348fcb92e89cee1553a34cd7942fe8c9c7f9a013'
-            'f985cd7f1c75ac0913b762b94d5ea102fdb3d3dd9b4bc72e305783d25315ed73')
+            'a48ab82ac0d444006ccc3810a75dc96fa894e500118b4b07ce24359f4cf3fa91'
+            '0861a56d7a8456b610f5c118cc7007aea177c07e5cde3ff4457f6301b28c013f'
+            'f985cd7f1c75ac0913b762b94d5ea102fdb3d3dd9b4bc72e305783d25315ed73'
+            '8e48a8d3e16c9e74af247fa52fc12094a31cad8d648a681831c17b479b9c898f')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     patch -Np1 -i $srcdir/languagefix.patch
     patch -Np1 -i $srcdir/languagefix_2.patch
     patch -Np1 -i $srcdir/defaultsublanguage.patch
+    
+    rm ./res/langs/en.png
+    cp $srcdir/en.png ./res/langs/
 }
 
 build() {
