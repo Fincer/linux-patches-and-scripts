@@ -1046,3 +1046,15 @@
              adEntry.tokens = targetFormat->decodeTokenStream(ad);
              SubToken urlToken;
              urlToken.type = STT_WORD;
+
+--- a/src/qsubmatcher.cpp
++++ b/src/qsubmatcher.cpp
+@@ -74,7 +74,7 @@
+         if(!noBackup)
+         {
+             QFileInfo targetSubtitlesFileInfo(targetSubtitlesFilePath);
+-            QString newName = constructSubtitlePath(targetMoviefilePath, targetSubtitlesFileInfo.suffix(), "_kopia");
++            QString newName = constructSubtitlePath(targetMoviefilePath, targetSubtitlesFileInfo.suffix(), "_copy");
+ 
+             if(QFile::exists(newName))
+                 QFile::remove(newName);
