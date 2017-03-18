@@ -207,7 +207,7 @@
      <widget class="QPushButton" name="pbDownload">
       <property name="text">
 -      <string>Pobierz napisy</string>
-+      <string>Download subtitles</string>
++      <string>Download subtitle</string>
       </property>
      </widget>
     </item>
@@ -223,7 +223,7 @@
      <widget class="QLabel" name="lbGreenHint">
       <property name="text">
 -      <string>Na zielono podświetlono napisy &lt;b&gt;prawdopodobnie&lt;/b&gt; pasujące do Twojego filmu.</string>
-+      <string>Highlight subtitles &lt;b&gt;likely matching&lt;/b&gt; with your video with green.</string>
++      <string>Subtitles &lt;b&gt;likely matching&lt;/b&gt; with your video highlighted with green.</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignJustify|Qt::AlignVCenter</set>
@@ -232,7 +232,7 @@
      <widget class="QLabel" name="lbRedHint">
       <property name="text">
 -      <string>Na czerwono podświetlono napisy &lt;b&gt;prawdopodobnie&lt;/b&gt; niepasujące do Twojego filmu.</string>
-+      <string>Highlight subtitles &lt;b&gt;likely not matching&lt;/b&gt; with your video with red.</string>
++      <string>Subtitles &lt;b&gt;likely not matching&lt;/b&gt; with your video highlighted with red.</string>
       </property>
      </widget>
     </item>
