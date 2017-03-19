@@ -11,7 +11,7 @@ searchinside.desktop
 searchinside.sh
 searchinside-casesensitive.sh
 )
-depends=('kdialog' 'grep' 'findutils' 'dolphin' 'konsole')
+depends=('grep' 'findutils' 'dolphin' 'konsole')
 optdepends=()
 conflicts=()
 #provides=''
