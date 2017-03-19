@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=video/*
+Icon=qnapi
+Actions=qnapi-downloadsub;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+
+[Desktop Action qnapi-downloadsub]
+Name=Download subtitles
+Icon=qnapi
+Exec=konsole --workdir $(pwd) -p "tabtitle=Download subtitles" -e /usr/share/kservices5/ServiceMenus/qnapi-downloadsub.sh

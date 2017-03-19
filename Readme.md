@@ -109,6 +109,15 @@ This script can be used for multiple files at the same time but is developed for
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**kde-servicemenus-qnapi**
+--------------
+
+Plasma 5 Dolphin service menu script for downloading video subtitles.
+
+Requires qnapi.
+
+FORMAT: Arch Linux PKGBUILD script + source files.
+
 **kde-servicemenus-searchactions**
 --------------
 
