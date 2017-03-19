@@ -65,7 +65,7 @@
      connect(getAction, SIGNAL(triggered()), this, SLOT(showOpenDialog()));
  
 -    scanAction = new QAction(tr("Skanuj katalogi"), 0);
-+    scanAction = new QAction(tr("Scan catalogs"), 0);
++    scanAction = new QAction(tr("Scan directories"), 0);
      connect(scanAction, SIGNAL(triggered()), this, SLOT(showScanDialog()));
  
 -    convertAction = new QAction(tr("Konwertuj napisy"), 0);
@@ -118,7 +118,7 @@
      {
          openDialog = new QNapiOpenDialog(0,
 -                            tr("Wybierz jeden lub więcej plików z filmami"),
-+                            tr("Select one or more video files"),
++                            tr("Select one or more video files to download subtitles for"),
                              GlobalConfig().previousDialogPath(),
                              QNapiOpenDialog::Movies);
      }
@@ -341,7 +341,7 @@
 +    printCli(QString("   -lb,--lang-backup          Alternative subtitle language\n"));
 +    printCli(QString("   -o, --options              Show program options (only GUI)\n"));
 +    printCli(QString("   -h, --help                 Show help text"));
-+    printCli(QString("   -hl,--help-languages       Lists the languages in which able to download subtitles\n"));
++    printCli(QString("   -hl,--help-languages       List of available subtitle languages\n"));
  }
  
  void QNapiCli::printHelpLanguages()
