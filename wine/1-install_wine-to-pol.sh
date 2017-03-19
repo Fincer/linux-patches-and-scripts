@@ -4,9 +4,10 @@
 updpkgsums
 makepkg
 
-if [[ $(find ./ -type f -iname "*.tar.xz" | wc -l) -eq 1 ]]; then
+if [[ $(find ./ -type f -iname "*.tar.xz" | wc -l) -eq 1 ]]; then
 #Install compiled Wine files to their corresponding places in PlayOnLinux installation.
-    bash -c ./playonlinux-script/install-to-pol.sh
+    cd ./playonlinux-script/
+    bash ./install-to-pol.sh
 fi
     
 #Remove deprecated src & pkg folders
