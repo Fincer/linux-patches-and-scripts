@@ -186,7 +186,7 @@
          napi.clearSubtitlesList();
  
 -        printCli(QString(QString("   Obliczanie sum kontrolnych...")));
-+        printCli(QString(QString("   Calculation of checksums...")));
++        printCli(QString(QString("   Calculating checksums...")));
          napi.checksum();
  
          bool found = false;
@@ -245,7 +245,7 @@
              while(!ok)
              {
 -                std::cout << "   Wybierz napisy do pobrania: ";
-+                std::cout << "   Select subtitles to download: ";
++                std::cout << "   Select subtitle file to download: ";
                  char line[8];
                  std::cin.getline(line, 8);
  

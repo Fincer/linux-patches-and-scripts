@@ -17,7 +17,7 @@ languagefix_2.patch
 defaultsublanguage.patch
 en.png)
 sha256sums=('d189150944b2524e06bec3215caf4aa8503ee4f2597954cba5c2568e4a3b8a92'
-            'f3d5b3c7f2a3e5a8ee327d9b3e3aacbab13f9e44eb103f7e1e1990450afda962'
+            '72329d56129ee7a3fb7a34eac5b17365ac23ec8f2bc32939befa6ecac36e98cd'
             'a9f6f0c80219e29a79d731426e3e85062673b8a3773500e415bf6cea828ea79e'
             'f985cd7f1c75ac0913b762b94d5ea102fdb3d3dd9b4bc72e305783d25315ed73'
             '8e48a8d3e16c9e74af247fa52fc12094a31cad8d648a681831c17b479b9c898f')
