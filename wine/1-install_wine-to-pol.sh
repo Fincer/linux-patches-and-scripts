@@ -11,6 +11,7 @@ if [[ $(find ./ -type f -iname "*.tar.xz" | wc -l) -eq 1 ]]; then
 fi
     
 #Remove deprecated src & pkg folders
+cd ..
 rm -fR ./{src,pkg}
 
 #Compiled tar.xz package is not "compatible" or as good as the Wine package compiled with the original PKGBUILD rules. Thus, we remove the created tar.xz file.
