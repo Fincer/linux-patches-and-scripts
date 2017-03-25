@@ -319,7 +319,7 @@ Set of libraries to manipulate U3D-formatted data. IDTF to U3D converter.
 
 FORMAT: Arch Linux PKGBUILD script + source archive.
 
-**wine**
+**wine-playonlinux**
 --------------
 
 Patches & customized PKGBUILD script for Wine (Staging). Automatic PlayOnLinux installation script included.
