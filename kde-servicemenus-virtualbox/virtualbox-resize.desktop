@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+Icon=virtualbox-vdi
+MimeType=application/x-virtualbox-vdi
+Actions=virtualbox-resize
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+TryExec=VBoxManage
+
+[Desktop Action virtualbox-resize]
+Name=Resize VirtualBox Machine
+Icon=virtualbox-vdi
+Exec=/usr/share/kservices5/ServiceMenus/virtualbox-resize.sh

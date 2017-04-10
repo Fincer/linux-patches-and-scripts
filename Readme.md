@@ -132,6 +132,15 @@ Plasma 5 Dolphin service menu script for hacking and breaking PDF password prote
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**kde-servicemenus-virtualbox**
+--------------
+
+Plasma 5 Dolphin service menu script for resizing VirtualBox VDI files (virtual machines) via right clicking. 
+
+Input value: size in gigabyte (only a number, nothing else)
+
+FORMAT: Arch Linux PKGBUILD script + source files.
+
 **kde-thumbnailer-ooxml-kf5**
 --------------
 
