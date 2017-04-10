@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=image/*
+Icon=image
+Actions=flif_conversion;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+TryExec=flif
+
+[Desktop Action flif_conversion]
+Name=Convert to FLIF format
+Icon=image
+Exec=/usr/share/kservices5/ServiceMenus/flif-conversion.sh 

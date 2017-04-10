@@ -1,0 +1,41 @@
+# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+
+pkgname=qt-flif-plugin-git
+_pkgname=qt-flif-plugin
+pkgver=r14.c1fff14
+pkgrel=1
+pkgdesc="Free Lossless Image Format"
+arch=("i686" "x86_64")
+url="https://github.com/FLIF-hub/FLIF"
+license=('GPL3')
+conflicts=('qt-flif-plugin')
+provides=('qt-flif-plugin')
+depends=('flif' 'qt5-base')
+makedepends=('make')
+source=('git+https://github.com/spillerrec/qt-flif-plugin.git'
+disable-callback-temporarily.patch)
+sha256sums=('SKIP'
+            'd383d802b04a5f286e11ad53bdaaf0bc20b5392c5c73b29ba7cea1f78a9e2be0')
+
+prepare() {
+  cd "$srcdir/${_pkgname}"
+  patch -Np1 -i $srcdir/disable-callback-temporarily.patch
+}
+  
+  
+pkgver() {
+      cd "$srcdir/${_pkgname}"
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/${_pkgname}"
+  qmake
+  make
+}
+
+package() {
+  cd "$srcdir/${_pkgname}"
+  mkdir -p "${pkgdir}/usr/lib/qt/plugins/imageformats/"
+  install -m755 "$srcdir/${_pkgname}/libflif.so" "${pkgdir}/usr/lib/qt/plugins/imageformats/"
+}

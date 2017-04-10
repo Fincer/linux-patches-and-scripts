@@ -75,6 +75,19 @@ Plasma 5 Dolphin service menu script for cr2hdr package.
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**kde-servicemenus-flifconversion**
+--------------
+
+Plasma 5 Dolphin service menu script for converting images to FLIF format.
+
+Requirements: FLIF libraries ([GitHub source](https://github.com/FLIF-hub/FLIF) or [AUR Package](https://aur.archlinux.org/packages/flif-git/))
+
+It is recommended that you add FLIF mimetype (as image/flif) in system-wide.
+
+You may consider building imagemagick with FLIF support, too (use configure flag --with-flif) and installing qt-flif-plugin package (see it below).
+
+FORMAT: Arch Linux PKGBUILD script + source files.
+
 **kde-servicemenus-hexstrings**
 --------------
 
@@ -322,6 +335,13 @@ Homepage:
 [Github - QNapi](https://github.com/QNapi/qnapi/)
 
 FORMAT: Arch Linux PKGBUILD script + patch files.
+
+**qt-flif-plugin**
+--------------
+
+Add FLIF image format support for KDE environment.
+
+FORMAT: Arch Linux PKGBUILD script.
 
 **u3d**
 --------------
