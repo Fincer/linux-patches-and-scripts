@@ -295,6 +295,8 @@ FORMAT: Arch Linux PKGBUILD script + patch files.
 
 WhatsApp protocol implementation for libpurple (Pidgin)
 
+NOTE: Deprecated plugin, the development has been suspended. Doesn't support the new whatsapp web interface.
+
 FORMAT: Arch Linux PKGBUILD script.
 
 **qgifer**
