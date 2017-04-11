@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Magic Lantern Bootable Card Utility
+Comment=A program for adding Canon-compatible boot flag into SD Card
+Exec=konsole --workdir=$(pwd) -p "Magic Lantern Bootable Card Utility" --hold -e sudo ml-bootablecard
+Icon=/usr/share/pixmaps/ml.png
+Type=Application
+Categories=Application;Utility;
+StartupNotify=true

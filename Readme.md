@@ -61,6 +61,13 @@ CDEmu Daemon manager for Plasma 5 desktop with an additional "start in systray" 
 
 FORMAT: Arch Linux PKGBUILD script + patch file.
 
+**kde-magiclantern-shortcut**
+--------------
+
+Adds a KDE5 compatible shortcut file (Kicker/Kickoff launchers) for magiclantern-bootablecard package.
+
+FORMAT: Arch Linux PKGBUILD script + source files.
+
 **kde-servicemenus-cr2fits**
 --------------
 
