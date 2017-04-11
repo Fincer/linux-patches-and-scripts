@@ -178,6 +178,17 @@ Video background for Plasma 4/KDE4 desktop environment.
 
 FORMAT: Arch Linux PKGBUILD script + patch file.
 
+**magiclantern-bootablecard**
+--------------
+
+Add Canon's boot flag into a SD card, as required by Magic Lantern firmware. Original source code [here](https://bitbucket.org/hudson/magic-lantern/src/11f405b62b31/contrib/make-bootable/?at=crop_rec_4k)
+
+The bash script file has been modified to be more user-friendly. You can use a custom mount point, and the script asks you confirmation about the correct path before the script execution starts.
+
+Usage: once you've inserted a SD card into your computer, use 'ml-bootablecard' command to add the boot flag.
+
+FORMAT: Arch Linux PKGBUILD script + custom source files.
+
 **mlv2dng**
 --------------
 
