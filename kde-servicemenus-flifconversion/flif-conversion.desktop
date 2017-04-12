@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Service
 ServiceTypes=KonqPopupMenu/Plugin
-MimeType=image/*
+MimeType=image/png
 Icon=image
 Actions=flif_conversion;
 X-KDE-StartupNotify=false
