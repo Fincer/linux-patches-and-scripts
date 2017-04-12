@@ -89,7 +89,7 @@ Plasma 5 Dolphin service menu script for converting images to FLIF format.
 
 Requirements: FLIF libraries ([GitHub source](https://github.com/FLIF-hub/FLIF) or [AUR Package](https://aur.archlinux.org/packages/flif-git/))
 
-It is recommended that you add FLIF mimetype (as image/flif) in system-wide.
+It is recommended that you add FLIF mimetype (as image/x-flif) in system-wide.
 
 You may consider building imagemagick with FLIF support, too (use configure flag --with-flif) and installing qt-flif-plugin package (see it below).
 
@@ -358,6 +358,8 @@ FORMAT: Arch Linux PKGBUILD script + patch files.
 --------------
 
 Add FLIF image format support for KDE environment.
+
+NOTE: Add image/x-flif Mimetype to get this work (works with gwenview & kolourpaint at least).
 
 FORMAT: Arch Linux PKGBUILD script.
 
