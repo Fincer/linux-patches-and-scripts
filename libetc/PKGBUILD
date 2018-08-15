@@ -5,7 +5,7 @@ pkgdesc='Redirect all dotfile calls from $HOME to $XDG_CONFIG_HOME, following th
 arch=(any)
 url='http://ordiluc.net/fs/libetc/'
 license=(GPL)
-makedepends=('make')
+makedepends=('make' 'gcc')
 depends=('glibc')
 source=(http://ordiluc.net/fs/libetc/libetc-0.4.tar.gz
 patch_add_missing_header.patch)
