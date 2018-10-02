@@ -1,0 +1,13 @@
+Add missing error headers
+by Pekka Helenius, 2018
+
+--- a/sockstat.c	2008-06-01 04:52:39.000000000 +0300
++++ b/sockstat.c	2018-10-02 23:29:16.872336139 +0300
+@@ -38,6 +38,7 @@
+ #include <dirent.h>
+ #include <ctype.h>
+ #include <errno.h>
++#include <err.h>
+ #include <pwd.h>
+ #include <grp.h>
+ #include <assert.h>
