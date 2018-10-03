@@ -52,6 +52,18 @@ Homepage:
 
 FORMAT: Arch Linux PKGBUILD script + source archive.
 
+**kbd-fi-nbsp**
+--------------
+
+Custom Finnish keyboard settings and recommendations to eliminate non-breaking space character which is usually typed unintentionally in commands.
+
+- Adds a custom 'fi_nbsp' keymap for TTY sessions (CLI)
+
+- Recommendations to use similar layout in X11 (GUI) environments
+
+The package includes installation instructions to set up these settings on your system.
+
+
 **kde-cdemu-manager**
 --------------
 
