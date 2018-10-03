@@ -1,0 +1,66 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
+_pkgname=kbd
+_pkgver=2.0.4
+
+pkgname=kbd-fi-nbsp
+pkgver=1
+pkgrel=1
+pkgdesc="Finnish keyboard layout without non-breaking space"
+arch=('any')
+url="http://www.kbd-project.org"
+license=('GPL')
+depends=('kbd')
+makedepends=('gzip' 'patch')
+source=(https://www.kernel.org/pub/linux/utils/${_pkgname}/${_pkgname}-${_pkgver}.tar.xz
+patch_fi-nbsp-removal_kbd.patch)
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
+  patch -Np1 -i ../patch_fi-nbsp-removal_kbd.patch
+}
+
+package() {
+  gzip "${srcdir}/${_pkgname}-${_pkgver}"/data/keymaps/i386/qwerty/fi.map
+
+  mkdir -p "$pkgdir"/usr/share/kbd/keymaps/i386/qwerty/
+
+  install -Dm644 "${srcdir}/${_pkgname}-${_pkgver}"/data/keymaps/i386/qwerty/fi.map.gz "$pkgdir"/usr/share/kbd/keymaps/i386/qwerty/fi_nbsp.map.gz 
+
+  msg2 '
+
+    Usage (systemd-dependent Linux systems):
+
+    TTYs:
+    1) Run "sudo localectl set-keymap fi_nbsp"
+       Settings are stored in /etc/vconsole.conf
+
+    2) Re-login and confirm changes by issuing "localectl" without arguments
+
+-------------
+
+    X11:
+    1) Prefer "Finnish (classic)" layout in your DE settings
+
+    2) Add 
+
+        Alternative A) - Set classical layout:
+
+            setxkbmap -layout "fi(fi)"
+
+        Alternative B) - Override current keycode settings:
+
+            xmodmap -e "keycode  65 = space space space space space space space"
+
+       in your ~/.xinitrc file (single X desktop) or in your ~./.bashrc file (recommended). 
+       (Use different shell startup file if your shell env is not Bash)
+
+       Using ~./.bashrc instead of ~/.xinitrc is recommended if you use multiple desktops and prefer
+       launching them directly e.g. by issuing commands like "startkde" or "openbox-session".
+       In addition, if you use "nvidia-xrun" on Nvidia Optimus laptop, use ~./.bashrc file. 
+
+  '
+
+}
+md5sums=('c1635a5a83b63aca7f97a3eab39ebaa6'
+         'c060f9a6ead46950671f9324dabb24a4')
