@@ -1,0 +1,11 @@
+--- a/data/keymaps/i386/qwerty/fi.map
++++ b/data/keymaps/i386/qwerty/fi.map
+@@ -127,7 +127,7 @@
+ keycode  56 = Alt
+ keycode  57 = space            space            space
+ 	control keycode  57 = nul
+-	altgr shift keycode  57 = nobreakspace
++#	altgr shift keycode  57 = nobreakspace
+ keycode  58 = Caps_Lock
+ keycode  86 = less             greater          bar
+ 	alt altgr keycode  86 = Meta_bar
