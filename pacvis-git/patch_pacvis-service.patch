@@ -1,0 +1,31 @@
+Pekka Helenius (~Fincer):
+Fix crucial issues of PacVis server default behavior
+ - run the server as a user, not as root
+   Root is not truly required and may cause serious security issues
+
+ - remove non-working restart loop which renders the server unusable
+ - increase memory limit. Adjust for your needs
+
+--- a/pacvis@.service
++++ b/pacvis@.service
+@@ -3,14 +3,12 @@
+ After=network.target
+ 
+ [Service]
+-ExecStart=/usr/bin/pacvis -p %i
++User=%i
++ExecStart=/usr/bin/pacvis
++PrivateTmp=true
+ 
+-# Limit memory at 400M to workaround pyalpm potential memory leak
+-LimitAS=400M
+-
+-# Restart every >2 seconds to avoid StartLimitInterval failure
+-RestartSec=2
+-Restart=always
++# Limit memory at 1000M to workaround pyalpm potential memory leak
++LimitAS=1000M
+ 
+ [Install]
+-WantedBy=multi-user.target
++WantedBy=default.target
