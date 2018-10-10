@@ -1,0 +1,44 @@
+# Maintainer: Jiachen Yang <farseerfc@gmail.com>
+# Contributor: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
+pkgname=pacvis-git
+_pkgname=pacvis
+pkgver=0.2.7.r2.g5bf30a0
+pkgrel=1
+pkgdesc="Visualize pacman local database using Vis.js, inspired by pacgraph"
+arch=('any')
+url="https://github.com/farseerfc/pacvis"
+license=('MIT')
+depends=('python-tornado' 'pyalpm' 'python-setuptools' 'systemd')
+makedepends=('git')
+source=("git+https://github.com/farseerfc/pacvis.git"
+patch_pacvis-service.patch)
+conflicts=("pacvis")
+sha512sums=('SKIP'
+            '1a46680d9bb45d4782d23f14c142821adfa1487b9300828a9541b8954d8dc0b0d6d3ee97a4a609f7ce29a48a1a9c69e6eeb14005e6736bc025c98ac5407296ff')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+    patch -Np1 < ../patch_pacvis-service.patch
+}
+
+build () {
+    cd "$srcdir/$_pkgname"
+    python3 setup.py build
+}
+
+package () {
+    cd "$srcdir/$_pkgname"
+    python3 setup.py install --root="$pkgdir" -O1
+    install -D -m644 "pacvis@.service" "${pkgdir}/usr/lib/systemd/system/pacvis@.service"
+}
+
+# vim:set ts=2 sw=2 et:
