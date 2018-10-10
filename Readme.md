@@ -222,6 +222,25 @@ Magic Lantern Raw file conversion tool for MLV files. Extract individual DNG fra
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**pacvis-git**
+--------------
+
+pacvis by [Jiachen Yang](https://github.com/farseerfc/pacvis)
+
+Quote from the original source GitHub page:
+
+> Visualize pacman local database using [Vis.js](http://visjs.org/), inspired by [pacgraph](http://kmkeen.com/pacgraph/).
+
+> See my blog post for details: [https://farseerfc.me/en/pacvis.html](https://farseerfc.me/en/pacvis.html) (Jiachen Yang)
+
+This repository includes patched service file which changes the default pacvis service file behaviour in the following ways:
+
+    - run the server service as a regular user, not as root (potential security issue, and root is not truly required)
+    
+    - remove restart loop which renders the server unusable
+
+FORMAT: Arch Linux PKGBUILD script + patch file.
+
 **pano2vr**
 --------------
 
