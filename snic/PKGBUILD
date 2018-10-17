@@ -1,0 +1,33 @@
+# Maintainer: Pekka Helenius < fincer89 [at] hotmail [dot] com >
+
+pkgname=snic
+pkgver=0.1
+pkgrel=1
+pkgdesc='Toggle between client/router mode on selected network interface'
+arch=('any')
+url='https://www.github.com/Fincer/snic'
+license=('GPL')
+depends=('bash' 'iproute2' 'systemd' 'dhcp' 'hostapd' 'sudo')
+source=("$pkgname-$pkgver.tar.gz")
+md5sums=('10aa677d53d1aa8bd78e87e70971c718')
+
+# Contents of $pkgname-$pkgver.tar.gz (snic-0.1.tar.gz, for instance):
+
+    # .
+    # ..
+    # shic.sh
+    # systemd/snic-dhcpd4@.service
+    # systemd/snic-dynamic@.service
+    # systemd/snic-static@.service
+    # snic/dhcpd4-eth0.conf
+    # snic/dhcpd4-wlan0.conf
+    # snic/snic-eth0.conf
+    # snic/snic-wlan0.conf
+
+package() {
+  cd "$srcdir"
+  mkdir -p "$pkgdir/usr/bin/"
+  install -Dm 755 snic.sh "$pkgdir/usr/bin/snic"
+  install -Dm 644 -t "$pkgdir/usr/lib/systemd/system/" systemd/*
+  install -Dm 644 -t "$pkgdir/etc/snic/" snic/*
+}
