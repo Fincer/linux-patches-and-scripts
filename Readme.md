@@ -394,12 +394,23 @@ NOTE: Add image/x-flif Mimetype to get this work (works with gwenview & kolourpa
 
 FORMAT: Arch Linux PKGBUILD script.
 
+**snic**
+--------------
+
+- [Repository link](https://github.com/Fincer/snic)
+
+Switch network interface mode from router to client and vice versa on Linux.
+
+FORMAT: Arch Linux PKGBUILD script.
+
 **sockstat**
 --------------
 
 Linux variant of [FreeBSD sockstat command](https://www.freebsd.org/cgi/man.cgi?query=sockstat&apropos=0&sektion=0&manpath=FreeBSD+7.1-RELEASE&format=html)
 
 "The sockstat command lists	open Internet or UNIX domain sockets."
+
+FORMAT: Arch Linux PKGBUILD script + patch files.
 
 **u3d**
 --------------
