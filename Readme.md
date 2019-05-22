@@ -187,6 +187,21 @@ Magic Lantern Raw file conversion tool for MLV files. Extract individual DNG fra
 
 **FORMAT:** Arch Linux PKGBUILD script.
 
+## [netnamespace-persistent](netnamespace-persistent)
+
+Simple `systemd` service file for adding persistent Linux network namespace during system boot-up.
+
+### Usage
+
+```
+sudo systemctl enable network-namespace@netns1.service
+sudo systemctl start network-namespace@netns1.service
+```
+
+Do necessary configuration into `/etc/network-namespaces.d/netns1.sh` (or any equivalent) template file.
+
+**FORMAT:** Arch Linux PKGBUILD script + source archive.
+
 ## [pacvis-git](pacvis-git)
 
 pacvis by [Jiachen Yang](https://github.com/farseerfc/pacvis)

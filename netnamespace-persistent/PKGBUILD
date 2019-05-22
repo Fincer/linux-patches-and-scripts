@@ -1,0 +1,31 @@
+# Maintainer: Pekka Helenius < fincer89 [at] hotmail [dot] com >
+
+pkgname=netnamespace-persistent
+pkgver=0.1
+pkgrel=1
+pkgdesc='Creates a new network namespace during system boot up'
+arch=('any')
+license=('GPL')
+depends=('iproute2' 'systemd' 'sudo')
+source=("${pkgname}-${pkgver}.tar.gz")
+md5sums=('05b165331a3cfbc960da424c2d65dee6')
+
+# Contents of ${pkgname}-${pkgver}.tar.gz:
+    # .
+    # ..
+    # systemd/network-namespace@.service
+    # etc/network-namespaces.d/netns1.sh - template file
+
+package() {
+  cd "${srcdir}"
+  install -Dm 644 -t "${pkgdir}/etc/network-namespaces.d/" etc/network-namespaces.d/*
+  install -Dm 644 -t "${pkgdir}/usr/lib/systemd/system/" systemd/*
+}
+
+# Usage
+#
+# sudo systemctl enable network-namespace@netns1.service
+# sudo systemctl start network-namespace@netns1.service
+#
+#  Do necessary configuration into /etc/network-namespaces.d/netns1.sh (or any equivalent)
+# template file
