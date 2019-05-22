@@ -1,25 +1,22 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
 pkgname=kde-servicemenus-qnapi
 pkgver=1
 pkgrel=1
 pkgdesc="Download subtitles for a video file using QNapi (KDE5 Dolphin action)"
-url=""
 arch=('any')
-license=('BSD')
-install=''
-source=(
-qnapi-downloadsub.desktop
-qnapi-downloadsub.sh
-)
+license=('GPL')
 depends=('dolphin' 'konsole' 'qnapi')
-optdepends=()
-conflicts=()
-#provides=''
-makedepends=()
-
-package() {
-    mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
-    cp $srcdir/{qnapi-downloadsub.desktop,qnapi-downloadsub.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
-    chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{qnapi-downloadsub.desktop,qnapi-downloadsub.sh}
-}
+source=(
+  'qnapi-downloadsub.desktop'
+  'qnapi-downloadsub.sh'
+)
 md5sums=('a5a6d1c01a89239695de7d8c29c1c470'
          '1d58fafdf1f8858a65214d64b3056bbf')
+
+package() {
+  mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  cp ${srcdir}/{qnapi-downloadsub.desktop,qnapi-downloadsub.sh} ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  chmod 755 ${pkgdir}/usr/share/kservices5/ServiceMenus/{qnapi-downloadsub.desktop,qnapi-downloadsub.sh}
+}
+

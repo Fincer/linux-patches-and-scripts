@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/pdf
+Icon=application-pdf
+Actions=pdfunlock;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+TryExec=gs
+
+[Desktop Action pdfunlock]
+Name=Unlock this PDF file
+Name[fi]=Poista PDF-tiedoston suojaukset
+Icon=application-pdf
+Exec=/usr/share/kservices5/ServiceMenus/pdfunlock.sh

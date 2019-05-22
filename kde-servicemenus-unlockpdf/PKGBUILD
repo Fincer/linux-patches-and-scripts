@@ -1,30 +1,22 @@
-# Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot].com
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
  
 pkgname=kde-servicemenus-unlockpdf
 pkgver=1
 pkgrel=1
 pkgdesc="Unlock PDF files using Dolphin or Konqueror (KDE5 Dolphin action)"
-url=()
 arch=('any')
-license=('BSD')
-install=''
-source=(pdfunlock.patch)
+license=('GPL')
 depends=('ghostscript' 'dolphin')
-optdepends=()
-conflicts=()
-#provides=''
-makedepends=()
-
-prepare() {
-  mkdir $pkgname-$pkgver
-  cd $srcdir/$pkgname-$pkgver
-  touch pdfunlock.sh pdfunlock.desktop
-  patch -Np1 -i "$srcdir/pdfunlock.patch"
-}
+source=(
+  'pdfunlock.desktop'
+  'pdfunlock.sh'
+)
+md5sums=('44ee294b4b8c640d00883f482646fce8'
+         'c046c519ca61d11b2cf4822c3ea371c8')
 
 package() {
-    mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
-    cp $srcdir/$pkgname-$pkgver/{pdfunlock.desktop,pdfunlock.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
-    chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{pdfunlock.desktop,pdfunlock.sh}
+  mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  cp ${srcdir}/{pdfunlock.desktop,pdfunlock.sh} ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  chmod 755 ${pkgdir}/usr/share/kservices5/ServiceMenus/{pdfunlock.desktop,pdfunlock.sh}
 }
-md5sums=('a1880f1e3b2f0d4b8f90c34a2ea09cef')
+

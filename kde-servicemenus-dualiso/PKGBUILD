@@ -6,13 +6,15 @@ pkgrel=1
 pkgdesc="Process Dual ISO RAW images (KDE5 Dolphin action)"
 arch=('any')
 license=('GPL')
-source=(dualiso.desktop)
+source=(
+  'dualiso.desktop'
+)
 depends=('cr2hdr' 'dolphin')
 
 md5sums=('c2c579853f914d156656ac6981319833')
 
 package() {
-  mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
-  cp $srcdir/dualiso.desktop $pkgdir/usr/share/kservices5/ServiceMenus/
-  chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/dualiso.desktop
+  mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  cp ${srcdir}/dualiso.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  chmod 755 ${pkgdir}/usr/share/kservices5/ServiceMenus/dualiso.desktop
 }

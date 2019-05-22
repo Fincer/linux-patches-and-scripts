@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/env bash
 
 while [ $# -gt 0 ]; do
-    VIDEO=$1
-    qnapi -c "$VIDEO"
-    shift
+  VIDEO=$1
+  qnapi -c "$VIDEO"
+  shift
 done

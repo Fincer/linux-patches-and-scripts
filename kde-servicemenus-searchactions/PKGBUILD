@@ -1,27 +1,24 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
 pkgname=kde-servicemenus-searchactions
 pkgver=1
 pkgrel=1
 pkgdesc="Search strings inside files using Dolphin or Konqueror (KDE5 Dolphin action)"
-url=""
 arch=('any')
-license=('BSD')
-install=''
+license=('GPL')
 source=(
-searchinside.desktop
-searchinside.sh
-searchinside-casesensitive.sh
+  'searchinside.desktop'
+  'searchinside.sh'
+  'searchinside-casesensitive.sh'
 )
-depends=('grep' 'findutils' 'dolphin' 'konsole')
-optdepends=()
-conflicts=()
-#provides=''
-makedepends=()
-
-package() {
-    mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
-    cp $srcdir/{searchinside.desktop,searchinside.sh,searchinside-casesensitive.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
-    chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{searchinside.desktop,searchinside.sh,searchinside-casesensitive.sh}
-}
 md5sums=('97e0476998ae35c034316e07623463b1'
          '5466d8b1b6334ea5a7ce9b5e586545af'
          'e78a0246503d95489730ec71bb998a97')
+         
+depends=('grep' 'findutils' 'dolphin' 'konsole')
+
+package() {
+  mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
+  cp $srcdir/{searchinside.desktop,searchinside.sh,searchinside-casesensitive.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
+  chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{searchinside.desktop,searchinside.sh,searchinside-casesensitive.sh}
+}

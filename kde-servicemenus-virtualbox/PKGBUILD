@@ -1,3 +1,5 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
 pkgname=kde-servicemenus-virtualbox
 pkgver=1
 pkgrel=1
@@ -5,13 +7,15 @@ pkgdesc="A KDE service menus for resizing virtualbox VDI files (KDE5 Dolphin act
 arch=('any')
 license=('GPL')
 depends=('virtualbox' 'dolphin' 'kdialog')
-source=('virtualbox-resize.sh'
-'virtualbox-resize.desktop')
+source=(
+  'virtualbox-resize.sh'
+  'virtualbox-resize.desktop'
+)
 md5sums=('0b939f4459b6cf0d0b69523bf2fe7c06'
          'aa354e3083eaab1eddff76fd97c6c88b')
 
 package() {
-    mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
-    cp $srcdir/{virtualbox-resize.desktop,virtualbox-resize.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
-    chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{virtualbox-resize.desktop,virtualbox-resize.sh}
+  mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  cp ${srcdir}/{virtualbox-resize.desktop,virtualbox-resize.sh} ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  chmod 755 ${pkgdir}/usr/share/kservices5/ServiceMenus/{virtualbox-resize.desktop,virtualbox-resize.sh}
 }

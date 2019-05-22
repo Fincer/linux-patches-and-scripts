@@ -16,7 +16,7 @@ md5sums=('6a4c32203c332e715fef54e91d9bb455'
          'eb85fddbe44d38681673d0f01ac3853b')
 
 package() {
-  mkdir -p $pkgdir/usr/share/{pixmaps,applications}
-  install -m755 $srcdir/ml.png $pkgdir/usr/share/pixmaps/
-  install -m755 $srcdir/ml-bootablecard.desktop $pkgdir/usr/share/applications/
+  mkdir -p ${pkgdir}/usr/share/{pixmaps,applications}
+  install -m755 ${srcdir}/ml.png ${pkgdir}/usr/share/pixmaps/
+  install -m755 ${srcdir}/ml-bootablecard.desktop ${pkgdir}/usr/share/applications/
 }

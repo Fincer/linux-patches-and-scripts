@@ -15,7 +15,7 @@ source=(
 md5sums=('04924ee6fa2529d57e83603e73516984')
 
 package() {
-  mkdir -p $pkgdir/usr/bin/
-  cp $srcdir/$pkgname.py $pkgdir/usr/bin/$pkgname.py
-  chmod 755 $pkgdir/usr/bin/$pkgname.py
+  mkdir -p ${pkgdir}/usr/bin/
+  cp $srcdir/${pkgname}.py ${pkgdir}/usr/bin/${pkgname}.py
+  chmod 755 ${pkgdir}/usr/bin/${pkgname}.py
 }

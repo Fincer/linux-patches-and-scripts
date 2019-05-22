@@ -6,15 +6,17 @@ pkgrel=1
 pkgdesc="Convert image files to FLIF format with Dolphin or Konqueror (KDE5 Dolphin action)"
 arch=('any')
 license=('GPL')
-source=(flif-conversion.desktop
-flif-conversion.sh)
+source=(
+  'flif-conversion.desktop'
+  'flif-conversion.sh'
+)
 depends=('flif' 'dolphin')
 
 md5sums=('148108447aecfb7e7d60ce15a937d140'
          'b67c8ad9e57580a0e21cc585f8aa93ed')
 
 package() {
-  mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
-  cp $srcdir/{flif-conversion.desktop,flif-conversion.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
-  chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{flif-conversion.desktop,flif-conversion.sh}
+  mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  cp ${srcdir}/{flif-conversion.desktop,flif-conversion.sh} ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  chmod 755 ${pkgdir}/usr/share/kservices5/ServiceMenus/{flif-conversion.desktop,flif-conversion.sh}
 }

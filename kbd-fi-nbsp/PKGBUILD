@@ -27,9 +27,9 @@ prepare() {
 package() {
   gzip "${srcdir}/${_pkgname}-${_pkgver}"/data/keymaps/i386/qwerty/fi.map
 
-  mkdir -p "$pkgdir"/usr/share/kbd/keymaps/i386/qwerty/
+  mkdir -p "${pkgdir}"/usr/share/kbd/keymaps/i386/qwerty/
 
-  install -Dm644 "${srcdir}/${_pkgname}-${_pkgver}"/data/keymaps/i386/qwerty/fi.map.gz "$pkgdir"/usr/share/kbd/keymaps/i386/qwerty/fi_nbsp.map.gz 
+  install -Dm644 "${srcdir}/${_pkgname}-${_pkgver}"/data/keymaps/i386/qwerty/fi.map.gz "${pkgdir}"/usr/share/kbd/keymaps/i386/qwerty/fi_nbsp.map.gz 
 
   msg2 '
 

@@ -1,5 +1,5 @@
-# Maintainer: Jiachen Yang <farseerfc@gmail.com>
-# Contributor: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+# Contributor: Jiachen Yang <farseerfc@gmail.com>
 
 pkgname=pacvis-git
 _pkgname=pacvis
@@ -11,14 +11,16 @@ url="https://github.com/farseerfc/pacvis"
 license=('MIT')
 depends=('python-tornado' 'pyalpm' 'python-setuptools' 'systemd')
 makedepends=('git')
-source=("git+https://github.com/farseerfc/pacvis.git"
-patch_pacvis-service.patch)
+source=(
+  'git+https://github.com/farseerfc/pacvis.git'
+  'patch_pacvis-service.patch'
+)
 conflicts=("pacvis")
 sha512sums=('SKIP'
             '1a46680d9bb45d4782d23f14c142821adfa1487b9300828a9541b8954d8dc0b0d6d3ee97a4a609f7ce29a48a1a9c69e6eeb14005e6736bc025c98ac5407296ff')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -26,19 +28,17 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
-    patch -Np1 < ../patch_pacvis-service.patch
+  cd "${srcdir}/${_pkgname}"
+  patch -Np1 < ../patch_pacvis-service.patch
 }
 
 build () {
-    cd "$srcdir/$_pkgname"
-    python3 setup.py build
+  cd "${srcdir}/${_pkgname}"
+  python3 setup.py build
 }
 
 package () {
-    cd "$srcdir/$_pkgname"
-    python3 setup.py install --root="$pkgdir" -O1
-    install -D -m644 "pacvis@.service" "${pkgdir}/usr/lib/systemd/system/pacvis@.service"
+  cd "${srcdir}/${_pkgname}"
+  python3 setup.py install --root="${pkgdir}" -O1
+  install -D -m644 "pacvis@.service" "${pkgdir}/usr/lib/systemd/system/pacvis@.service"
 }
-
-# vim:set ts=2 sw=2 et:

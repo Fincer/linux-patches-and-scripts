@@ -16,7 +16,7 @@ md5sums=('d239cc16272b4ba3243172bd72dff939'
          '7c06343e1802be5adf445e719a2c1fd0')
 
 package() {
-  mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
-  cp $srcdir/{hexstrings.desktop,hexstrings.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
-  chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{hexstrings.desktop,hexstrings.sh}
+  mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  cp ${srcdir}/{hexstrings.desktop,hexstrings.sh} ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  chmod 755 ${pkgdir}/usr/share/kservices5/ServiceMenus/{hexstrings.desktop,hexstrings.sh}
 }
