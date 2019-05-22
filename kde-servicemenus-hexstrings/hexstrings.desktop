@@ -1,0 +1,17 @@
+[Desktop Action hexstrings]
+Exec=/usr/share/kservices5/ServiceMenus/hexstrings.sh
+Icon=text-x-script
+Name=Export readable strings from this file
+Name[fi]=Hae luettavissa olevat tekstit tästä tiedostosta
+
+[Desktop Entry]
+Actions=hexstrings;
+Icon=text-richtext
+MimeType=
+ServiceTypes=
+TryExec=strings
+Type=Service
+X-KDE-Priority=TopLevel
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin,all/allfiles
+X-KDE-StartupNotify=false
+X-KDE-Submenu=

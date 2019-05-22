@@ -1,30 +1,22 @@
-# Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot].com
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
  
 pkgname=kde-servicemenus-hexstrings
 pkgver=1
 pkgrel=1
 pkgdesc="Extract all readable strings from a file using Dolphin or Konqueror (KDE5 Dolphin action)"
-url=()
 arch=('any')
-license=('BSD')
-install=''
-source=(hexstrings.patch)
+license=('GPL')
+source=(
+  'hexstrings.desktop'
+  'hexstrings.sh'
+)
 depends=('binutils' 'dolphin')
-optdepends=()
-conflicts=()
-#provides=''
-makedepends=()
 
-prepare() {
-  mkdir $pkgname-$pkgver
-  cd $srcdir/$pkgname-$pkgver
-  touch hexstrings.sh hexstrings.desktop
-  patch -Np1 -i "$srcdir/hexstrings.patch"
-}
+md5sums=('d239cc16272b4ba3243172bd72dff939'
+         '7c06343e1802be5adf445e719a2c1fd0')
 
 package() {
-    mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
-    cp $srcdir/$pkgname-$pkgver/{hexstrings.desktop,hexstrings.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
-    chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{hexstrings.desktop,hexstrings.sh}
+  mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
+  cp $srcdir/{hexstrings.desktop,hexstrings.sh} $pkgdir/usr/share/kservices5/ServiceMenus/
+  chmod 755 $pkgdir/usr/share/kservices5/ServiceMenus/{hexstrings.desktop,hexstrings.sh}
 }
-md5sums=('501cf2c12fa9c8e7f88012b9e6a77d21')
