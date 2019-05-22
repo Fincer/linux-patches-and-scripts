@@ -1,10 +1,9 @@
 # Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
 
-_pkgname=kbd
-_pkgver=2.0.4
-
 pkgname=kbd-fi-nbsp
+_pkgname=kbd
 pkgver=1
+_pkgver=2.0.4
 pkgrel=1
 pkgdesc="Finnish keyboard layout without non-breaking space"
 arch=('any')
@@ -12,8 +11,13 @@ url="http://www.kbd-project.org"
 license=('GPL')
 depends=('kbd')
 makedepends=('gzip' 'patch')
-source=(https://www.kernel.org/pub/linux/utils/${_pkgname}/${_pkgname}-${_pkgver}.tar.xz
-patch_fi-nbsp-removal_kbd.patch)
+source=(
+  "https://www.kernel.org/pub/linux/utils/${_pkgname}/${_pkgname}-${_pkgver}.tar.xz"
+  "patch_fi-nbsp-removal_kbd.patch"
+)
+
+md5sums=('c1635a5a83b63aca7f97a3eab39ebaa6'
+         'c060f9a6ead46950671f9324dabb24a4')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
@@ -62,5 +66,3 @@ package() {
   '
 
 }
-md5sums=('c1635a5a83b63aca7f97a3eab39ebaa6'
-         'c060f9a6ead46950671f9324dabb24a4')
