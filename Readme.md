@@ -406,10 +406,6 @@ For more information, check [this](https://forum.winehq.org/viewtopic.php?f=8&t=
 
 - `custompatch_glsl_shader.patch` = GLSL shaders patch for Wine.
 
-- `custompatch_msi-add-dummyactionthreads.patch` = Add MSI dummy actions since Wine lacks a proper implementation of MSI custom action server. See details [here](https://bugs.winehq.org/show_bug.cgi?id=18070)
-
-Basically, this patch helps you installing many useful programs on Wine which would otherwise be impossible.
-
 - `custompatch_photoshop_getticks_input.c.patch` = Photoshop brush patch for Wine. Details [here](https://bugs.winehq.org/show_bug.cgi?id=29871)
 
 - `custompatch_photoshop_keepfocus_message.c.patch` = Patch for keeping window focus while using Camera Raw plugin.
