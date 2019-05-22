@@ -1,3 +1,5 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
 pkgname=cr2hdr
 pkgver=2014.05.07
 pkgrel=1
@@ -8,7 +10,9 @@ license="GPL"
 depends=('perl-image-exiftool' 'dcraw')
 optdepends=('octave')
 makedepends=('wget' 'p7zip')
-source=(https://bitbucket.org/rufustfirefly/magic-lantern/downloads/cr2hdr-static.linux.x86.2014-06-19-f9a29c7c0685.7z)
+source=(
+  'https://bitbucket.org/rufustfirefly/magic-lantern/downloads/cr2hdr-static.linux.x86.2014-06-19-f9a29c7c0685.7z'
+)
 md5sums=('a526d2f700603003ade464e0521f8e23')
 
 package() {
