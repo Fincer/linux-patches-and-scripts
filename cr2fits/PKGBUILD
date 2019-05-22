@@ -1,23 +1,17 @@
-# Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot].com
- 
 pkgname=cr2fits
-pkgver=1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A script to convert RAW images to FITS images."
-url=()
+url=(https://github.com/eaydin/cr2fits/)
 arch=('any')
-license=('GPL')
-install=''
+license=('MIT')
 source=(https://github.com/eaydin/cr2fits/blob/master/cr2fits.py)
-depends=('python2' 'python2-pyfits' 'dcraw' 'dolphin')
-optdepends=()
-conflicts=()
-provides=''
-makedepends=()
+depends=('python' 'python-pyfits' 'dcraw' 'dolphin')
+
+md5sums=('04924ee6fa2529d57e83603e73516984')
 
 package() {
     mkdir -p $pkgdir/usr/bin/
     cp $srcdir/$pkgname.py $pkgdir/usr/bin/$pkgname.py
     chmod 755 $pkgdir/usr/bin/$pkgname.py
 }
-md5sums=('04924ee6fa2529d57e83603e73516984')
