@@ -1,4 +1,4 @@
-# Maintainer: Fincer <fincer89 [at] hotmail [dot] com>
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
 # Contributor: Andreas B. Wagner <AndreasBWagner@pointfree.net> pointfree on irc.freenode.net
 # Contributor: scrawl <scrawl@baseoftrash.de>
 
@@ -13,8 +13,10 @@ license=('GPL2')
 depends=('logmein-hamachi' 'gconf-sharp' 'notify-sharp' 'gtk2')
 makedepends=('make')
 #source=("http://launchpad.net/$pkgname/$_series/$pkgver/+download/$pkgname-$pkgver-clr4.0.tar.gz")
-source=("haguichi-1.0.26-clr4.0.tar.gz"
-fix-hamachi-not-detected.patch)
+source=(
+  'haguichi-1.0.26-clr4.0.tar.gz'
+  'fix-hamachi-not-detected.patch'
+)
 sha256sums=('e65fad7961cd8152ca8a47477c55ba9d1f4a12fdc602c04d32fed1b29c2266b4'
             '2015c65d7081fd1fc06357c8b58603b78a063e3d38bea3dfd4b06d8fb35f49e2')
 
