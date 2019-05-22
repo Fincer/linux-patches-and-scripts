@@ -11,9 +11,8 @@ makedepends=('wget' 'p7zip')
 source=(https://bitbucket.org/rufustfirefly/magic-lantern/downloads/cr2hdr-static.linux.x86.2014-06-19-f9a29c7c0685.7z)
 md5sums=('a526d2f700603003ade464e0521f8e23')
 
-package()
-{
-mv $srcdir/cr2hdr-static.linux.x86.2014-06-19-f9a29c7c0685 $srcdir/cr2hdr
-mkdir -p "$pkgdir/usr/bin"
-cp -ar $srcdir/cr2hdr "$pkgdir/usr/bin"
+package() {
+  mv $srcdir/cr2hdr-static.linux.x86.2014-06-19-f9a29c7c0685 $srcdir/cr2hdr
+  mkdir -p "$pkgdir/usr/bin"
+  cp -ar $srcdir/cr2hdr "$pkgdir/usr/bin"
 }
