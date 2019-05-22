@@ -181,6 +181,20 @@ Usage: once you've inserted a SD card into your computer, use 'ml-bootablecard' 
 
 **FORMAT:** Arch Linux PKGBUILD script + custom source files.
 
+## [magiclantern-tools](magiclantern-tools)
+
+Linux-compatible Magic Lantern image processing tools for pictures taken with Canon DSLR's with Magic Lantern firmware.
+
+Tools: `cr2hdr` (for dual ISO images), `mlvdump` (mlv files)
+
+### Highlights
+
+- Additional dry-run feature added to `cr2hdr` (`--dry-run`). Combine with Linux shell scripts, i.e. 1) to check whether images have been taken with dual ISO setting (without actually processing dual ISO images), and do further analysis for these images 2) to distinguish normal CR2 images from dual ISO ones, 3) etc.
+
+- Adds `baseline` information to EXIF metadata
+
+**FORMAT:** Arch Linux PKGBUILD script + patch files.
+
 ## [mlvdump](mlvdump)
 
 Magic Lantern Raw file conversion tool for MLV files. Extract individual DNG frames from MLV files.
