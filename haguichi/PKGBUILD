@@ -1,6 +1,6 @@
-# Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net> pointfree on irc.freenode.net
+# Maintainer: Fincer <fincer89 [at] hotmail [dot] com>
+# Contributor: Andreas B. Wagner <AndreasBWagner@pointfree.net> pointfree on irc.freenode.net
 # Contributor: scrawl <scrawl@baseoftrash.de>
-# Contributor: Fincer <fincer89 [at] hotmail [dot] com>
 
 pkgname=haguichi
 pkgver=1.0.26
@@ -19,22 +19,21 @@ sha256sums=('e65fad7961cd8152ca8a47477c55ba9d1f4a12fdc602c04d32fed1b29c2266b4'
             '2015c65d7081fd1fc06357c8b58603b78a063e3d38bea3dfd4b06d8fb35f49e2')
 
 prepare() {
-	cd $srcdir/$pkgname-$pkgver
-	patch -Np1 -i "$srcdir/fix-hamachi-not-detected.patch"
+  cd $srcdir/$pkgname-$pkgver
+  patch -Np1 -i "$srcdir/fix-hamachi-not-detected.patch"
 }
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
-	./configure --prefix=/usr
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr
 }
 
 check() {
-	cd $srcdir/$pkgname-$pkgver
-	make -k check
+  cd $srcdir/$pkgname-$pkgver
+  make -k check
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
-	make DESTDIR=$pkgdir install
+  cd $srcdir/$pkgname-$pkgver
+  make DESTDIR=$pkgdir install
 }
-
