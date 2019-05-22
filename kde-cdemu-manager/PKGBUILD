@@ -1,3 +1,6 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+# Contributor: marcel83
+
 pkgname=kde-cdemu-manager
 _pkgname=kde_cdemu
 pkgver=0.7.3
