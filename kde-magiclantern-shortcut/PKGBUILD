@@ -2,12 +2,14 @@ pkgname=kde-magiclantern-shortcut
 pkgver=1
 pkgrel=1
 pkgdesc="Add KDE5 compatible shortcut for Magic Lantern's bootable card script."
-arch=('i686' 'x86_64')
+arch=('any')
 license=('GPL')
 url='https://bitbucket.org/hudson/magic-lantern/src/tip/contrib/make-bootable/'
 depends=('konsole' 'kde-cli-tools' 'magiclantern-bootablecard')
-source=(ml.png
-ml-bootablecard.desktop)
+source=(
+  'ml.png'
+  'ml-bootablecard.desktop'
+)
 md5sums=('6a4c32203c332e715fef54e91d9bb455'
          'eb85fddbe44d38681673d0f01ac3853b')
 
@@ -16,5 +18,3 @@ package() {
   install -m755 $srcdir/ml.png $pkgdir/usr/share/pixmaps/
   install -m755 $srcdir/ml-bootablecard.desktop $pkgdir/usr/share/applications/
 }
-
-
