@@ -1,0 +1,40 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
+pkgname=metashape-pro
+_pkgname=metashapepro
+pkgver=1.5.2
+ver=1_5_2
+pkgrel=1
+architecture=_amd64
+pkgdesc='Generate high resolution georeferenced orthophotos and textured polygonal models (trial version).'
+arch=('x86_64')
+url='http://www.agisoft.com/'
+license=('custom: "commercial"')
+depends=("libpng12")
+install=${pkgname}.install
+source=(
+  "http://download.agisoft.com/${pkgname}_${ver}$_$architecture.tar.gz"
+  "${pkgname}.runtime"
+  "${pkgname}.png" 
+  "${pkgname}.desktop"
+  "qtfix.patch"
+)
+md5sums=('70085f24165e1c84496ae25236906ed7'
+         'bd53c52a6f3eedd86574ee5e32d1c1a8'
+         '9ffa07f3059edce837d43de8c2a50e1b'
+         '72403a878fd2f555ce5d3bef507740e6'
+         '918a2cca7abaebec66c48ec97db0dea0')
+
+prepare(){
+  cd "${srcdir}/${pkgname}"
+  patch -Np1 -i $srcdir/qtfix.patch
+}         
+
+package(){
+  cd "${srcdir}/${pkgname}"
+  install -dm755 ${pkgdir}/opt/
+  cp -r ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}
+  install -Dm755 ${srcdir}/${pkgname}.runtime ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+}

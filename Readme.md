@@ -207,6 +207,8 @@ Create virtual panorama tours using panorama images.
 
 ## [panotour](panotour)
 
+**NOTE:** This software is no longer available from official sources.
+
 Create virtual panorama tours using panorama images.
 
 ### Homepage:
@@ -227,23 +229,23 @@ Create virtual panorama tours using panorama images. Professional version with a
 
 **FORMAT:** Arch Linux PKGBUILD script.
 
-## [photoscan](photoscan)
+## [metashape](metashape)
 
 Create textured 3D models from multiple still images.
 
 ### Homepage:
 
-[Agisoft - Photoscan](http://www.agisoft.com/)
+[Agisoft - Metashape](http://www.agisoft.com/)
 
 **FORMAT:** Arch Linux PKGBUILD script.
 
-## [photoscan-pro](photoscan-pro)
+## [metashape-pro](metashape-pro)
 
 Create textured 3D models from multiple still images. Professional version with additional features.
 
 ### Homepage:
 
-[Agisoft - Photoscan](http://www.agisoft.com/)
+[Agisoft - Metashape](http://www.agisoft.com/)
 
 **FORMAT:** Arch Linux PKGBUILD script.
 

@@ -1,5 +1,5 @@
---- a/photoscan.sh
-+++ b/photoscan.sh
+--- a/metashape.sh
++++ b/metashape.sh
 @@ -7,7 +7,7 @@
  if [ "${dirname%$tmp}" != "/" ]; then
  dirname=$PWD/$dirname

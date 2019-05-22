@@ -1,0 +1,32 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
+pkgname=metashape
+pkgver=1.5.2
+ver=1_5_2
+pkgrel=1
+architecture=_amd64
+pkgdesc='Build professional quality textured 3D models from still images (trial version).'
+arch=('x86_64')
+url='http://www.agisoft.com/'
+license=('custom: "commercial"')
+depends=("libpng12")
+install=${pkgname}.install
+source=(
+  "http://download.agisoft.com/${pkgname}_${ver}$_$architecture.tar.gz"
+  "${pkgname}.runtime"
+  "${pkgname}.png" 
+  "${pkgname}.desktop"
+)
+md5sums=('cf0a08ea66825b894873aff440eedfd7'
+         '19dcbf9bdcef22ec63349ffafbad1245'
+         '9ffa07f3059edce837d43de8c2a50e1b'
+         '22918632e8683049cd06e6d70b7e2ff8')
+
+package(){
+  cd "${srcdir}/$_pkgname"
+  install -dm755 ${pkgdir}/opt/
+  cp -r ${srcdir}/${pkgname} ${pkgdir}/opt/${pkgname}
+  install -Dm755 ${srcdir}/${pkgname}.runtime ${pkgdir}/usr/bin/${pkgname}
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+}
