@@ -60,12 +60,6 @@ Adds a KDE5 compatible shortcut file for magiclantern-bootablecard package. If y
 
 **FORMAT:** Arch Linux PKGBUILD script + source files.
 
-## [kde-servicemenus-cr2fits](kde-servicemenus-cr2fits)
-
-Plasma 5 Dolphin service menu script for cr2fits package.
-
-**FORMAT:** Arch Linux PKGBUILD script.
-
 ## [kde-servicemenus-dualiso](kde-servicemenus-dualiso)
 
 Plasma 5 Dolphin service menu script for cr2hdr package.
