@@ -309,7 +309,7 @@ Add FLIF image format support for KDE environment.
 
 **FORMAT:** Arch Linux PKGBUILD script.
 
-## [skychart-dat-dso](skychart-dat-dso)
+## [skychart-data-dso](skychart-dat-dso)
 a
 DSO data of the SAC database for skychart software.
 
