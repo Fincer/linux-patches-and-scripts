@@ -60,6 +60,12 @@ Adds a KDE5 compatible shortcut file for magiclantern-bootablecard package. If y
 
 **FORMAT:** Arch Linux PKGBUILD script + source files.
 
+## [kde-servicemenus-destroyfile](kde-servicemenus-destroyfile)
+
+Plasma 5 Dolphin service menu script for destroying files with `shred`.
+
+**FORMAT:** Arch Linux PKGBUILD script + source files.
+
 ## [kde-servicemenus-dualiso](kde-servicemenus-dualiso)
 
 Plasma 5 Dolphin service menu script for cr2hdr package.

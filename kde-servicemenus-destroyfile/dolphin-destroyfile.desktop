@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/octet-stream
+Icon=editclear
+Actions=destroy_file;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+#TryExec=shred
+
+[Desktop Action destroy_file]
+Name=Destroy File
+Icon=editclear
+Exec=/usr/share/kservices5/ServiceMenus/dolphin-destroyfile.sh %U

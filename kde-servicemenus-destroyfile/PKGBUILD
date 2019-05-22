@@ -1,0 +1,18 @@
+pkgname=kde-servicemenus-destroyfile
+pkgver=1
+pkgrel=1
+pkgdesc="A KDE service menu entry for destroying files with shred (KDE5 Dolphin action)"
+arch=('any')
+url=""
+license=('GPL')
+depends=('coreutils' 'dolphin' 'kdialog' 'libnotify')
+source=('dolphin-destroyfile.desktop'
+'dolphin-destroyfile.sh')
+md5sums=('c7b3ed98ea6ec462c598d720f5c21c4a'
+         '1944d544ee7666864ed7822c18add4d9')
+
+package() {
+    mkdir -p $pkgdir/usr/share/kservices5/ServiceMenus/
+    install -m 755 $srcdir/dolphin-destroyfile.desktop $pkgdir/usr/share/kservices5/ServiceMenus/dolphin-destroyfile.desktop
+    install -m 755 $srcdir/dolphin-destroyfile.sh $pkgdir/usr/share/kservices5/ServiceMenus/dolphin-destroyfile.sh
+}
