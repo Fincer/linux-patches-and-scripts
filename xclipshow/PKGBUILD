@@ -1,29 +1,28 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
 pkgname=xclipshow
 pkgver=1
 pkgrel=1
 pkgdesc="Show information of current clipboard contents"
-url=()
 arch=('any')
-license=('BSD')
-install=''
-source=(xclipshow.cpp CMakeLists.txt)
+license=('custom')
+source=(
+  'xclipshow.cpp'
+  'CMakeLists.txt'
+)
+md5sums=('e445f888db036c7a1dfc7d33294c84f9'
+         '947756f823b5c82ad3626f46e38c549e')
+
 depends=('cmake' 'qt5-base')
-optdepends=()
-conflicts=()
-#provides=''
-makedepends=()
 
 build() {
-  cd $srcdir
-  mkdir build
-  cd ./build
+  mkdir -p $srcdir/build
+  cd build
   cmake $srcdir
   make
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin/
-    install -Dm 755 $srcdir/build/xclipshow $pkgdir/usr/bin/
+  mkdir -p $pkgdir/usr/bin/
+  install -Dm 755 $srcdir/build/xclipshow $pkgdir/usr/bin/
 }
-md5sums=('e445f888db036c7a1dfc7d33294c84f9'
-         '947756f823b5c82ad3626f46e38c549e')

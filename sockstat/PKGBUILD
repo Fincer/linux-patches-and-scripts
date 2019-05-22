@@ -11,9 +11,9 @@ pkgver=0.3
 pkgrel=1
 pkgdesc="View information of open connections"
 url="http://nenolod.net/sockstat"
-arch=(any)
-license=(GPL)
-makedepends=(glibc)
+arch=('any')
+license=('GPL')
+makedepends=('glibc')
 source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}-2/${pkgname}_${pkgver}.orig.tar.gz"
 10_fix-CHAR-BIT-missing.patch
 20_add-GCC-hardening.patch
@@ -24,20 +24,20 @@ md5sums=('7006cba7a2a193a684e7241067ed4563'
          '8544e65d4858c4a1177ec135b18b3e00')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "${srcdir}/${pkgname}-${pkgver}/"
   patch -Np1 < ../10_fix-CHAR-BIT-missing.patch
   patch -Np1 < ../20_add-GCC-hardening.patch
   patch -Np1 < ../30_add_err-headers.patch
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "${srcdir}/${pkgname}-${pkgver}/"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/"
-  mkdir -p "$pkgdir/usr/bin/"
-  make DESTDIR="$pkgdir" install
-  install -Dm755 "$srcdir/$pkgname-$pkgver"/sockstat "$pkgdir/usr/bin/sockstat"
+  cd "${srcdir}/${pkgname}-${pkgver}/"
+  mkdir -p "${pkgdir}/usr/bin/"
+  make DESTDIR="${pkgdir}" install
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}"/sockstat "${pkgdir}/usr/bin/sockstat"
 }

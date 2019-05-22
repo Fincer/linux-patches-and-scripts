@@ -6,13 +6,18 @@ pkgdesc="A video-based animated GIF creator"
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/qgifer'
 license=('GPL')
-depends=('gcc' 'gcc-libs' 'giflib' 'opencv2' 'qt5-base') #giflib4 4.1.6, no 4.2.X!
+
+#giflib4 4.1.6, no 4.2.X!
+depends=('gcc' 'gcc-libs' 'giflib' 'opencv2' 'qt5-base')
+
 makedepends=('cmake')
-source=("http://netix.dl.sourceforge.net/project/qgifer/QGifer-${pkgver}/$_pkgname-${pkgver}-source.tar.gz"
-0001_removeframelimit_addcodecs.patch
-giflibport.patch
-0001_cmakelinkingfix.patch
-qt5_sourcecodepatches.patch)
+source=(
+  "http://netix.dl.sourceforge.net/project/qgifer/QGifer-${pkgver}/$_pkgname-${pkgver}-source.tar.gz"
+  "0001_removeframelimit_addcodecs.patch"
+  "giflibport.patch"
+  "0001_cmakelinkingfix.patch"
+  "qt5_sourcecodepatches.patch"
+)
 md5sums=('cacfcd25bb32352ea4fbb526c87efa0f'
          '6243b22ba569d79f0f90b16d327e26e3'
          '331217d8aaf8842f68c2acfba68af056'
@@ -21,19 +26,19 @@ md5sums=('cacfcd25bb32352ea4fbb526c87efa0f'
 
 prepare() {
   mkdir build
-  mv $_pkgname-$pkgver-source $pkgname-$pkgver
+  mv $_pkgname-${pkgver}-source ${pkgname}-${pkgver}
   
-  cd $srcdir/$pkgname-$pkgver
-  patch -Np1 -i "$srcdir/0001_removeframelimit_addcodecs.patch"
-  patch -Np1 -i "$srcdir/giflibport.patch"
-  patch -Np1 -i "$srcdir/0001_cmakelinkingfix.patch"
-  patch -Np1 -i "$srcdir/qt5_sourcecodepatches.patch"
+  cd ${srcdir}/${pkgname}-${pkgver}
+  patch -Np1 -i "${srcdir}/0001_removeframelimit_addcodecs.patch"
+  patch -Np1 -i "${srcdir}/giflibport.patch"
+  patch -Np1 -i "${srcdir}/0001_cmakelinkingfix.patch"
+  patch -Np1 -i "${srcdir}/qt5_sourcecodepatches.patch"
   
 }
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver \
+  cmake ../${pkgname}-${pkgver} \
     -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -42,5 +47,5 @@ build() {
 
 package() {
   cd build
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 }

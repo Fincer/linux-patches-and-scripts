@@ -1,4 +1,5 @@
-# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+# Contributor: Miguel de Val-Borro <miguel@archlinux.net>
 # Contributor: Matteo Paoluzzi <duwath [at] gmail [dot] com>
 # Contributor: jmf <jmf [at] mesecons [dot] net>
 
@@ -9,47 +10,47 @@ pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="http://www.clearskyinstitute.com/xephem/xephem.html"
 license=("custom")
-depends=(libxmu lesstif)
-makedepends=()
-optdepends=(perl)
-source=(http://www.clearskyinstitute.com/xephem/$pkgname-$pkgver.tgz "$pkgname.png" "$pkgname.desktop")
+depends=('libxmu' 'lesstif')
+optdepends=('perl')
+source=(
+  "http://www.clearskyinstitute.com/xephem/${pkgname}-${pkgver}.tgz"
+  "${pkgname}.png"
+  "${pkgname}.desktop"
+)
 md5sums=('27c67061a89085bf2b0d4e9deb758a79'
          'a0debbe05d0831e4cbddc6d9d378b6d1'
          'c8d6ab9e96d6bb2f634c9ac749e3383d')
 
 build() {
-  #cd ${srcdir}/$pkgname-$pkgver/
-  cd ${srcdir}/${pkgname}-${pkgver}/GUI/$pkgname
+  cd ${srcdir}/${pkgname}-${pkgver}/GUI/${pkgname}
   export MAKEFLAGS="-j1"
   make MOTIF=/usr/lib/ 
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}/GUI/$pkgname
+  cd ${srcdir}/${pkgname}-${pkgver}/GUI/${pkgname}
   mkdir -p ${pkgdir}/usr/bin
-  cp ${srcdir}/${pkgname}-${pkgver}/GUI/$pkgname/xephem ${pkgdir}/usr/bin/
+  cp ${srcdir}/${pkgname}-${pkgver}/GUI/${pkgname}/xephem ${pkgdir}/usr/bin/
   
-  mkdir -p ${pkgdir}/usr/share/$pkgname
+  mkdir -p ${pkgdir}/usr/share/${pkgname}
 
-  cp -R auxil    ${pkgdir}/usr/share/$pkgname/
-  cp -R catalogs ${pkgdir}/usr/share/$pkgname/
-  cp -R fifos    ${pkgdir}/usr/share/$pkgname/
-  cp -R fits     ${pkgdir}/usr/share/$pkgname/
-  cp -R gallery  ${pkgdir}/usr/share/$pkgname/
-  cp -R help     ${pkgdir}/usr/share/$pkgname/
-  cp -R lo       ${pkgdir}/usr/share/$pkgname/
+  cp -R auxil    ${pkgdir}/usr/share/${pkgname}/
+  cp -R catalogs ${pkgdir}/usr/share/${pkgname}/
+  cp -R fifos    ${pkgdir}/usr/share/${pkgname}/
+  cp -R fits     ${pkgdir}/usr/share/${pkgname}/
+  cp -R gallery  ${pkgdir}/usr/share/${pkgname}/
+  cp -R help     ${pkgdir}/usr/share/${pkgname}/
+  cp -R lo       ${pkgdir}/usr/share/${pkgname}/
 
   mkdir -p ${pkgdir}/usr/share/man/man1/
   cp xephem.1 ${pkgdir}/usr/share/man/man1/
 
-#  mkdir -p ${pkgdir}/usr/lib/X11/app-defaults
-#  echo "XEphem.ShareDir: /usr/share/xephem" > ${pkgdir}/usr/lib/X11/app-defaults/XEphem
   mkdir -p ${pkgdir}/usr/share/X11/app-defaults
   echo "XEphem.ShareDir: /usr/share/xephem" > ${pkgdir}/usr/share/X11/app-defaults/XEphem
   
-  mkdir -p ${pkgdir}/usr/share/licenses/$pkgname/
-  cp ${srcdir}/${pkgname}-${pkgver}/Copyright ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
+  cp ${srcdir}/${pkgname}-${pkgver}/Copyright ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
 }

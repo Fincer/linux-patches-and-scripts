@@ -1,6 +1,5 @@
-#$ $Id$
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
 # Contributor: Malina <mali#arch>
-#Maintainer: You?
 
 pkgname=wine-launcher-creator
 pkgver=1.0.8
@@ -10,10 +9,12 @@ arch=('any')
 url="https://code.google.com/p/wine-launcher-creator/"
 license=('GPL')
 depends=('python2' 'icoutils' 'xdg-utils' 'python2-pyqt4')
-#makedepends=('intltool')
 optdepends=('nautilus-actions: To integrate with nautilus')
-source=("./wine-launcher-creator-1.0.8.tar.gz")
-install=$pkgname.install
+source=(
+  "wine-launcher-creator-1.0.8.tar.gz"
+)
+md5sums=('b1b22cfd61dc19a8ef8cf060776008a3')
+install=${pkgname}.install
 
 prepare() {
   cd ${srcdir}/${pkgname}
@@ -31,8 +32,7 @@ sed -i s,/usr/local,/usr,g wlcreator.py
 package() {
   rm -rf ${pkgdir}
   cd ${srcdir}/${pkgname}
-  make prefix="$pkgdir/usr" install
+  make prefix="${pkgdir}/usr" install
   install -Dm0644 wlcreator.desktop ${pkgdir}/usr/share/applications/wlcreator.desktop
 
 }
-md5sums=('b1b22cfd61dc19a8ef8cf060776008a3')

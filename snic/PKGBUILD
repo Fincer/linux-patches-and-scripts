@@ -8,10 +8,10 @@ arch=('any')
 url='https://www.github.com/Fincer/snic'
 license=('GPL')
 depends=('bash' 'iproute2' 'systemd' 'dhcp' 'hostapd' 'sudo')
-source=("$pkgname-$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz")
 md5sums=('10aa677d53d1aa8bd78e87e70971c718')
 
-# Contents of $pkgname-$pkgver.tar.gz (snic-0.1.tar.gz, for instance):
+# Contents of ${pkgname}-${pkgver}.tar.gz (snic-0.1.tar.gz, for instance):
 
     # .
     # ..
@@ -25,9 +25,9 @@ md5sums=('10aa677d53d1aa8bd78e87e70971c718')
     # snic/snic-wlan0.conf
 
 package() {
-  cd "$srcdir"
-  mkdir -p "$pkgdir/usr/bin/"
-  install -Dm 755 snic.sh "$pkgdir/usr/bin/snic"
-  install -Dm 644 -t "$pkgdir/usr/lib/systemd/system/" systemd/*
-  install -Dm 644 -t "$pkgdir/etc/snic/" snic/*
+  cd "${srcdir}"
+  mkdir -p "${pkgdir}/usr/bin/"
+  install -Dm 755 snic.sh "${pkgdir}/usr/bin/snic"
+  install -Dm 644 -t "${pkgdir}/usr/lib/systemd/system/" systemd/*
+  install -Dm 644 -t "${pkgdir}/etc/snic/" snic/*
 }

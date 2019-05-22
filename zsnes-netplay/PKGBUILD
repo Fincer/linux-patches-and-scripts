@@ -1,4 +1,5 @@
-# Maintainer: jsteel <mail at jsteel dot org>
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+# Contributor: jsteel <mail at jsteel dot org>
 # Contributor: Frozen Fox <frozenfoxz@gmail.com>
 # Contributor: Aurelien Foret <orelien@chez.com>
 
@@ -12,26 +13,40 @@ arch=('i686' 'x86_64')
 license=('GPL')
 options=(!buildflags)
 if [[ $CARCH == "x86_64" ]]; then
-  depends=('gcc-libs-multilib' 'lib32-sdl' 'lib32-libpng>=1.5.0' 
-    'lib32-libgl' 'lib32-ncurses' 'lib32-mesa')
-  makedepends=('nasm' 'gcc-multilib')
+  depends=(
+    'gcc-libs-multilib'
+    'lib32-sdl'
+    'lib32-libpng>=1.5.0' 
+    'lib32-libgl'
+    'lib32-ncurses'
+    'lib32-mesa')
+  makedepends=(
+    'nasm'
+    'gcc-multilib'
+  )
 else
-  depends=('sdl' 'libpng>=1.5.0' 'mesa')
-  makedepends=('nasm' 'gcc')
+  depends=(
+    'sdl'
+    'libpng>=1.5.0'
+    'mesa'
+  )
+  makedepends=(
+    'nasm'
+    'gcc'
+  )
 fi
-source=(zsnesnet.tar.gz
-#        custompath.patch
-        libpng.patch
-        $pkgname.desktop)
+source=(
+  'zsnesnet.tar.gz'
+  'libpng.patch'
+  "${pkgname}.desktop"
+)
 md5sums=('325c22d392fb33f720c6c05625884428'
          'f7366961f21ed63d0844a3a6d4780bcf'
          '5fb4df4bc32e1d6b1cffb16d9af6563f')
 
 build() {
-  cd "$srcdir"
-
-#  patch -Np1 -i "$srcdir"/custompath.patch
-  patch -Np1 -i "$srcdir"/libpng.patch
+  cd "${srcdir}"
+  patch -Np1 -i "${srcdir}"/libpng.patch
 
   if [ $CARCH == "x86_64" ]; then
     export CC="gcc -m32"
@@ -39,7 +54,6 @@ build() {
   fi
 
   chmod +x autogen.sh
-
   ./autogen.sh --prefix=/usr x_libraries=/usr/lib force_arch=i686 \
     --enable-release --enable-debug
 
@@ -47,11 +61,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
-  install -Dm644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-  install -Dm644 "$srcdir"/icons/48x48x32.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+  install -Dm644 "${srcdir}"/icons/48x48x32.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
   
 }

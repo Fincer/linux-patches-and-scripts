@@ -1,4 +1,4 @@
-# Maintainer: Fincer fincer89 at hotmail dot com>
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
 
 pkgname=pidgin-smileys-facebook
 pkgver=1.0
@@ -8,23 +8,21 @@ pkgdesc="Facebook smileys for Pidgin"
 url="http://www.pidginthemes.com/"
 license=('GPL')
 depends=('pidgin')
-source=("./162631-Pidgin-Facebook-Smileys-1.0.tar.gz"
-themefile.patch)
+source=(
+  '162631-Pidgin-Facebook-Smileys-1.0.tar.gz'
+  'themefile.patch'
+)
 md5sums=('2bc0f072bb33ccf8c8d8e80a696426a0'
          '432b4358b2658b38922a400f2b3cb5bd')
 
-#prepare() {
-#  patch -Np1 -i "$srcdir/theme-description.patch"
-#}
+srcloc=.${srcdir}/${pkgname}-${pkgver}
 
-srcloc=.$srcdir/$pkgname-$pkgver
 prepare() {
+  mkdir -p ${srcloc}
+  find ${srcdir}/Facebook/ -maxdepth 1 -type f -exec mv -n {} ${srcloc}/ \;
+  rm -R ${srcdir}/Facebook
 
-  mkdir -p $srcloc
-  find $srcdir/Facebook/ -maxdepth 1 -type f -exec mv -n {} $srcloc/ \;
-  rm -R $srcdir/Facebook
-  
-  cd $srcloc
+  cd ${srcloc}
 
 #Rename these files
   mv puppy-facebook-emoticon-for-comments-status-and-chat.png puppy.png
@@ -41,22 +39,6 @@ prepare() {
   mv disappointed-emoticon-for-facebook-chat-status-and-comments.png disappointed.png
   mv man-and-woman-holding-hands.png manwomanhands.png
   mv emoticon-of-heart-stabbed-with-an-arrow.png heartstabbed.png
-
-#Rename those also in theme file
-#  sed -i 's/puppy-facebook-emoticon-for-comments-status-and-chat.png/puppy.png/g' theme
-#  sed -i 's/skull-emoticon-for-facebook-status-comments-chat.png/skull.png/g' theme
-#  sed -i 's/sun+emoticon+for+facebook+comments.png/sun.png/g' theme
-#  sed -i 's/kiss+emoticon.png/kiss2.png/g' theme
-#  sed -i 's/thumb-up-facebook-emoticon-like-symbol.png/thumbup.png/g' theme
-#  sed -i 's/umbrella-symbol-for-facebook-comments.png/umbrella.png/g' theme
-#  sed -i 's/two-hands-reaching-up.png/twohands.png/g' theme
-#  sed -i 's/vs-emoticon-versus.png/versus.png/g' theme
-#  sed -i 's/yellow-heart-emoticon-for-fb-comments.png/yellowheart.png/g' theme
-#  sed -i 's/big-smile-with-closed-eyes.png/smileclosedeyes.png/g' theme
-#  sed -i 's/boy-and-girl-holding-hands.png/boygirlhands.png/g' theme
-#  sed -i 's/disappointed-emoticon-for-facebook-chat-status-and-comments.png/disappointed.png/g' theme
-#  sed -i 's/man-and-woman-holding-hands.png/manwomanhands.png/g' theme
-#  sed -i 's/emoticon-of-heart-stabbed-with-an-arrow.png/heartstabbed.png/g' theme
 
 #Strip file names
 for filename in *.png; do 
@@ -84,46 +66,10 @@ for filename in *.png; do
   fi
 done
 
-#Rename those also in theme file as described in the patch file
-
-  patch -Np1 -i "$srcdir/themefile.patch"
-
-#  sed \
-#  -e 's/-//g' \
-#  -e 's/+//g' \
-#  -e 's/for//g' \
-#  -e 's/fb//g' \
-#  -e 's/emoticon//g' \
-#  -e 's/symbol//g' \
-#  -e 's/icon//g' \
-#  -e 's/pointing//g' \
-#  -e 's/emoji//g' \
-#  -e 's/forstatus//g' \
-#  -e 's/mark//g' \
-#  -e 's/smiley//g' \
-#  -e 's/comments//g' \
-#  -e 's/facebook//g' \
-#  -e 's/\([A-Z]\)/\L\1/g' theme
-
-#  sed -i 's/-for-facebook//g' theme
-#  sed -i 's/-fb-emoticon//g' theme
-#  sed -i 's/-facebook-emoticon//g' theme
-#  sed -i 's/-emoticon//g' theme
-#  sed -i 's/facebook-//g' theme
-#  sed -i 's/-symbol//g' theme
-#  sed -i 's/-icon//g' theme
-#  sed -i 's/-pointing-//g' theme
-#  sed -i 's/to-//g' theme
-#  sed -i 's/+emoticon//g' theme
-#  sed -i 's/-emoji//g' theme
-#  sed -i 's/-sign//g' theme
-#  sed -i 's/-for-status//g' theme
-#  sed -i 's/-mark//g' theme
-#  sed -i 's/--//g' theme
-#  sed -i 's/-facebook//g' theme
+  patch -Np1 -i "${srcdir}/themefile.patch"
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/pixmaps/pidgin/emotes/facebook-smileys
-  cp $srcdir/$pkgname-$pkgver/* $pkgdir/usr/share/pixmaps/pidgin/emotes/facebook-smileys/
+  mkdir -p ${pkgdir}/usr/share/pixmaps/pidgin/emotes/facebook-smileys
+  cp ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/usr/share/pixmaps/pidgin/emotes/facebook-smileys/
 }

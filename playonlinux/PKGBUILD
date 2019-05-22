@@ -1,4 +1,5 @@
-# Maintainer: Laurent Carlier <lordheavym@gmail.com>
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: K. Hampf <khampf@users.sourceforge.net>
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
@@ -11,13 +12,16 @@ license=('GPL')
 depends=('lib32-libpcap' 'imagemagick' 'xterm' 'wxpython2.8' 'cabextract' 'unzip' 'mesa-demos' 'gnupg'
          'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'lsb-release')
 arch=('any')
-source=(http://www.playonlinux.com/script_files/PlayOnLinux/${pkgver/.0/}/PlayOnLinux_${pkgver/.0/}.tar.gz
-0001-remove-menuitems.patch
-0002-add-shortcutitems.patch
-0003-add-addremoveprograms.patch
-0006-disable-updatenotification.patch
-0007-disable-closingandwinemessage.patch
-0008-typofix.patch)
+source=(
+  "http://www.playonlinux.com/script_files/PlayOnLinux/${pkgver/.0/}/PlayOnLinux_${pkgver/.0/}.tar.gz"
+  '0001-remove-menuitems.patch'
+  '0002-add-shortcutitems.patch'
+  '0003-add-addremoveprograms.patch'
+  '0006-disable-updatenotification.patch'
+  '0007-disable-closingandwinemessage.patch'
+  '0008-typofix.patch'
+  '0009-patch_disable-crashdialogs.patch'
+)
 options=(!strip)
 md5sums=('9869697c13010e88cf68607cea334dbd'
          '7c133fe8a4561ad0c4e0f9a61624e891'
@@ -25,30 +29,32 @@ md5sums=('9869697c13010e88cf68607cea334dbd'
          'b66fe7f5a15550b18486914b41b0a619'
          '894c83207ad7d8301708f30babb426fc'
          '2500bd31bcaf05249cd437b8da0b9402'
-         'eaf67372414a5144fa1da42688f24284')
+         'eaf67372414a5144fa1da42688f24284'
+         '85529e015070658c50510c515f098072')
 
 package() {
-  cd "$srcdir/$pkgname"
-  patch -Np1 -i "$srcdir/0001-remove-menuitems.patch"
-  patch -Np1 -i "$srcdir/0002-add-shortcutitems.patch"
-  patch -Np1 -i "$srcdir/0003-add-addremoveprograms.patch"
-  patch -Np1 -i "$srcdir/0006-disable-updatenotification.patch"
-  patch -Np1 -i "$srcdir/0007-disable-closingandwinemessage.patch"
-  patch -Np1 -i "$srcdir/0008-typofix.patch"
+  cd "${srcdir}/${pkgname}"
+  patch -Np1 -i "${srcdir}/0001-remove-menuitems.patch"
+  patch -Np1 -i "${srcdir}/0002-add-shortcutitems.patch"
+  patch -Np1 -i "${srcdir}/0003-add-addremoveprograms.patch"
+  patch -Np1 -i "${srcdir}/0006-disable-updatenotification.patch"
+  patch -Np1 -i "${srcdir}/0007-disable-closingandwinemessage.patch"
+  patch -Np1 -i "${srcdir}/0008-typofix.patch"
+  patch -Np1 -i "${srcdir}/0009-patch_disable-crashdialogs.patch"
   
-  install -d $pkgdir/usr/share/$pkgname
-  install -d $pkgdir/usr/bin 
-  cp -r $srcdir/$pkgname/ $pkgdir/usr/share/
+  install -d ${pkgdir}/usr/share/${pkgname}
+  install -d ${pkgdir}/usr/bin 
+  cp -r ${srcdir}/${pkgname}/ ${pkgdir}/usr/share/
 
-  echo "#!/bin/bash" > $pkgdir/usr/bin/$pkgname 
-  echo "/usr/share/$pkgname/$pkgname \"\$@\"" >> $pkgdir/usr/bin/$pkgname
-  chmod +x  $pkgdir/usr/bin/$pkgname
-  chmod +x $pkgdir/usr/share/$pkgname/bash/winexec
+  echo "#!/bin/bash" > ${pkgdir}/usr/bin/${pkgname} 
+  echo "/usr/share/${pkgname}/${pkgname} \"\$@\"" >> ${pkgdir}/usr/bin/${pkgname}
+  chmod +x  ${pkgdir}/usr/bin/${pkgname}
+  chmod +x ${pkgdir}/usr/share/${pkgname}/bash/winexec
 
   # Needed for wxpython2.8 support, wxpython 3.0 is buggy with POL
-  sed -i "s/wxversion.ensureMinimal/wxversion.select/g" $pkgdir/usr/share/$pkgname/python/mainwindow.py
+  sed -i "s/wxversion.ensureMinimal/wxversion.select/g" ${pkgdir}/usr/share/${pkgname}/python/mainwindow.py
 
-  install -D -m644 $srcdir/$pkgname/etc/PlayOnLinux.desktop $pkgdir/usr/share/applications/playonlinux.desktop
-  sed -i "s/ %F//g" $pkgdir/usr/share/applications/playonlinux.desktop
+  install -D -m644 ${srcdir}/${pkgname}/etc/PlayOnLinux.desktop ${pkgdir}/usr/share/applications/playonlinux.desktop
+  sed -i "s/ %F//g" ${pkgdir}/usr/share/applications/playonlinux.desktop
 }
  

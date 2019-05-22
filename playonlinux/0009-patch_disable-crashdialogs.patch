@@ -1,0 +1,75 @@
+--- a/lib/debug.lib
++++ b/lib/debug.lib
+@@ -117,45 +117,45 @@
+ }
+ POL_Debug_ErrorSilent()
+ {
+-	# Use this function if a problem occured. 
+-	# At the end of the script, the user will be able to report a bug to playonlinux's bug tracker
+-	# Usage : POL_Debug_Error [MESSAGE]
+-	
++#	# Use this function if a problem occured. 
++#	# At the end of the script, the user will be able to report a bug to playonlinux's bug tracker
++#	# Usage : POL_Debug_Error [MESSAGE]
++#	
+ 	echo "$(Get_CurrentDate) - [${FUNCNAME[1]}] Error: $@" >> "$LOGFILE"
+ 	echo -e "[${FUNCNAME[1]}] ${POL_Color_RedBold}Error:${POL_Color_Reset} $@" 1>&2
+-	[ "$SETUPWINDOW_INIT" = "true" ] || StandAloneWindow="true"
+-	[ "$StandAloneWindow" = "true" ] && POL_SetupWindow_Init
+-	MESSAGE="$(eval_gettext '$APPLICATION_TITLE has encountered an error. If the program does not work correctly, it might be the cause of the problem.\nVisit www.$POL_DNS to get further information')"
+-	echo "$POL_COOKIE	POL_Debug	$$	$MESSAGE	$TITLE	Error in ${FUNCNAME[1]}\n$(POL_Untab "$@")" | ncns "$POL_HOST" "$POL_PORT"
+-	[ "$StandAloneWindow" = "true" ] && POL_SetupWindow_Close 
++#	[ "$SETUPWINDOW_INIT" = "true" ] || StandAloneWindow="true"
++#	[ "$StandAloneWindow" = "true" ] && POL_SetupWindow_Init
++#	MESSAGE="$(eval_gettext '$APPLICATION_TITLE has encountered an error. If the program does not work correctly, it might be the cause of the problem.\nVisit www.$POL_DNS to get further information')"
++#	echo "$POL_COOKIE	POL_Debug	$$	$MESSAGE	$TITLE	Error in ${FUNCNAME[1]}\n$(POL_Untab "$@")" | ncns "$POL_HOST" "$POL_PORT"
++#	[ "$StandAloneWindow" = "true" ] && POL_SetupWindow_Close 
+ }
+ POL_Debug_Error()
+ {
+-	# Use this function if a problem occured. 
+-	# At the end of the script, the user will be able to report a bug to playonlinux's bug tracker
+-	# Usage : POL_Debug_Error [MESSAGE]
+-	
++#	# Use this function if a problem occured. 
++#	# At the end of the script, the user will be able to report a bug to playonlinux's bug tracker
++#	# Usage : POL_Debug_Error [MESSAGE]
++#	
+ 	echo "$(Get_CurrentDate) - [${FUNCNAME[1]}] Error: $@" >> "$LOGFILE"
+ 	echo -e "[${FUNCNAME[1]}] ${POL_Color_RedBold}Error:${POL_Color_Reset} $@" 1>&2
+-	[ "$SETUPWINDOW_INIT" = "true" ] || StandAloneWindow="true"
+-	[ "$StandAloneWindow" = "true" ] && POL_SetupWindow_Init
+-	MESSAGE="$(eval_gettext '$APPLICATION_TITLE has encountered an error. If the program you are installing does not work correctly, it might be the cause of the problem.\nVisit www.$POL_DNS to get further information')"
+-	echo "$POL_COOKIE	POL_Debug	$$	$MESSAGE	$TITLE	Error in ${FUNCNAME[1]}\n$(POL_Untab "$@")" | ncns "$POL_HOST" "$POL_PORT"
+-	[ "$StandAloneWindow" = "true" ] && POL_SetupWindow_Close || export POL_SCRIPT_FAILED="YES"
++#	[ "$SETUPWINDOW_INIT" = "true" ] || StandAloneWindow="true"
++#	[ "$StandAloneWindow" = "true" ] && POL_SetupWindow_Init
++#	MESSAGE="$(eval_gettext '$APPLICATION_TITLE has encountered an error. If the program you are installing does not work correctly, it might be the cause of the problem.\nVisit www.$POL_DNS to get further information')"
++#	echo "$POL_COOKIE	POL_Debug	$$	$MESSAGE	$TITLE	Error in ${FUNCNAME[1]}\n$(POL_Untab "$@")" | ncns "$POL_HOST" "$POL_PORT"
++#	[ "$StandAloneWindow" = "true" ] && POL_SetupWindow_Close || export POL_SCRIPT_FAILED="YES"
+ }
+ POL_Debug_Fatal()
+ {
+-	# Use this function if a strong problem occured
+-	# The effect is the same that POL_Debug_Error, except that the script will end
+-	# Usage : POL_Debug_Fatal [MESSAGE]
+-	
++#	# Use this function if a strong problem occured
++#	# The effect is the same that POL_Debug_Error, except that the script will end
++#	# Usage : POL_Debug_Fatal [MESSAGE]
++#	
+ 	echo "$(Get_CurrentDate) - [${FUNCNAME[1]}] Fatal: $@" >> "$LOGFILE"
+ 	echo -e "[${FUNCNAME[1]}] ${POL_Color_RedBold}Fatal:${POL_Color_Reset} $@" 1>&2
+-	[ "$SETUPWINDOW_INIT" = "true" ] || POL_SetupWindow_Init
+-	MESSAGE="$(eval_gettext '$APPLICATION_TITLE has encountered a fatal error. $APPLICATION_TITLE will stop the installation process.\nVisit www.$POL_DNS to get further information')"
+-	echo "$POL_COOKIE	POL_Debug	$$	$MESSAGE	$TITLE	Error in ${FUNCNAME[1]}\n$(POL_Untab "$@")" | ncns "$POL_HOST" "$POL_PORT"
+-	export POL_SCRIPT_FAILED="YES"
+-	POL_SetupWindow_Close
++#	[ "$SETUPWINDOW_INIT" = "true" ] || POL_SetupWindow_Init
++#	MESSAGE="$(eval_gettext '$APPLICATION_TITLE has encountered a fatal error. $APPLICATION_TITLE will stop the installation process.\nVisit www.$POL_DNS to get further information')"
++#	echo "$POL_COOKIE	POL_Debug	$$	$MESSAGE	$TITLE	Error in ${FUNCNAME[1]}\n$(POL_Untab "$@")" | ncns "$POL_HOST" "$POL_PORT"
++#	export POL_SCRIPT_FAILED="YES"
++#	POL_SetupWindow_Close
+ 	exit 1
+ }
+ POL_Debug_lspci()
