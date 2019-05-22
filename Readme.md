@@ -36,6 +36,12 @@ Graphical front-end for LogMeIn Hamachi by Stephen Brandt. Version 1.0.26 (GTK2)
 
 **FORMAT:** Arch Linux PKGBUILD script + source archive.
 
+## [ipcalc](ipcalc)
+
+Apply brighter colors to `ipcalc` output.
+
+**FORMAT:** Arch Linux PKGBUILD script + patch file.
+
 ## [kbd-fi-nbsp](kbd-fi-nbsp)
 
 Custom Finnish keyboard settings and recommendations to eliminate non-breaking space character which is usually typed unintentionally in commands.

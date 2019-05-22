@@ -1,0 +1,11 @@
+--- a/ipcalc
++++ b/ipcalc
+@@ -25,7 +25,7 @@
+ 
+ my @class   = qw (0 8 16 24 4 5 5);
+ 
+-my $quads_color = "\033[34m"; # dotted quads, blue
++my $quads_color = "\033[94m"; # dotted quads, blue
+ my $norml_color = "\033[m";   # normal, black
+ #my $binry_color = "\033[1m\033[46m\033[37m"; # binary, yellow
+ my $binry_color = "\033[33m"; # binary, yellow
