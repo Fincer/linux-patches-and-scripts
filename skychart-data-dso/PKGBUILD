@@ -1,0 +1,21 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
+pkgname=skychart-data-dso
+pkgver=4.0
+pkgrel=1
+_pkgver=4.0-3431
+pkgdesc="DSO data of the SAC database for skychart / Cartes du Ciel"
+arch=(any)
+license=(GPL)
+url="http://www.ap-i.net/skychart/start"
+depends=('skychart')
+makedepends=('bzip2')
+source=(
+  "https://datapacket.dl.sourceforge.net/project/skychart/2-catalogs/Nebulea/${pkgname}-${_pkgver}-linux_all.tar.bz2"
+)
+md5sums=('2c5c31bbbb7c30dec7be4b00a1201675')
+
+package() {
+  mkdir -p ${pkgdir}/usr
+  cp -R ${srcdir}/* ${pkgdir}/usr/
+}

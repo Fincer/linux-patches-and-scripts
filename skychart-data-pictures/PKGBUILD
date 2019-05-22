@@ -1,0 +1,21 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
+pkgname=skychart-data-pictures
+pkgver=4.0
+pkgrel=1
+_pkgver=4.0-3421
+pkgdesc="Pictures for objects in the SAC database for skychart / Cartes du Ciel"
+arch=('any')
+license=('GPL')
+url="http://www.ap-i.net/skychart/start"
+depends=('skychart')
+makedepends=('bzip2')
+source=(
+  "https://ayera.dl.sourceforge.net/project/skychart/2-catalogs/Nebulea/${pkgname}-${_pkgver}-linux_all.tar.bz2"
+)
+md5sums=('eb0a3cae10d054eec53db6286b0eee81')
+
+package() {
+  mkdir -p ${pkgdir}/usr
+  cp -R ${srcdir}/* ${pkgdir}/usr/
+}

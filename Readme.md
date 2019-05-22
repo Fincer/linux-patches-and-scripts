@@ -285,6 +285,8 @@ For details about Winexec bash script, see this [AskUbuntu](https://askubuntu.co
 
 - `0007-disable-closingandwinemessage.patch` = Disable confirmation for closing the program. Remove Wine dependency (so that user don't need to install Wine on their systems in order to use PlayOnLinux)
 
+- `0009-patch_disable-crashdialogs.patch` = Remove PoL crash dialogs
+
 **FORMAT:** Arch Linux PKGBUILD script + patch files.
 
 ## [qgifer](qgifer)
@@ -304,6 +306,24 @@ Patch qgifer codebase for Qt5 & the newest giflib.
 Add FLIF image format support for KDE environment.
 
 **NOTE:** Add `image/x-flif` Mimetype to get this work (works with gwenview & kolourpaint at least).
+
+**FORMAT:** Arch Linux PKGBUILD script.
+
+## [skychart-dat-dso](skychart-dat-dso)
+a
+DSO data of the SAC database for skychart software.
+
+**FORMAT:** Arch Linux PKGBUILD script.
+
+## [skychart-data-pictures](skychart-data-pictures)
+
+Pictures for objects in the SAC database for skychart software.
+
+**FORMAT:** Arch Linux PKGBUILD script.
+
+## [skychart-data-stars](skychart-data-stars)
+
+Star data of the SAC database for skychart software.
 
 **FORMAT:** Arch Linux PKGBUILD script.
 

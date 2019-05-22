@@ -1,0 +1,21 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+
+pkgname=skychart-data-stars
+pkgver=4.0
+pkgrel=1
+_pkgver=4.0-3421
+pkgdesc="Star data of the SAC database for skychart / Cartes du Ciel"
+arch=('any')
+license=('GPL')
+url="http://www.ap-i.net/skychart/start"
+depends=('skychart')
+makedepends=('bzip2')
+source=(
+  "https://datapacket.dl.sourceforge.net/project/skychart/2-catalogs/Stars/${pkgname}-${_pkgver}-linux_all.tar.bz2"
+)
+md5sums=('6eaeb15ebef09352ac237ba50168def3')
+
+package() {
+  mkdir -p ${pkgdir}/usr
+  cp -R ${srcdir}/* ${pkgdir}/usr/
+}
