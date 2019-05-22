@@ -1,0 +1,25 @@
+# Maintainer: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+ 
+pkgname=kde-servicemenus-flif-webp
+pkgver=1
+pkgrel=1
+pkgdesc="Convert image files to FLIF/WebP formats with Dolphin or Konqueror (KDE5 Dolphin actions)"
+arch=('any')
+license=('GPL')
+source=(
+  'flif-webp-conv.desktop'
+  'flif-conversion.sh'
+  'webp-conversion.sh'
+)
+md5sums=('dfe8688e4c2f9a7318a5ac6efb43ceb3'
+         'b67c8ad9e57580a0e21cc585f8aa93ed'
+         '5a61d02b4f2ce9eb6a77fc4788a0b93c')
+
+depends=('flif' 'dolphin')
+
+package() {
+    mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
+    cp ${srcdir}/{flif-webp-conv.desktop,flif-conversion.sh,webp-conversion.sh} ${pkgdir}/usr/share/kservices5/ServiceMenus/
+    chmod 755 ${pkgdir}/usr/share/kservices5/ServiceMenus/{flif-webp-conv.desktop,flif-conversion.sh,webp-conversion.sh}
+}
+

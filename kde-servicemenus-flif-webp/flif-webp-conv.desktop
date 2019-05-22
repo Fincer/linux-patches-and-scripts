@@ -1,14 +1,18 @@
 [Desktop Entry]
 Type=Service
 ServiceTypes=KonqPopupMenu/Plugin
-MimeType=image/png
+MimeType=image/*
 Icon=image
-Actions=flif_conversion;
+Actions=flif_conversion;webp_conversion;
 X-KDE-StartupNotify=false
 X-KDE-Priority=TopLevel
-TryExec=flif
 
 [Desktop Action flif_conversion]
 Name=Convert to FLIF format
 Icon=image
 Exec=/usr/share/kservices5/ServiceMenus/flif-conversion.sh 
+
+[Desktop Action webp_conversion]
+Name=Convert to WebP format
+Icon=image
+Exec=/usr/share/kservices5/ServiceMenus/webp-conversion.sh 

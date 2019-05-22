@@ -66,11 +66,11 @@ Plasma 5 Dolphin service menu script for cr2hdr package.
 
 **FORMAT:** Arch Linux PKGBUILD script.
 
-## [kde-servicemenus-flifconversion](kde-servicemenus-flifconversion)
+## [kde-servicemenus-flif-webp](kde-servicemenus-flif-webp)
 
-Plasma 5 Dolphin service menu script for converting images to FLIF format.
+Plasma 5 Dolphin service menu script for converting images to FLIF & WebP formats.
 
-Requirements: FLIF libraries ([GitHub source](https://github.com/FLIF-hub/FLIF) or [AUR Package](https://aur.archlinux.org/packages/flif-git/))
+**Requirements:** FLIF libraries ([GitHub source](https://github.com/FLIF-hub/FLIF) or [AUR Package](https://aur.archlinux.org/packages/flif-git/))
 
 It is recommended that you add FLIF mimetype (as `image/x-flif`) in system-wide.
 
