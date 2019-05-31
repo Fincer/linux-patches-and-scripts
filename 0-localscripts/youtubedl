@@ -18,7 +18,7 @@
 
 ##############################################################################
 
-# Requirements: youtube-dl, ffmpeg (with appropriate codec support) 
+# Requirements: youtube-dl, ffmpeg (with appropriate codec support)
 
 # Usage: youtubedl <video_1_url> <video_2_url> ... <video_n_url>
 
@@ -41,14 +41,14 @@ for p in ${@}; do
     echo -e "\n[$((1 + $CNT))] Video download URL:\t$video_url"
 
     read INPUT_FILENAME <<< $(youtube-dl --get-filename --no-warnings --restrict-filenames -o "%(title)s.%(ext)s" $video_url | sed 's/\.[^.]*$//')
-        
+
     if [[ ! -z $INPUT_FILENAME ]]; then
       echo -e "[$((1 + $CNT))] Video name:\t\t$(echo $INPUT_FILENAME)"
       youtube-dl --restrict-filenames -o "$DOWNLOAD_DIR/%(title)s.%(ext)s" $video_url
-            
+
       #Sometimes we get invalid suffix for a file with youtube-dl name command (for example mkv file is stated as mp4 by youtube-dl). To circumvent this problem, find the real file with correct suffix and add it to an array for ffmpeg to process
       TRUNAME=$(ls $DOWNLOAD_DIR | grep "$INPUT_FILENAME")
-            
+
       VIDEONAMES[$CNT]=$TRUNAME
 
     fi
@@ -59,10 +59,10 @@ done
 
 for converted in $(echo "${VIDEONAMES[*]}"); do
   echo -e "Converting $converted"
-    
+
   OUTPUT_FILEFORMAT='mp4'
   OUTPUT_FILE=$(echo "$converted" | sed "s/\.\w*$/-converted.$OUTPUT_FILEFORMAT/")
-        
+
   #This makes sure we use mp4 suffix
   OUTPUT_FILE_AFTER=$(echo "$converted" | sed "s/\.\w*$/.$OUTPUT_FILEFORMAT/")
 
