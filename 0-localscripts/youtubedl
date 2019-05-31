@@ -1,0 +1,75 @@
+#!/bin/env bash
+
+#    Download multiple Youtube videos and convert them
+#    Copyright (C) 2019  Pekka Helenius
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+##############################################################################
+
+# Requirements: youtube-dl, ffmpeg (with appropriate codec support) 
+
+# Usage: youtubedl <video_1_url> <video_2_url> ... <video_n_url>
+
+########################################################
+
+DOWNLOAD_DIR=$HOME/Videos
+
+########################################################
+
+echo -e "\nNumber of videos:\t$#"
+echo -e "Download destination:\t$DOWNLOAD_DIR"
+
+CNT=0
+
+for p in ${@}; do
+  VIDEOARRAY[$CNT]=$p
+
+  for video_url in "${VIDEOARRAY[$CNT]}"; do
+
+    echo -e "\n[$((1 + $CNT))] Video download URL:\t$video_url"
+
+    read INPUT_FILENAME <<< $(youtube-dl --get-filename --no-warnings --restrict-filenames -o "%(title)s.%(ext)s" $video_url | sed 's/\.[^.]*$//')
+        
+    if [[ ! -z $INPUT_FILENAME ]]; then
+      echo -e "[$((1 + $CNT))] Video name:\t\t$(echo $INPUT_FILENAME)"
+      youtube-dl --restrict-filenames -o "$DOWNLOAD_DIR/%(title)s.%(ext)s" $video_url
+            
+      #Sometimes we get invalid suffix for a file with youtube-dl name command (for example mkv file is stated as mp4 by youtube-dl). To circumvent this problem, find the real file with correct suffix and add it to an array for ffmpeg to process
+      TRUNAME=$(ls $DOWNLOAD_DIR | grep "$INPUT_FILENAME")
+            
+      VIDEONAMES[$CNT]=$TRUNAME
+
+    fi
+
+  done
+  let CNT++
+done
+
+for converted in $(echo "${VIDEONAMES[*]}"); do
+  echo -e "Converting $converted"
+    
+  OUTPUT_FILEFORMAT='mp4'
+  OUTPUT_FILE=$(echo "$converted" | sed "s/\.\w*$/-converted.$OUTPUT_FILEFORMAT/")
+        
+  #This makes sure we use mp4 suffix
+  OUTPUT_FILE_AFTER=$(echo "$converted" | sed "s/\.\w*$/.$OUTPUT_FILEFORMAT/")
+
+  ffmpeg -i "$DOWNLOAD_DIR/$converted" -acodec libopus -strict -2 -vcodec libx265 -pix_fmt yuv420p -x265-params crf=28:keyint=240:min-keyint=20 -preset:v veryslow -y "$DOWNLOAD_DIR/$OUTPUT_FILE"
+
+  rm $DOWNLOAD_DIR/$converted
+
+  echo -e "\n[$CNT] Conversion done."
+  mv $DOWNLOAD_DIR/$OUTPUT_FILE $DOWNLOAD_DIR/$OUTPUT_FILE_AFTER
+done
